@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button>
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button>
+        </ion-buttons>
+    <ion-title>Department</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- Hotel and Years -->
+    <!-- <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-segment class="yearly-segment">
+              <ion-segment-button value="monthly">
+                <ion-label>m</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="quartely">
+                <ion-label>q</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="yearly">
+                <ion-label>y</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-col>
+          <ion-col>
+            <ion-item class="all-store">
+              <ion-select placeholder="Hampton Inn Boston Braintree">
+                <ion-select-option value="f">1</ion-select-option>
+                <ion-select-option value="m">2</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+  <!-- Hotel and Years -->
+
+  <div class="main-heading">
+    {{hotel_Name}}<br/>
+    {{dabel_month_year}}
+ </div>
+ 
+  <!-- main table -->
+  <ion-card class="card-pad">
+      <ion-grid>
+        <ion-row class="top-clr">
+          <ion-col size="6">
+            Department
+          </ion-col>
+          <ion-col>
+            Expense
+          </ion-col>
+          <ion-col>
+            Remaining
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="bor-tab-bott" *ngFor="let dept of department_data" (click)="getDeptExpense(dept)">
+        <ion-row>
+          <ion-col size="6">
+            <span>{{dept.departmentName}}</span>
+            <span>{{dept.expensePer}}%</span>            
+            <div id="progressbar">
+              <!-- <div class="inner progress-green" style="width:40%" [style.width]="60 + '%'"></div> -->
+              <div  class="inner" [ngStyle]="{'background': dept.rem_color}"  [style.width]="(dept.expensePer > 100 ? 100 : dept.expensePer)+ '%'"  style="width:40%"></div>
+            </div>
+          </ion-col>
+          <ion-col>
+            ${{dept.expense}}
+          </ion-col>
+          <ion-col>
+            ${{dept.remaning}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+<!-- main table End -->
+</ion-content>
+<footer></footer>

@@ -1,0 +1,91 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>ModuleNotificationPendding</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="select-date">
+
+    <ion-card class="cardcls">
+      <div class="noti-data">
+        <ion-item class="notification-main">
+          <ion-avatar class="clr-thumb" slot="start">
+            <img [src]='profileimg+Notificationdata.profileimg'>
+          </ion-avatar>
+
+          <ion-label>
+            <ul>
+              <li>Name:
+                <span class="acno">{{Notificationdata.firstName}} {{Notificationdata.lastName}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Hotel:
+                <span class="acno">{{Notificationdata.hotelName}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Department:
+                <span class="acno">{{Notificationdata.departmentName}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Invoice Amount: <span class="acno">$ {{this.constant.replace(Notificationdata.amount)}}</span></li>
+            </ul>
+            <ul>
+              <li>Actual Amount: <span class="acno">$ {{this.constant.replace(Notificationdata.actualAmount)}}</span></li>
+            </ul>
+            <ul>
+              <li>Sent: <span class="acno">{{Notificationdata.invoiceDate}}</span></li>
+            </ul>
+            <ion-row class="maraccept" *ngIf="stats">
+              <button ion-button class="accept-btn" (click)="acceptPendingAlert(Notificationdata,$event,'Accept All')">
+                <img src="assets/icon/checked.svg">
+                <i> ALL</i>
+              </button>
+              <button ion-button class="reject-btn" (click)="rejectRejectAlert(Notificationdata,$event,'Reject All')">
+                <ion-icon name="close" slot="start"></ion-icon>
+                <i> All</i>
+              </button>
+            </ion-row>
+          </ion-label>
+        </ion-item>
+        <ion-row class="close-btn">
+          <img class="cross" (click)="closebtn()" src="assets/icon/cancel.png">
+        </ion-row>
+      </div>
+
+
+      <div class="abt-noti">
+        <ion-item class="notification-main" *ngFor="let item of Notificationlistdata">
+          <ion-label>
+            <ul>
+              <li>Invoice Date:
+                <span class="acno">{{item.invoiceDate}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Overage Amount:
+                <span class="acno">$ {{this.constant.replace(item.amount)}}</span>
+              </li>
+            </ul>
+            <ion-row class="maraccept" *ngIf="stats" >
+              <button ion-button class="accept-btn" (click)="acceptPendingAlert(item,$event,'Accept')">
+                <img src="assets/icon/checked.svg">
+                <i>  </i>
+              </button>
+              <button ion-button class="reject-btn" (click)="rejectRejectAlert(item,$event,'Reject')">
+                <ion-icon name="close" slot="start"></ion-icon>
+                <i>  </i>
+              </button>
+            </ion-row>
+          </ion-label>
+        </ion-item>
+      </div>
+
+    </ion-card>
+  </ion-grid>
+
+
+</ion-content>

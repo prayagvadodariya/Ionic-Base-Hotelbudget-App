@@ -1,0 +1,64 @@
+// .font{
+
+//     color: #002d5b;
+//     font-style: normal;
+//     font-weight: 600;
+//     opacity: 0.8;
+
+// }
+
+ion-header{
+    ion-toolbar{
+        ion-buttons{
+            ion-menu-button{
+                img{height: 20px; width: 20px;}
+            }
+        }
+        ion-title{font-size: 0.8rem;}
+    }
+}
+
+ion-content{
+    ion-row{
+        ion-col.view-tlt{padding-left: 12px; padding-top: 20px;
+            ion-label{color: #181818; font-size: 0.75rem; word-spacing: -1px; font-weight: 600;}
+        }
+        ion-col.tlt-content{
+            .select{margin-top: 8px; margin-right: 8px;
+                ion-item{--background: #fff; --background-hover: #fff; border-radius: 50px; --min-height: 35px; --padding-start: 0; --inner-padding-end: 5px; box-shadow: 0 2px 7px 0px #ccc;
+                ion-label.category{padding-left: 8px; margin-top: 0; margin-right: 0; margin-bottom: 0; font-size: 0.8rem; font-weight: 500; font-size: 0.8rem;}
+                }
+            }
+        }
+    }
+
+    ion-grid.rooms{
+        ion-card{margin-bottom: 0; margin-top: 0;
+            ion-row{margin-top: 2px; margin-bottom: 2px;
+                ion-col{
+                    ion-text.room{font-size: 0.75rem; color: #181818; font-weight: 600; padding-left: 6px;}
+                    ion-label.feb{color: #002d5b; font-weight: 600; font-size: 0.9rem; word-spacing: -3px; float: right; padding-right: 6px;}
+                }
+            }
+        }
+    }
+
+    ion-grid.name-sts{
+        ion-card{margin-top: 0;
+            ion-row{margin-top: 3px; margin-bottom: 3px; border-bottom: 1px solid #b2b2b2;
+                ion-col.name{font-size: 0.8rem; color: #181818; font-weight: 600; margin-bottom: 3px;}
+            }
+            ion-row.forpart{
+                ion-col{
+                    img{height: 15px; width: 15px; margin-bottom: 2px;}
+                }
+            }
+        }
+    }
+
+    .survey-btn{text-align: center; padding-top: 3px;
+        ion-button{--background: #607e9a; --background-focused: #607e9a; --background-hover: #607e9a; text-transform: capitalize; width: 116px; padding: 2px 0; font-size: 0.7rem; letter-spacing: 1px;
+            img{height: 13px; width: 13px; margin-right: 10px;}
+        }
+    }
+}

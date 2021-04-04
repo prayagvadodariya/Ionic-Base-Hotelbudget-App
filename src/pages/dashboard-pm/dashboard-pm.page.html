@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button>
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button>
+        </ion-buttons>
+    <ion-title>dashboard-pm</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- top search -->
+<ion-row>
+  <ion-col>
+    <ion-item class="all-store fix-size-search search-mar-top">
+      <ion-select placeholder="All Hotel">
+        <ion-select-option value="f">1</ion-select-option>
+        <ion-select-option value="m">2</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<!-- top search End -->
+  <!-- Top End -->
+  <ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-segment class="yearly-segment two-button">
+              <ion-segment-button value="quartely">
+                <ion-label>q</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="yearly">
+                <ion-label>y</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-col>
+      <ion-col size="2">
+        <div class="year">2019</div>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="all-store">
+          <ion-select placeholder="All Rooms">
+            <ion-select-option value="f">1</ion-select-option>
+            <ion-select-option value="m">2</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<!-- Top End -->
+<!-- Segment Button -->
+<ion-segment class="categories-btn">
+    <ion-segment-button value="friends">
+      <ion-label>Category-wise</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="enemies">
+      <ion-label>Status-wise</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+<!-- Segment Button -->
+</ion-content>

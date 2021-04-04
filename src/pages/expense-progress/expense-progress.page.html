@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Invoice Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div class="main-prog" *ngIf="invoiceStepArr">
+      <ul class="list-unstyled multi-steps">
+        <li class="icon-plus {{invoiceCom_Step_class['1_step_active']}} {{active_step['1_step_active']}}">
+          <span>
+            <div *ngIf="invoiceStepArr.is_po == 1" >PO Added Date</div>
+            <div *ngIf="invoiceStepArr.is_po != 1" >Added Date</div>
+            <i>{{invoiceStepArr.expense_created}}</i>
+            <div class="name-prog">Added By: <u>{{invoiceStepArr.cap_expense_fullname}}</u> </div>
+          </span>
+        </li>
+
+        <li *ngIf="invoiceStepArr.is_po == 1"
+          class="icon-invoice  {{invoiceCom_Step_class['2_1_step_active']}} {{active_step['2_1_step_active']}}">
+          <span>
+            PO to invoice date<i>{{invoiceStepArr.m3_po_to_invoice_date}}</i>
+            <div class="name-prog" *ngIf="invoiceStepArr.isPurchaseOrder == 2">Status: <span class="new-css"><u
+                  [innerHTML]="invoiceStepArr.po_text"></u></span></div>
+            <!-- <u [innerHTML ]="invoiceStepArr.expense_app_fullname"></u> -->
+          </span>
+        </li>
+
+        <li class="icon-transfer {{invoiceCom_Step_class['3_step_active']}} {{active_step['3_step_active']}}">
+          <span>
+            M3 Transferred Date <i>{{invoiceStepArr.m3_created_transferedDate }}</i>
+            <div class="name-prog" *ngIf="invoiceCom_Step_class['3_step_active']=='is-complete'">Status:
+              <div class="tooltip">
+                <u class="btn-approve">Pre Approved</u>
+                <span class="tooltiptext"> {{invoiceStepArr.m3_created_currentStatus_commment}} </span>
+              </div>
+            </div>
+          </span>
+        </li>
+
+
+        <li class="icon-verified {{invoiceCom_Step_class['4_step_active']}} {{active_step['4_step_active']}}">
+          <span>
+            M3 Verified Date <i>{{invoiceStepArr.m3_created_m3_updated_date }}</i>
+            <div class="name-prog" *ngIf="invoiceCom_Step_class['4_step_active']=='is-complete'">Status:
+              <div class="tooltip">
+                <u class="btn-approve"> {{invoiceStepArr.m3_created_m3_status_text}}</u>
+                <span class="tooltiptext"> {{invoiceStepArr.m3_created_m3_comment}} </span>
+              </div>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </ion-card>
+</ion-content>

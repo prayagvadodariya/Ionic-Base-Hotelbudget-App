@@ -1,0 +1,191 @@
+<ion-header class="header-seg">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Preventative Maintenance</ion-title>
+    <ion-icon class="icon" slot="end" name="notifications" (click)='gotoNotification()'></ion-icon>
+    <div class="noticount-header" *ngIf=" pmNotification && pmNotification != '0' ">
+      <h2>{{pmNotification}}</h2>
+    </div>
+  </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="categorySegment">
+    <ion-segment-button value="category" checked>
+      <ion-label>Category</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="roomsurvey">
+      <ion-label>Room Survey</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="status">
+      <ion-label>Status</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <ion-item style="display: none;">
+    <ion-label>{{ title }}</ion-label>
+    <ion-label>{{ title }}</ion-label>
+    <ion-select [(ngModel)]="yearmodel" #yearSelect style="display: none;" (ionCancel)="onSelectChangeCancel()"
+      (ionChange)="onselectChangeYear(MQYsegment)">
+      <ion-select-option *ngFor="let year of yearDataList" [value]="year.id">{{
+        year.name
+      }}</ion-select-option>
+    </ion-select>
+    <ion-select [(ngModel)]="quarterModel" #quaterSelect style="display: none;" (ionCancel)="onSelectChangeCancel()"
+      (ionChange)="onselectChangeQuarter(MQYsegment)">
+      <ion-select-option *ngFor="let quarter of quarterDataList" [value]="quarter.name">{{ quarter.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- MQY Segment -->
+  <ion-grid class="pm-dashboard-data">
+    <ion-row>
+      <ion-col size="{{userData.hotelId==0?6:4}}">
+        <!-- <div class="yearly-segment two-segment">
+            <button ion-button (click)="clickQuarter('q')" [ngClass]="(buttonActive == 'q') ? 'btnseg active' : 'btnseg'" >q </button>
+            <button ion-button (click)="clickYear('y')" [ngClass]="(buttonActive == 'y') ? 'btnseg active' : 'btnseg'" class='btnseg'>y</button>
+        </div> -->
+        <ion-segment class="yearly-segment two-segment" [(ngModel)]="MQYsegment" (click)="selectsegment()">
+          <ion-segment-button value="quater">
+            <ion-label>q</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="year">
+            <ion-label>y</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+      <ion-col size="6" *ngIf="userData.hotelId==0">
+        <ion-item class="all-store">
+          <ion-select placeholder="Select Hotels" [(ngModel)]="hotelId" class="select-nav"
+            (ionChange)="changeHotel($event)">
+            <ion-select-option *ngFor="let data of HotelList" [value]="data.hotelId">{{ data.hotelName }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="8" *ngIf="userData.hotelId!=0">
+        <div class="main-heading pt-8 align-r">
+          {{hotelName}}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <div class="main-heading" *ngIf="userData.hotelId!=0">
+    {{hotelName}}<br/>
+  </div> -->
+
+  <ion-card *ngIf="checktabpage">
+    <ion-row class="date">
+      <ion-col class="survey-txt">
+        {{headerTitle}}
+      </ion-col>
+      <ion-col>
+        <ion-item class="all-store no-color">
+          <ion-select placeholder="All Rooms" [(ngModel)]="roomId" (ionChange)="changeRoom($event)">
+            <ion-select-option *ngFor="let room of roomList" [value]="room.roomId">{{ room.room }}</ion-select-option>
+          </ion-select>
+          <img src="assets/icon/store.svg" slot="end" />
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <!-- MQY Segment END -->
+
+  <!-- Category -->
+  <div *ngIf="categorySegment == 'category'">
+    <div class="monthstatus">
+      {{selectdate}}
+    </div>
+    <div id="getDashboardChart"></div>
+    <!-- <ion-card *ngIf="iscateChartClick">
+      <ion-row class="date">
+        <ion-col class="survey-txt">
+          {{ catagoryChartClickData.category }}
+        </ion-col>
+        <ion-col>  Room Count : {{ catagoryChartClickData.y }} </ion-col>
+      </ion-row>
+    </ion-card> -->
+
+    <ion-card *ngIf="iscateChartClick">
+      <ion-row class="toptitlecategory icnarrow-1" (click)="PMStatusDetail(1)">
+        <ion-col size="8">
+          {{ catagoryChartClickData.category }}
+        </ion-col>
+        <ion-col text-right size="2">
+          <h2>
+            {{ catagoryChartClickData.y }}
+          </h2>
+        </ion-col>
+        <ion-col class="icnarrow" text-right size="2">
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row class="subtxt" *ngFor="let status of arraylist" (click)="PMStatusDetail(status)">
+        <ion-col class="survey-txt" size="8">
+          {{status.name}}
+        </ion-col>
+        <ion-col size="2" text-right>
+          {{status.count}}
+        </ion-col>
+        <ion-col class="icnarrow" text-right size="2">
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </div>
+  <!-- Category -->
+  <!-- room survey -->
+  <div *ngIf="categorySegment == 'roomsurvey'">
+
+    <div class="monthstatus">
+      {{selectdate}}
+    </div>
+    <!-- chart -->
+    <div class="chart">
+
+      <div id="getTRoomsurveyChart"></div>
+    </div>
+    <!-- chart -->
+    <!-- Room Survey Status -->
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="roomsurvey" size="6">
+            <span> Room Survey Status </span>
+          </ion-col>
+          <ion-col class="pending-count">
+            Pending
+            <!-- <br /> -->
+            <span>{{dashboardchartData.pending_rooms}}</span>
+          </ion-col>
+          <ion-col class="pending-count">
+            Completed
+            <!-- <br /> -->
+            <span>{{dashboardchartData.completed_rooms}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+  </div>
+
+  <div *ngIf="categorySegment == 'status'">
+    <div class="monthstatus">
+      {{selectdate}}
+    </div>
+
+    <div class="monthstatus">
+
+    </div>
+    <div>
+
+      <div id="Linecontainer"></div>
+    </div>
+  </div>
+
+</ion-content>

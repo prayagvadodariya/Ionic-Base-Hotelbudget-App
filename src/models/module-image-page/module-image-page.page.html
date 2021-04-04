@@ -1,0 +1,22 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>ModuleSignPage</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="select-date">
+    <ion-card class="cardcls">
+      <ion-card-header>
+        <ion-card-subtitle>{{surveydata.item}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card>
+            <img [src]="imgurl+surveydata.itemImage">
+      </ion-card>
+      
+      <button (click)="closebtn()" class="add-exp-pop">
+        <ion-icon mode="md" name="md-close"></ion-icon>
+      </button>
+    </ion-card>
+  </ion-grid>
+</ion-content>

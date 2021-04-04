@@ -1,0 +1,60 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>ViewProgress</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="select-date">
+    <ion-card class="cardcls">
+      <ion-card-header>
+        <div class="payment-popup">
+          <img src="assets/icon/info.svg">
+          <h3>service request progress</h3>
+        </div>
+        <!-- <div class="close-btn">
+          <a>
+            <ion-icon name="close-circle" (click)="closebtn()"></ion-icon>
+          </a>
+        </div> -->
+        <div class="close-btn">
+          <!-- <ion-icon><ion-icon name="close-circle" (click)="click()"></ion-icon></a> -->
+          <img class="cross"(click)="closebtn()" src="assets/icon/cancel.png">
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="main-prog">
+          <ul class="list-unstyled multi-steps">
+            <li class="icon-Pending">
+              <span>
+                Pending
+                <i>Feb05,2019</i>
+                <div class="name-prog">
+                  <u>Robert Hoffman</u>
+                </div>
+              </span>
+            </li>
+            <li class="icon-transfer">
+              <span>
+                In Progress
+                <i>Feb05,2019</i>
+                <div class="name-prog">
+                  <u>Pre Approved</u>
+                </div>
+              </span>
+            </li>
+            <li class="icon-verified">
+              <span>
+                Completed
+                <i>Feb05,2019</i>
+                <div class="name-prog">
+                  <u>Pre Approved</u>
+                </div>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid> 
+</ion-content>

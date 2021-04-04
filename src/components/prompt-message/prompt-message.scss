@@ -1,0 +1,32 @@
+
+    prompt-message {
+        .badge {
+            display: inline-flex;
+            font-family: "Lato-Regular";
+            font-size: 1.1rem;
+            color: #000;
+            border-radius: 30px;
+            padding: 1.5rem 2rem;
+            background-color: rgba(79, 144, 227, 0.3);
+            white-space: normal;
+            text-align: left;
+            align-items: center;
+            margin: 0 1rem;
+
+            img {
+                height: 18px;
+                width: 18px;
+                margin-right: 10px;
+            }
+        }
+
+        .badge.disapprove {
+            background-color: rgba(237, 28, 36, 0.3);
+        }
+
+        .badge.approve {
+            background-color: rgba(98, 174, 79, 0.3);
+        }
+    }
+       
+

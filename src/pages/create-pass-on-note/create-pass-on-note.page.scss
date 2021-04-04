@@ -1,0 +1,32 @@
+ion-header{
+    ion-toolbar{
+        .save{color: #fff; margin-right: 8px; font-size: 1.5rem; }
+        ion-buttons{
+            ion-menu-button{
+                img{height: 20px; width: 20px;}
+            }
+        }
+        span.ion-width{width: 34px; height: 24px;
+            ion-icon{color: #fff; margin-right: 8px; font-size: 1.5rem; }
+        }
+        .check-icn{color: #fff; font-size: 1.4rem; position: absolute; right: 3px; top: 16px;}
+    }
+}
+.sc-ion-buttons-ios-h {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: -99;
+}
+
+ion-content.edit-height{--ion-background-color: #f1f1f1;
+        ion-card{box-shadow: 0 0 10px #ccc !important; 
+            &.height-full{height: calc(100% - 166px) !important;
+                .ql-toolbar.ql-snow{ border-top-left-radius: 7px; border-top-right-radius: 7px;}
+                .ql-container.ql-snow{border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}
+            }
+        }
+    }

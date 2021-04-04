@@ -1,0 +1,23 @@
+ion-header{
+  ion-toolbar{
+  .noti{position: absolute; right: 0;}
+  }
+}
+
+.iframe-fix iframe {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: scroll !important;
+    width: 100%;
+    height: 100%;
+    border: none;
+    // margin-top: 40px;
+  }
+  
+  .iframe-fix {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+  }
+  .noti{color: #fff; margin-right: 8px; font-size: 1.9rem;}

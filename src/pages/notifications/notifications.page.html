@@ -1,0 +1,336 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+  <!-- Default Segment -->
+  <ion-segment [(ngModel)]="MQYsegment" (click)="segmentChanged()">
+    <ion-segment-button value="pending">
+      <ion-label>Pending</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="approved">
+      <ion-label>Approved</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="rejected">
+      <ion-label>Rejected</ion-label>
+    </ion-segment-button>
+    <!-- <ion-segment-button value="failed">
+      <ion-label>Failed</ion-label>
+    </ion-segment-button> -->
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <!-- <ion-row class="total-notifications">
+    Total: {{notificationc_count}}
+  </ion-row> -->
+  <!-- pending -->
+  <div *ngIf="MQYsegment=='pending'">
+    <div *ngIf='message' class="no-data-found">
+      <!-- <div > -->
+      <img src="assets/images/empty-screen/notifications-empty.svg">
+      <h5>{{message_title}}</h5>
+      <p>{{message}}</p>
+      <!-- </div> -->
+    </div>
+    <ion-row class="total-notifications">
+      Total: {{notificationc_count}}
+    </ion-row>
+    <ion-card *ngFor="let noti of getNotificationList;let i=index">
+      <ion-item class="notification-main">
+        <ion-avatar class="clr-thumb" slot="start">
+          <img [src]='profileimageurl+noti.profileimg'>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{noti.firstName}} {{noti.lastName}}</h2>
+          <ul>
+            <li><span class="acno">{{noti.hotelName}}</span></li>
+          </ul>
+          <ul>
+            <li>Invoice Date:
+              <span>{{noti.invoiceDate}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Account Name:
+              <span>{{noti.accountName}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Account Number:
+              <span class="acno" (click)="showexpense(noti)">{{noti.accountNumber}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Overage Amount:
+              <span>${{this.constant.replace(noti.amount)}}</span></li>
+          </ul>
+          <ul>
+            <li>Actual Amount:
+              <span>${{this.constant.replace(noti.actualAmount)}}</span></li>
+          </ul>
+          <!-- hide Dive -->
+          <div class="hideshow-notification" [hidden]="!hideme[i]">
+            <ul>
+              <li>Department:
+                <span>{{noti.departmentName}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Invoice No:
+                <span>{{noti.PONumber}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Vendor:
+                <span>{{noti.vendorCompany}}</span>
+              </li>
+            </ul>
+          </div>
+          <!-- hide Dive -->
+          <ion-row class="maraccept" *ngIf="noti.expenses_count == 1  && userData.roleId==1">
+
+            <!-- <ion-col size="6"> -->
+              <button ion-button class="accept-btn acceptbtn-space" (click)="acceptPendingAlert(noti,$event,'Accept')">
+                <img src="assets/icon/checked.svg">
+                <i>  </i>
+              </button>
+            <!-- </ion-col> -->
+            <!-- <ion-col size="6"> -->
+              <button ion-button class="reject-btn rejectbtn-space" (click)="rejectRejectAlert(noti,$event,'Reject')">
+                <ion-icon name="close" slot="start"></ion-icon>
+                <i> </i>
+              </button>
+            <!-- </ion-col> -->
+          </ion-row>
+          <ion-row class="maraccept" *ngIf="noti.expenses_count > 1">
+            <button ion-button class="accept-btn" (click)="acceptPendingAlert(noti,$event,'Accept All')">
+              <img src="assets/icon/checked.svg">
+              <i> All </i>
+            </button>
+            <button ion-button class="reject-btn" (click)="rejectRejectAlert(noti,$event,'Reject All')">
+              <ion-icon name="close" slot="start"></ion-icon>
+              <i> All</i>
+            </button>
+
+
+          </ion-row>
+        </ion-label>
+        <div class="right-date" slot="end">
+          <i>{{noti.createdDate | date:'MMM dd, yyyy'}}</i>
+          <i>{{noti.createdDate |date:'h:mm a'}}</i>
+          <button ion-button class="down-arr">
+            <img src="{{ hideme[i] ? 'assets/icon/up-arrow.svg' : 'assets/icon/down-arrow.svg' }}"
+              (click)="hideme[i] = !hideme[i]">
+          </button>
+
+          <button ion-button class="chat-not" (click)="ShowList(noti,true)" *ngIf="noti.expenses_count > 1">
+            <ion-icon slot="start" name="add"></ion-icon>
+            <i>{{noti.expenses_count}}</i>
+          </button>
+          <button ion-button class="chat-not" (click)='MessageShow(noti.notificationId)'
+            *ngIf="noti.commentsCount >= 1">
+            <img src="../../assets/images/chat.png">
+            <i>{{noti.commentsCount}}</i>
+          </button>
+
+        </div>
+      </ion-item>
+    </ion-card>
+  </div>
+  <!-- pending -->
+  <!-- approved -->
+  <div *ngIf="MQYsegment=='approved'">
+    <div *ngIf='message' class="no-data-found">
+      <!-- <div > -->
+      <img src="assets/images/empty-screen/notifications-empty.svg">
+      <h5>{{message_title}}</h5>
+      <p>{{message}}</p>
+      <!-- </div> -->
+    </div>
+    <ion-row class="total-notifications">
+      Total: {{notificationc_count}}
+    </ion-row>
+    <ion-card *ngFor="let noti of getNotificationList;let i=index">
+      <ion-item class="notification-main">
+        <ion-avatar class="clr-thumb" slot="start">
+          <img [src]='profileimageurl+noti.profileimg'>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{noti.firstName}} {{noti.lastName}}</h2>
+          <ul>
+            <li><span class="acno">{{noti.hotelName}}</span></li>
+          </ul>
+          <ul>
+            <li>Invoice Date:
+              <span>{{noti.invoiceDate}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Account Name:
+              <span>{{noti.accountName}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Account Number:
+              <span class="acno" (click)="showexpense(noti)">{{noti.accountNumber}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Overage Amount:
+              <span>${{this.constant.replace(noti.amount)}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Actual Amount:
+              <span>${{this.constant.replace(noti.actualAmount)}}</span>
+            </li>
+          </ul>
+          <!-- hide Dive -->
+          <div class="hideshow-notification" [hidden]="!hideme[i]">
+            <ul>
+              <li>Department:
+                <span>{{noti.departmentName}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Invoice No:
+                <span>{{noti.PONumber}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Vendor:
+                <span>{{noti.vendorCompany}}</span>
+              </li>
+            </ul>
+          </div>
+        </ion-label>
+        <div class="right-date" slot="end">
+          <i>{{noti.createdDate | date:'MMM dd, yyyy'}}</i>
+          <i>{{noti.createdDate|date:'h:mm a'}}</i>
+          <button ion-button class="down-arr">
+            <img src="{{ hideme[i] ? 'assets/icon/up-arrow.svg' : 'assets/icon/down-arrow.svg' }}"
+              (click)="hideme[i] = !hideme[i]">
+          </button>
+          <button ion-button class="chat-not" (click)="ShowList(noti,false)" *ngIf="noti.expenses_count > 1">
+            <ion-icon slot="start" name="add"></ion-icon>
+            <i>{{noti.expenses_count}}</i>
+          </button>
+          <button ion-button class="chat-not" (click)='MessageShow(noti.notificationId)'
+            *ngIf="noti.commentsCount >= 1">
+            <img src="../../assets/images/chat.png">
+            <i>{{noti.commentsCount}}</i>
+          </button>
+        </div>
+      </ion-item>
+    </ion-card>
+  </div>
+  <!-- approved -->
+  <!-- rejected -->
+  <div *ngIf="MQYsegment=='rejected'">
+    <div *ngIf='message' class="no-data-found">
+      <!-- <div > -->
+      <img src="assets/images/empty-screen/notifications-empty.svg">
+      <h5>{{message_title}}</h5>
+      <p>{{message}}</p>
+      <!-- </div> -->
+    </div>
+    <ion-row class="total-notifications">
+      Total: {{notificationc_count}}
+    </ion-row>
+    <ion-card *ngFor="let noti of getNotificationList;let i=index">
+      <ion-item class="notification-main">
+        <ion-avatar class="clr-thumb" slot="start">
+          <img [src]='profileimageurl+noti.profileimg'>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{noti.firstName}} {{noti.lastName}}</h2>
+          <ul>
+            <li><span class="acno">{{noti.hotelName}}</span></li>
+          </ul>
+          <ul>
+            <li>Invoice Date:
+              <span>{{noti.invoiceDate}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Account Name:
+              <span>{{noti.accountName}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Account Number:
+              <span class="acno" (click)="showexpense(noti)">{{noti.accountNumber}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Overage Amount:
+              <span>${{this.constant.replace(noti.amount)}}</span>
+            </li>
+          </ul>
+          <ul>
+            <li>Actual Amount:
+              <span>${{this.constant.replace(noti.actualAmount)}}</span>
+            </li>
+          </ul>
+          <!-- hide Dive -->
+          <div class="hideshow-notification" [hidden]="!hideme[i]">
+            <ul>
+              <li>Department:
+                <span>{{noti.departmentName}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Invoice No:
+                <span>{{noti.PONumber}}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>Vendor:
+                <span>{{noti.vendorCompany}}</span>
+              </li>
+            </ul>
+          </div>
+          <ion-row class="maraccept" *ngIf="this.userData.roleId == 2">
+
+            <button ion-button class="accept-btn" (click)="Resubmitcall(noti)">
+              <img src="assets/icon/checked.svg">
+              <i> Re-Submit </i>
+            </button>
+          </ion-row>
+        </ion-label>
+
+        <div class="right-date" slot="end">
+          <i>{{noti.createdDate | date:'MMM dd, yyyy'}}</i>
+          <i>{{noti.createdDate |date:'h:mm a'}}</i>
+          <button ion-button class="chat-not" (click)='MessageShow(noti.notificationId)'
+            *ngIf="noti.commentsCount >= 1">
+            <img src="../../assets/images/chat.png">
+            <i>{{noti.commentsCount}}</i>
+          </button>
+          <button ion-button class="down-arr">
+            <img src="{{ hideme[i] ? 'assets/icon/up-arrow.svg' : 'assets/icon/down-arrow.svg' }}"
+              (click)="hideme[i] = !hideme[i]">
+          </button>
+          <button ion-button class="chat-not" (click)="ShowList(noti,false)" *ngIf="noti.expenses_count > 1">
+            <ion-icon slot="start" name="add"></ion-icon>
+            <i>{{noti.expenses_count}}</i>
+          </button>
+
+        </div>
+      </ion-item>
+    </ion-card>
+  </div>
+  <!-- rejected -->
+  <!-- Failed -->
+  <!-- failed -->
+  <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable"
+    (ionInfinite)="InfinitScrollingAPI($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<footer  [step]="'notification'"></footer>

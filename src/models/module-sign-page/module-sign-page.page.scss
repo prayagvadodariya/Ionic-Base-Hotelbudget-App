@@ -1,0 +1,60 @@
+ion-content{--background: transparent;
+    ion-grid.select-date{ max-width: 80%; margin: auto; position: absolute; width: 80%; top: 0; bottom: 0; left: 0; right: 0; height: -webkit-max-content; height: -moz-max-content; height: max-content; border-radius: 10px; background: #fff; max-height: 80vh; overflow: hidden; overflow-y: auto; padding: 0;  overflow: inherit; overflow-y: inherit;
+        ion-card{padding-top: 0 !important; margin-bottom: 0px !important; padding: 0 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important; overflow: inherit;
+            ion-card-header{padding: 15px; padding-inline-start: 15px; padding-inline-end: 15px; background: #e2e5e8; border-top-right-radius: 8px;              border-top-left-radius: 8px;
+                ion-card-subtitle{color: #607e9a; font-size: 1.1rem; text-align: center; font-weight: 600; text-transform: uppercase;}
+            }
+            ion-card-content{padding-bottom: 23px; font-size: 16px;
+                ion-item{--padding-start: 0; --inner-padding-end: 0; border-bottom: 2px solid #ccc; margin-bottom: 5px;
+                    ion-label{font-size: 1.05rem; margin-top: 0; font-weight: 400; color: #585858; padding-left: 0;}
+                span{
+                    ion-icon{position: absolute; align-items: right !important; right: 3px; font-size: 1.2rem; color: #607e9a; top: 4px;}
+                }
+                    ion-datetime{ padding-bottom: 0; color: #000; font-weight: 400; font-size: 1rem; opacity: 1;}
+                    img{height: 20px; width: 20px; position: absolute; bottom: 0; right: 0; border: 0;}
+                    signature-pad{border: 2px solid #ccc; width: 100%; border-radius: 13px; margin-top: 15px;}
+                    img.temp{ width: 100%; border-radius: 13px; margin-top: 15px; height: auto;  border: 2px solid #ccc; border-radius: 15px;}
+                }
+
+                div.signecher{ margin-top: 16px; position: relative;
+                    ion-label{font-size: 1.05rem; margin-top: 0; font-weight: 400; color: #585858; padding-left: 0;}
+                span{
+                    ion-icon{position: absolute; align-items: right !important; right: 3px; font-size: 1.2rem; color: #607e9a; top: 15px;}
+                }
+                    ion-datetime{ padding-bottom: 0; color: #000; font-weight: 400; font-size: 1rem; opacity: 1;}
+                    // img{height: 20px; width: 20px; position: absolute; bottom: 0; right: 0; border: 0;}
+                    signature-pad{border: 2px solid #ccc; width: 100%; border-radius: 13px; margin-top: 15px; display: block;
+                        canvas{width: 100%;}
+                    }
+                    img.temp{ width: 100%; border-radius: 13px; margin-top: 5px; height: auto;  border: 2px solid #ccc; border-radius: 15px; position: static;}
+                }
+
+                ion-row{
+                    ion-col{
+                        ion-button.close{color: #fff; text-transform: uppercase; padding: 0px 4px; --background: #828282; --background-focused: #828282; --background-hover: #828282; margin: 0 auto; --background-activated: #828282; margin-top: 20px; display: block; padding: 2px 18px; font-size: 0.7rem;}
+                        ion-button.ok{color: #fff; text-transform: uppercase; --background: #607e9a; --background-focused: #607e9a; --background-hover: #607e9a; margin: 0 auto; --background-activated: #607e9a; margin-top: 20px; --padding-start: 35px; --padding-end: 35px; font-size: 0.9rem;}
+                    }
+                }
+                    
+                    .bdr-0{border-bottom: 0;}
+            }
+            .add-exp-pop{position: absolute; top: -10px; right: -10px; border-radius: 30px; height: 35px; width: 34px; background: #fff;
+                ion-icon{font-weight: 700; font-size: 1.2rem; color: #666; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+            }
+        }
+    }
+    // .icon-cancel {
+    //     position: absolute;
+    //     top: -10px;
+    //     right: -10px;
+    //     width: 30px;
+    //     max-width: 25px;
+    //     min-width: 30px;
+    //     background: #fff;
+    //     height: 30px;
+    //     border-radius: 50px;
+    //     margin-right: 0px;
+    //     box-shadow: -3px 5px 19px 1px rgba(0, 0, 0, 0.1);
+    // }
+  
+}

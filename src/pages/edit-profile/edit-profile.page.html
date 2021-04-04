@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <!-- <ion-icon name="arrow-round-back"></ion-icon> -->
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <div class="profile-img">
+        <!-- <img *ngIf="UserDetailsArry.v_profile_image" class="img-inner" src="{{UserDetailsArry.profile_img_path + UserDetailsArry.v_profile_image}}" /> -->
+      <img class="img-inner" src={{profileimg}}>
+      <!-- <span *ngIf='!profileimg'>{{profileimg}}</span> -->
+      <div class="icon-profile" (click)="userProfileUpdate()">
+        <img src="../../assets/icon/photo-camera.svg" />
+      </div>
+    </div>
+  </ion-row>
+  <ion-card class="change-pass">
+
+    <form [formGroup]="authForm">
+
+      <ion-label>First Name<i>*</i></ion-label>
+      <ion-input placeholder="Enter First Name" [(ngModel)]="UserDetailsArry.firstName" formControlName="first_name">
+      </ion-input>
+      <div class="error"
+        *ngIf="authForm.controls.first_name.hasError('required') && authForm.controls.first_name.touched">
+        <p class="invalid-input">Full Name is required.</p>
+      </div>
+      <div class="error"
+        *ngIf="authForm.controls.first_name.hasError('pattern') && authForm.controls.first_name.touched">
+        <p class="invalid-input">Only Character is allowed</p>
+      </div>
+
+      <ion-label>Last Name<i>*</i></ion-label>
+      <ion-input placeholder="Enter Last Name" [(ngModel)]="UserDetailsArry.lastName" formControlName="last_name">
+      </ion-input>
+      <div class="error"
+        *ngIf="authForm.controls.last_name.hasError('required') && authForm.controls.last_name.touched">
+        <p class="invalid-input">Last Name is required.</p>
+      </div>
+      <div class="error" *ngIf="authForm.controls.last_name.hasError('pattern') && authForm.controls.last_name.touched">
+        <p class="invalid-input">Only Character is allowed</p>
+      </div>
+
+      <ion-label>Email<i>*</i></ion-label>
+      <ion-input placeholder="Enter Email" [(ngModel)]="UserDetailsArry.emailAddress" formControlName="email">
+      </ion-input>
+      <div class="error" *ngIf="authForm.controls.email.hasError('required') && authForm.controls.email.touched">
+        <p class="invalid-input">Email is required!</p>
+      </div>
+      <div class="error" *ngIf="authForm.controls.email.hasError('pattern') && authForm.controls.email.touched">
+        <p class="invalid-input">Enter valid email!</p>
+      </div>
+
+      <ion-label>Phone<i>*</i></ion-label>
+      <ion-input  placeholder="Enter Phone No" [(ngModel)]="UserDetailsArry.phone"
+        formControlName="phone"></ion-input>
+      <div class="error" *ngIf="authForm.controls.phone.hasError('required') && authForm.controls.phone.touched">
+        <p class="invalid-input">Phone is required!</p>
+      </div>
+      <div class="error" *ngIf="authForm.controls.phone.hasError('pattern') && authForm.controls.phone.touched">
+        <p class="invalid-input">Please enter valid phone( ex. (123)456-7890 & 911234567890)</p>
+      </div>
+      
+
+      <ion-label>Mobile<i>*</i></ion-label>
+      <ion-input placeholder="Enter Mobile No" [(ngModel)]="UserDetailsArry.cellPhone"
+        formControlName="mobile"></ion-input>
+      <div class="error" *ngIf="authForm.controls.mobile.hasError('required') && authForm.controls.mobile.touched">
+        <p class="invalid-input">Mobile is required!</p>
+      </div>
+      <div class="error" *ngIf="authForm.controls.mobile.hasError('pattern') && authForm.controls.mobile.touched">
+        <p class="invalid-input">Please enter valid mobile( ex. (123)456-7890 & 911234567890)</p>
+      </div>
+
+      <ion-label>Fax<i>*</i></ion-label>
+      <ion-input placeholder="Enter Fax" [(ngModel)]="UserDetailsArry.fax" formControlName="fax">
+      </ion-input>
+      
+      <!-- <div class="error" *ngIf="authForm.controls.fax.hasError('required') && authForm.controls.fax.touched">
+        <p class="invalid-input">Fax is required!</p>
+      </div> -->
+      <div class="error" *ngIf="authForm.controls.fax.hasError('required') && authForm.controls.fax.touched">
+        <p class="invalid-input">Fax is required</p>
+      </div>
+      <div class="error" *ngIf="authForm.controls.fax.hasError('pattern') && authForm.controls.fax.touched">
+        <p class="invalid-input">Please enter valid Fax( ex. +1-123-1234568)</p>
+      </div>
+
+      <ion-label>Address<i>*</i></ion-label>
+      <ion-textarea placeholder="Enter Address" [(ngModel)]="UserDetailsArry.address" formControlName="address">
+      </ion-textarea>
+      <div class="error" *ngIf="authForm.controls.address.hasError('required') && authForm.controls.address.touched">
+        <p class="invalid-input">Address is required!</p>
+      </div>
+
+        <!-- <ion-input placeholder="Enter City" [(ngModel)]="UserDetailsArry.city" formControlName="city"></ion-input> -->
+              <!-- UserDetailsArry.country -->
+              <!-- <ion-select placeholder="Select Country" [(ngModel)]="country" formControlName="country"  (ionChange)="onSelectChange($event)">
+                <ion-select-option *ngFor="let con of getCountryList" [value]="con.i_country_id">{{con.country_name}}</ion-select-option>
+              </ion-select> -->
+      <!-- <ion-label>Country <i>*</i></ion-label>
+            
+      <ion-input placeholder="Select Country" [(ngModel)]="UserDetailsArry.country" formControlName="country"></ion-input>
+
+      <div *ngIf="authForm.value.country">
+        <div class="error" *ngIf="authForm.controls.country.hasError('required') && authForm.controls.country.touched">
+          <p class="invalid-input">Country is required!</p>
+        </div>
+      </div> -->
+
+      <ion-label>State<i>*</i></ion-label>
+      <!-- <ion-select placeholder="Select State"  [(ngModel)]="state" formControlName="state" (click)="onChangeState($event)">
+        <ion-select-option *ngFor="let state of getStateList[0]" [value]="state.i_state_id">{{state.v_state_name}}</ion-select-option>
+      </ion-select> -->
+      <ion-input placeholder="Enter State" [(ngModel)]="UserDetailsArry.state" formControlName="state"></ion-input>
+      
+        <div class="error" *ngIf="authForm.controls.state.hasError('required') && authForm.controls.state.touched">
+          <p class="invalid-input">State is required!</p>
+        </div>
+        <div class="error" *ngIf="authForm.controls.state.hasError('pattern') && authForm.controls.state.touched">
+          <p class="invalid-input">Only characters are allowed</p>
+        </div>
+      
+
+      <ion-label>City<i>*</i></ion-label>
+      <ion-input type="text" placeholder="Enter City" [(ngModel)]="UserDetailsArry.city" formControlName="city">
+      </ion-input>
+      
+      <div class="error" *ngIf="authForm.controls.city.hasError('required') && authForm.controls.city.touched">
+        <p class="invalid-input">CIty is required!</p>
+      </div>
+      <div class="error" *ngIf="authForm.controls.city.hasError('pattern') && authForm.controls.city.touched">
+        <p class="invalid-input">Only characters are allowed</p>
+      </div>
+
+      <ion-label>Zip Code<i>*</i></ion-label>
+      <ion-input type="number" placeholder="Enter Zip Code"  [(ngModel)]="UserDetailsArry.zip" formControlName="zip">
+      </ion-input>
+
+      <div class="error"
+        *ngIf="authForm.controls.zip.hasError('required') && authForm.controls.zip.touched">
+        <p class="invalid-input">Zip is required!</p>
+      </div>
+     
+        <div class="error"
+          *ngIf="authForm.controls.zip.hasError('pattern') && authForm.controls.zip.touched">
+          <p class="invalid-input">Zip code max length 6 digit only</p>
+        </div>
+      
+      
+      <!-- <div *ngIf="authForm.value.zip">
+      <div class="error" *ngIf="authForm.controls.zip.hasError('minlength') && authForm.controls.zip.touched ">
+        <p class="invalid-input">Zip code min length 6 digit only</p>
+      </div>
+    </div>
+      <div class="error" *ngIf="authForm.controls.zip.hasError('maxlength') && authForm.controls.zip.touched">
+        <p class="invalid-input">Zip code max length 6 digit only</p>
+      </div>
+    -->
+    </form>
+  </ion-card>
+
+  <div class="btn-profile profile-setting add-save">
+    <button ion-button="" (click)="userEditProfileClick()" [disabled]="!authForm.valid"> Update </button>
+  </div>
+</ion-content>

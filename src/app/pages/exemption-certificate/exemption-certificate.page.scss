@@ -1,0 +1,68 @@
+ion-header {
+    ion-toolbar {
+        ion-buttons {
+            ion-icon{color: #fff; font-size: 1.3rem; transform: rotate(0deg);}
+        }
+        ion-title {font-size: 0.7rem; margin-right: 0; text-align: center;}
+        ion-icon{color: #fff; font-size: 1.3rem; margin-right: 5px; -ms-transform: rotate(20deg); transform: rotate(90deg);}
+    }
+}
+ion-content {--ion-background-color: #f1f1f1;
+    ion-grid.main-tlt{
+        ion-label{ color: #181818; font-size: 0.75rem; word-spacing: -1px; font-weight: 600; padding-left: 12px;}
+    }
+
+    ion-grid.certificate-data{
+        ion-card{margin-top: 2px; padding: 10px;
+            .inner-tlt{font-size: 0.71rem; font-weight: 500; display: block; text-align: center; padding: 4px 10px 5px 10px;color: #607e9a;}
+            ion-row.address-part{margin-top: 8px; margin-bottom: 8px;
+                ion-col{padding: 0;
+                    h5{font-size: 0.61rem; margin-top: 0; margin-bottom: 0;}
+                    ion-label{font-size: 0.7rem; padding-left: 0;}
+                }
+            }
+            ion-row.big-part{
+                p{text-indent: 50px; font-size: 0.72rem; font-weight: 500; text-align: justify; line-height: 15PX; color: #4c4c4c;}
+            }
+            ion-row.signature{margin-bottom: 12px;
+                ion-col{
+                    ion-item{--background: transparent;
+                        ion-textarea{margin-top: 0; --padding-top:0;}
+                    }
+                    ion-label{text-align: center; margin: 0 auto; display: block; padding-top: 3px; padding-left: 0px; font-size: 0.72rem;}
+                }
+            }
+            ion-row.abt-agency{margin-top: 8px; margin-bottom: 8px;
+                ion-col{padding: 0;
+                    h5{font-size: 0.66rem; margin-top: 0; margin-bottom: 0;}
+                    ion-label{font-size: 0.7rem; padding-left: 0;}
+                }
+            }
+            ion-row.agency-content{
+                p{font-size: 0.62rem; font-weight: 600; text-align: justify; color: #333333; margin-bottom: 0; line-height: 12px;}
+            }
+            ion-row.florida{
+                ion-item{--background: transparent; --padding-start: 0; --inner-padding-end: 49px;
+                    ion-label{padding-left: 0; color: #585858; font-size: 0.7rem; margin-bottom: 0;}
+                }
+            }
+            ion-row.cards{
+                ion-col{
+                    h5{color: #585858; font-size: 0.7rem; margin-top: 9px; margin-bottom: 7px;}
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

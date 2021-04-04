@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>M3 Export Capital Invoices</ion-title>
+    <ion-icon slot="end" name="notifications" (click)='gotoNotification()' *ngIf="isShow"></ion-icon>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <!-- <div class="main-heading">
+    Transferred Capital Invoices Hotels
+  </div>  -->
+  <!-- <div class="main-heading" *ngIf="userData.roleId == 1">
+    Transferred Capital Invoices Hotels
+  </div> 
+  <div class="main-heading" *ngIf="userData.roleId != 1">
+    Transferred Capital Invoices Hotel
+  </div>  -->
+
+  <!-- <div class="main-heading" *ngIf="userData.roleId == 2 || 5 || 6">
+    {{hotelName}}
+    </div> -->
+  <ion-grid>
+    <ion-row>
+      <!-- <ion-col class="search-top-txt">
+        Transferred Capital Invoices Hotels
+      </ion-col> -->
+      <ion-col>
+        <ion-item class="all-store" *ngIf="userData.roleId == 1">
+          <!-- <ion-select placeholder="All Hotels" class="select-nav" >
+            <ion-select-option> All Hotels </ion-select-option>
+          </ion-select> -->
+          <ion-select placeholder="All Hotels" [(ngModel)]="reqParam.hotelId" class="select-nav"
+            (ionChange)="changeHotel($event)">
+            <ion-select-option value=''> All Hotels </ion-select-option>
+            <ion-select-option *ngFor="let data of HotelList" [value]="data.hotelId">{{ data.hotelName }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card>
+    <ion-row class="profilenopad">
+      <ion-col>
+        <div class="icon-date profile-setting">
+          <ion-label class="blue-label">
+            From (Date)<i>*</i>
+          </ion-label>
+          <ion-datetime display-format="MMM DD, YYYY" placeholder="MM/DD/YYYY" (ionChange)="changeFromDate($event)" [(ngModel)]="from_date"></ion-datetime>
+          <img src="../../assets/icon/calendar.svg" />
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="icon-date profile-setting">
+          <ion-label class="blue-label">
+            To (Date)<i>*</i>
+          </ion-label>
+          <ion-datetime display-format="MMM DD, YYYY" placeholder="MM/DD/YYYY" (ionChange)="changeToDate($event)"  [(ngModel)]="to_date"></ion-datetime>
+          <img src="../../assets/icon/calendar.svg" />
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div>
+    <div class="main-heading">
+      Transferred Capital Invoices
+    </div>
+    <!-- <img src="../../assets/images/chart6.png" /> -->
+  <div id="m3Dashboard" [class]="tempdata" *ngIf="userData.roleId==1" ></div>  
+  <div *ngIf="m3Data.hotelData==0" class="boxmy">No Invoice Export In Select Date!</div>
+  </div>
+  <ion-card>
+    <ion-row class="last-schedular">
+      <ion-col>
+        <span>
+          Last Schedular at
+        </span>
+        {{m3Data.last_scheduler}}
+      </ion-col>
+      <ion-col>
+        <span>
+          Next Schedular at
+        </span>
+        {{m3Data.next_scheduler}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card class="date-trans">
+    <ion-row class="toptitlecategory">
+      <ion-col>
+        Date
+      </ion-col>
+      <ion-col>
+        Transferred({{m3Data.transfered}})
+      </ion-col>
+      <ion-col>
+        Failed({{m3Data.failed}})
+      </ion-col>
+    </ion-row>
+    <ion-row class="subtxt" *ngFor="let data of m3Data2" (click) ="ExportInvoiceList(data)">
+      <ion-col>
+        {{data.transferedDate}}
+      </ion-col>
+      <ion-col>
+        {{data.success}}
+      </ion-col>
+      <ion-col>
+        {{data.fail}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div *ngIf="m3Data.hotelData==0" class="boxmy">No Data Found</div>
+  <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrolling($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

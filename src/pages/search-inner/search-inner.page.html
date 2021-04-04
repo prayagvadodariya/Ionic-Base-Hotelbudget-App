@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <!-- <ion-menu-button>
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button> -->
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Search Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div class="main-heading">
+   {{HotelName}}
+  </div> -->
+  <div class="total-top">
+   <span>Total :</span> {{totalCount}}
+  </div>
+  <div class="main-heading" >
+    {{DataNot}}
+    </div>
+  <!-- main table -->
+    <ion-card class="search-pad" *ngFor="let exp of expenselist" (click)="getExpencesData(exp.expenseId)">
+      <div class="gap">
+        <ion-grid class="bor-tab-bott">
+          <ion-row>
+            <ion-col size="9">
+              <span><strong> Invoice No :</strong> {{exp.PONumber}}</span>
+            </ion-col>
+            <ion-col class="right-txt">
+              {{exp.date}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="9">
+              <span><strong>Vendor :</strong> {{exp.vendorCompany}}</span>
+              <span><strong>Category : </strong> {{exp.accountName}} </span>
+            </ion-col>
+            <ion-col class="right-txt ver-center">
+              <span><strong> $ {{exp.amount}}</strong></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <ion-grid class="bor-tab-bott">
+          <ion-row>
+            <ion-col size="9">
+              <span><strong> Invoice No :</strong> Test31oct</span>
+            </ion-col>
+            <ion-col class="right-txt">
+              Feb 28, 2019
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="9">
+              <span><strong>Vendor :</strong> ADTRAV Travel Management or Adventure Travel</span>
+              <span><strong>Description : </strong> Test 28 oct 2018 spread nov 2018 to oct 2019 </span>
+            </ion-col>
+            <ion-col class="right-txt ver-center">
+              <span><strong> $ 12.00</strong></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+      </div>
+      
+    </ion-card>
+    <div  class="btn-profile profile-setting add-save">
+      <button ion-button="" (click)="searchMore()"> Search More</button>
+    </div>
+    <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingAPI($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-refresher slot="fixed" 
+    (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- main table End -->
+</ion-content>

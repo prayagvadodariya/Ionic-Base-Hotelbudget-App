@@ -1,0 +1,44 @@
+ion-header{
+    ion-toolbar{
+        ion-title{-webkit-padding-start: 20px; padding-inline-start: 20px; -webkit-padding-end: 20px; padding-inline-end: 20px;}
+    }
+}
+ion-content{--background:#f1f1f1;
+    ion-grid.page-head{
+        ion-row{align-items: center;
+            ion-col{
+                h5{margin: 0; color: #181818; font-size: 1rem; padding-left: 15px;}
+                ion-button{
+                    --background:#607E9A;
+                    --color:#ffffff;
+                    --background-hover:#607E9A;
+                    --background-focused:#607E9A;
+                    --background-activated:#607E9A;
+                    font-size: 0.82rem;
+                    font-weight: 400;
+                    --padding-end: 13px;
+                    --padding-start: 13px;
+                    height: 31px;
+                    img{width: 12px; margin-right: 7px;}
+                }
+            }
+        }
+    }
+
+    ion-grid.team-details{
+        ion-card{border-radius: 5px !important; padding-left: 11px; padding-right: 11px;-webkit-margin-start: 5px !important; margin-inline-start: 5px !important; -webkit-margin-end: 5px !important; margin-inline-end: 5px !important; background: #fff; --background:#fff;
+            ion-row{
+                ion-col{
+                    span.head{margin: 0; color: #4C4C4C; font-size: 0.75rem; margin-top: 2px;}
+                    ion-item{--padding-start:0; --inner-padding-end:0; --min-height: 20px; height: 26px;
+                        ion-label{margin: 0; font-size: 0.8rem; padding-left: 0;}
+                        ion-icon{color: #607E9A; margin: 0; margin-left: 5px; font-size: 2rem; position: absolute; right: -9px;}
+                    }
+                    ion-badge{--background: #9F9F9F; --color: #ffffff; font-size: 0.7rem; --padding-end: 9px; --padding-start: 9px; --padding-top: 7px; --padding-bottom: 7px; border-radius: 30px; font-weight: 400; margin: 1px 2px;}
+                    ion-text{font-size: 0.8rem; font-weight: 500; color: #383838; padding-right: 10px; display: block;}
+                    ion-toggle{--background: #d75a4a; --handle-background: #fff; --background-checked: #a4e869; --handle-background-checked: #ffffff; padding-top: 5px; padding-bottom: 5px;}
+                }
+            }
+        }
+    }
+}

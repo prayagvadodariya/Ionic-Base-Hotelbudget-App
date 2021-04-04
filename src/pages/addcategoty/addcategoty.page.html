@@ -1,0 +1,37 @@
+
+<ion-content>
+  <div class="categorymargin">
+    <div class="heading">
+      {{pageStatus}} category
+      <ion-button class="closebtn" (click)='closeModel()'>
+        <img src="assets/icon/close-black.svg"/>
+      </ion-button>
+    </div>
+    <form [formGroup]="categoryForm">
+    <div class="main">
+      <ion-item>
+        <ion-label position="stacked">Category Name <i>*</i></ion-label>
+        <ion-input type="text" maxlength="10"  placeholder="Enter Category Name" formControlName="catName"></ion-input>
+      </ion-item>
+      <div class="error category-error" *ngIf="categoryForm.get('catName').hasError('required') && categoryForm.get('catName').touched">
+      <p class="invalid-input">Category is required.</p>
+    </div>
+    </div>
+    <div class="main">
+      <ion-item>
+        <ion-label position="stacked">Order No. <i>*</i></ion-label>
+        <ion-input type="number" maxlength="5" placeholder="Enter Order No." formControlName="orderno"></ion-input>
+      </ion-item>
+      <div class="error category-error" *ngIf="categoryForm.get('orderno').hasError('required') && categoryForm.get('orderno').touched">
+      <p class="invalid-input">Order No is required.</p>
+    </div>
+    </div>
+  </form>
+    <div class="button-ok" (click)='addEditCategory(categoryForm)'>
+      <ion-button>
+        {{pageStatus}}
+      </ion-button>
+    </div>
+  </div>
+  
+</ion-content>

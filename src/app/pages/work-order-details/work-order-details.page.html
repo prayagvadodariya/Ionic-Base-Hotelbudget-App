@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hampton Inn Boston Braintree</ion-title>
+    <img class="right-icon" slot="end" src="assets/images/delete-w.svg">
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content>
+
+  <ion-grid class="page-head">
+      <ion-row>  
+          <ion-col size="7">
+              <h5>Work Order Details</h5>
+          </ion-col>
+
+          <ion-col size="5" text-right>
+            <ion-button shape="round">
+             <img slot="start" src="assets/icon/pencil-edit-w.svg">
+              Edit Order
+            </ion-button>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-grid class="address">
+      <ion-text>
+          4817 West Laurel Street, Tampa - Florida 33607,
+          Tampa - 75244, Florida, USA. (214) 259-7018
+          gpedersen@encore.bz (Glenn Pedersen)
+      </ion-text>
+  </ion-grid>
+
+  <ion-grid class="work-order-details">
+      <ion-card>
+          <ion-item>
+              <ion-label>W.O. #:</ion-label>
+              <ion-text>WO3-325-012120</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Assigned To:</ion-label>
+            <ion-text>Chief Engineer TH</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Requested By:</ion-label>
+            <ion-text>Admin</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Created Date:</ion-label>
+            <ion-text>Dec 27,2019 | 11:00 PM</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Due Date:</ion-label>
+            <ion-text>Dec 27, 2019 | 11:30 AM</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Description:</ion-label>
+            <ion-text>Entrance door will not open</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Status:</ion-label>
+            <ion-select placeholder="Select One">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Status:</ion-label>
+            <ion-button shape="round"> View Progress </ion-button>
+          </ion-item>
+      </ion-card>
+  </ion-grid>
+
+  <ion-grid class="work-ord-det-add-item">
+      <ion-card>
+          <ion-card-header>
+              <ion-item lines="none">
+                  <ion-label>Added Items</ion-label>
+                  <ion-icon name="ios-arrow-down"></ion-icon>
+              </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-row>
+                  <ion-col size="2">
+                      <h4>Room</h4>
+                  </ion-col>
+                  <ion-col size="3">
+                      <h4>Category</h4>
+                  </ion-col>
+                  <ion-col size="3">
+                      <h4>Items</h4>
+                  </ion-col>
+                  <ion-col size="2">
+                      <h4>Status</h4>
+                  </ion-col>
+                  <ion-col size="2">
+
+                  </ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col size="2">
+                      <h5>204</h5>
+                  </ion-col>
+                  <ion-col size="3">
+                      <h5>Bath Area</h5>
+                  </ion-col>
+                  <ion-col size="3">
+                      <h5>Robe Hook</h5>
+                  </ion-col>
+                  <ion-col size="2">
+                      <h5>2 - Repair</h5>
+                  </ion-col>
+                  <ion-col size="2">
+                    <div class="img-more">
+                      <img src="assets/images/attachement.png">
+                      <div class="more-count">
+                          <span>+10</span>
+                      </div>
+                    </div>
+                  </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="2">
+                    <h5>204</h5>
+                </ion-col>
+                <ion-col size="3">
+                    <h5>Bath Area</h5>
+                </ion-col>
+                <ion-col size="3">
+                    <h5>Robe Hook</h5>
+                </ion-col>
+                <ion-col size="2">
+                    <h5>2 - Repair</h5>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="img-more">
+                    <img src="assets/images/attachement.png">
+                    <div class="more-count">
+                        <span>+10</span>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="2">
+                    <h5>204</h5>
+                </ion-col>
+                <ion-col size="3">
+                    <h5>Bath Area</h5>
+                </ion-col>
+                <ion-col size="3">
+                    <h5>Robe Hook</h5>
+                </ion-col>
+                <ion-col size="2">
+                    <h5>2 - Repair</h5>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="img-more">
+                    <img src="assets/images/attachement.png">
+                    <div class="more-count">
+                        <span>+10</span>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+          </ion-card-content>
+      </ion-card>
+  </ion-grid>
+
+</ion-content>

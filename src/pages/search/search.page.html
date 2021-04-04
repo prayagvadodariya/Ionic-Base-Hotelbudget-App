@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Search Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="main-heading">
+    {{HotelName}}
+   </div> -->
+  <ion-card>
+    <form [formGroup]="datevalidationForm">
+    <div class="gap profile-setting">
+      <ion-row>
+        <ion-col>
+          <div class="icon-date">
+            <ion-label>
+              From (Date)<i>*</i>
+            </ion-label>
+            <ion-datetime display-format="MMM DD, YYYY" [(ngModel)]="fromDate" placeholder="MM/DD/YYYY" (ionChange)="fromDateClick(fromDate,'fromDate')"  [max]="maxValue" formControlName="fromDate"></ion-datetime>
+            <img src="../../assets/icon/calendar.svg" />
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <div class="icon-date">
+            <ion-label>
+              To (Date)<i>*</i>
+            </ion-label>
+            <ion-datetime display-format="MMM DD, YYYY" [(ngModel)]="toDate" placeholder="MM/DD/YYYY" (ionChange)="fromDateClick(toDate,'toDate')" [min]="fromDate" [max]="maxValue" formControlName="toDate"></ion-datetime>
+            <img src="../../assets/icon/calendar.svg" />
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="error" 
+          *ngIf="datevalidationForm.controls.fromDate.hasError('required') && datevalidationForm.controls.fromDate.touched">
+            <p>Please enter FromDate</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="error" 
+          *ngIf="datevalidationForm.controls.toDate.hasError('required') && datevalidationForm.controls.toDate.touched">
+            <p>Please enter ToDate</p>
+          </div>
+        </ion-col>
+        <div class="error" *ngIf="!dateflag">
+          <p>To Date must be  greater than From Date</p>
+        </div> 
+      </ion-row>
+    </div>
+  </form>
+  </ion-card>
+
+
+  <ion-card>
+    <div class="gap profile-setting">
+      <ion-label>
+        Department
+      </ion-label>
+      <!-- <ion-select placeholder="Select Department" class="select-main">
+              <ion-select-option value="f">Rooms</ion-select-option>
+          </ion-select> -->
+      <!-- <ion-select placeholder="Select Department" class="select-main"[ngModel]="dep" (click)="getListDepartment(item)">
+        <ion-select-option  *ngFor='let dept of dipartmentName'value = item>{{dept.departmentName}}
+        </ion-select-option>
+      </ion-select> -->
+      <ion-select placeholder="Select Department" class="select-main" [(ngModel)]="deptemp"
+      (ionChange)="getListDepartment($event)">
+        <ion-select-option value=''>Select Department</ion-select-option>
+        <ion-select-option  *ngFor='let dept of DapartmentData'  value="{{dept.departmentId}}">{{dept.departmentName}}
+        </ion-select-option>
+      </ion-select>
+      <ion-label>
+        Category
+      </ion-label>
+      <!-- <ion-select placeholder="Select Category" class="select-main" [(ngModel)]='category' 
+        (ionChange)="checkConfirmExpense($event)">
+        <ion-select-option *ngFor="let catr of GetCategoryList" [value]="catr.expenseAccountId">{{catr.accountName}}
+        </ion-select-option>
+      </ion-select> -->
+      <ion-select [disabled]="categoryActive==0" placeholder="Select Category" class="select-main" 
+      [(ngModel)]='category1' 
+      (ionChange)="getListCategory($event)">
+      <ion-select-option value=''>Select Category</ion-select-option>
+      <ion-select-option *ngFor="let catr of catagory" value = {{catr.expenseAccountId}}>{{catr.accountName}}
+      </ion-select-option>
+    </ion-select>
+      <ion-label>
+        Vendor
+      </ion-label>
+      <ion-row class="col-invoice bor-btm-add">
+      <ion-col class="col-invoice" size="11">
+      <ion-input placeholder="Enter Vendor" class="invoice-pad marbot" [(ngModel)]='vendor' (click)="selectVendorModel($event)">
+      </ion-input>
+      </ion-col>
+      <ion-col class="col-invoice ver-center">
+        <!-- <div class="add-circle-icon" *ngIf="!vendor_Id" (click)="getAddVendorModel()">
+          <img src="../../assets/icon/add-circular.svg">
+        </div> -->
+        <div *ngIf="vendor_Id">
+          <!-- <ion-icon class="add-circle-icon" name="trash" slot="end" (click)="deleteVendor($event)"></ion-icon> -->
+          <img  class="add-circle-icon" slot="end" (click)="deleteVendor($event)" src="../../assets/icon/delete.svg">
+        </div>
+      </ion-col>
+      </ion-row>
+    </div>
+  </ion-card>
+  <div class="align-c profile-setting paddtop"><button ion-button="" (click)="searchClick()" [disabled]="!datevalidationForm.valid"> Search </button></div>
+</ion-content>
+<footer [step]="'search'"></footer>

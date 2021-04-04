@@ -1,0 +1,15 @@
+// .edit-delete{padding: 10px;
+//     ul{padding: 0; margin: 0;
+//          li{list-style: none; display: block;
+//              a{padding: 10px 0; font-size: 1rem; color: #1a82c5; font-weight: 400; display: inline-block; text-decoration: none; vertical-align: middle; width: 100%;
+//                  img{width: 20px; margin-right: 5px; vertical-align: middle; display: inline-block;}
+//              }
+//          }
+//     }
+//  }
+
+ion-grid.card-options{padding: 0; margin: 0%;
+    ion-list{margin: 0; padding: 0 10px;
+        ion-item{--padding-start:0; --inner-padding-end:0; --inner-padding-start: 9px; font-size: 0.9rem; --min-height: 45px;}
+    }
+}

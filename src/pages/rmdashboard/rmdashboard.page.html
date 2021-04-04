@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <button ion-button clear icon-only menuToggle>
+          <img class="menu" src="assets/icon/menu.svg" />
+      </button> -->
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title> Departments </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item style="display: none;">
+        <ion-label>{{title}}</ion-label>
+        <ion-label>{{title}}</ion-label>
+        <ion-select  [(ngModel)]="yearmodel" #yearSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" (ionChange)="onselectChangeYear(MQYsegment)">
+          <ion-select-option *ngFor="let year of yearDataList" [value]="year.id">{{year.name}}</ion-select-option>
+        </ion-select>
+        <ion-select [(ngModel)]="quarterModel" #quaterSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" (ionChange)="onselectChangeQuarter(MQYsegment)">
+          <ion-select-option *ngFor="let quarter of quarterDataList" [value]="quarter.name">{{quarter.name}}
+        </ion-select-option>
+        </ion-select>
+        <ion-select [(ngModel)]="monthModel" #monthSelect style="display: none;" (ionCancel)="onSelectChangeCancel()"
+          (ionChange)="onselectChangeMonth(MQYsegment)">
+          <ion-select-option *ngFor="let month of monthDataList" [value]="month.name">{{month.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+  <!-- yearly -->
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-segment class="yearly-segment" [(ngModel)]="MQYsegment" (click)="selectsegment()">
+            <ion-segment-button value="month">
+              <ion-label>m</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="quarter">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+        <ion-col>
+          <ion-item class="all-store">
+            <!-- <ion-select [placeholder]= "placeholder" class="select-nav" >
+              <ion-select-option> Option </ion-select-option>
+            </ion-select> -->
+            <ion-select placeholder= "Select Hotels" [(ngModel)]="Hotelname" class="select-nav" (ionChange)="selectDashboardClick($event)">
+                <ion-select-option  *ngFor="let data of HotelList" [value]="data.hotelId">{{data.hotelName}}</ion-select-option>
+              </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- yearly End -->
+<div class="main-heading" *ngIf="deptDetail">
+  {{deptDetail.label}}
+</div>
+  <!-- main table -->
+  <ion-card>
+    <ion-grid>
+      <ion-row class="top-clr">
+        <ion-col size="6">
+            Departments
+        </ion-col>
+        <ion-col class="right-txt">
+            Expense
+        </ion-col>
+        <ion-col class="right-txt">
+            Remaining
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- (click)="next()" -->
+    <ion-grid class="bor-tab-bott" *ngFor="let dept of departmentData" (click)="getDeptExpense(dept)">
+      <ion-row>
+        <ion-col size="6">
+          <span>{{dept.departmentName}}</span>
+          <span>{{dept.expensePer}}%</span>
+          <div id="progressbar">
+            <!-- class="inner progress-clr"  -->
+            <!-- progressBar(dept.expensePer) -->
+              <!-- [className]="progressCartDataList.remaningAmount>0 ? 'overbudget borleft-green' : 'overbudget borleft-orange'" -->
+            <div  class="inner" [ngStyle]="{'background': dept.rem_color}"  [style.width]="(dept.expensePer > 100 ? 100 : dept.expensePer)+ '%'"  style="width:40%"></div>
+          </div>
+        </ion-col>
+        <ion-col class="right-txt">
+            ${{this.constant.replace(dept.expense)}}
+        </ion-col>
+        <ion-col class="right-txt">
+            ${{this.constant.replace(dept.remaning)}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <ion-grid class="bor-tab-bott">
+      <ion-row>
+        <ion-col size="6">
+          <span>Food & Beverages</span>
+          <span> (63.94%)</span>
+          <div id="progressbar">
+            <div class="inner progress-clr" style="width:40%"></div>
+          </div>
+        </ion-col>
+        <ion-col class="right-txt">
+            $2,185.3  
+        </ion-col>
+        <ion-col class="right-txt">
+            $30.601.84
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+  </ion-card>
+  <!-- main table End -->
+
+  <!-- <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingAPI($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher> -->
+
+</ion-content>
+
+<footer [step]="'expense'"></footer>

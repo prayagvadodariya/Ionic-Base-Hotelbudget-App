@@ -1,0 +1,16 @@
+
+// ion-icon{color: #fff; margin-right: 8px; font-size: 1.9rem;}
+ion-header{
+    ion-toolbar{
+        .icon{color: #fff; margin-right: 8px; font-size: 1.9rem; position: absolute; right: 0;}
+        ion-title{font-weight: 400; font-size: 0.90rem;}
+    }
+}
+app-pm-dashboard{
+    .select-icon{display: none;}
+        .select-text {color: #002d5b!important; opacity: 1!important; --placeholder-color:#002d5b!important; --placeholder-opacity:1!important;} .select-icon{display: none!important;}
+    
+    .chart{display: block; text-align: center;
+    }
+}
+

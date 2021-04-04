@@ -1,0 +1,93 @@
+
+.ios,
+.md {
+    page-update-app {
+        ion-thumbnail {
+            margin-top: 3rem; 
+
+            img {
+                height: 55px;
+                width: 55px;
+                margin: 0 auto;
+            }
+        }
+
+        .content {
+            background-color: #fff;
+
+            .card {
+                background: #fff;
+                box-shadow: none;
+
+                ion-card-header {
+                    font-weight: $bold;
+                    font-size: 1.7rem;
+                    color: #072d7c;
+                }
+
+                ion-card-content {
+                    font-weight: $normal;
+                    font-size: 1.4rem;
+                    color: #9c9c9c;
+                    text-align: center;
+                }
+            }
+
+            section {
+                padding: 0 3rem;
+
+                h5 {
+                    font-weight: $bold;
+                    font-size: 1.4rem;
+                    color: #0091d1;
+                    text-align: center;
+                }
+
+                .inline {
+                    display: flex;
+
+                    ion-icon {
+                        color: #22b573;
+                        display: inline-block;
+                        margin-right: 13px;
+                        margin-top: 1px;
+                    }
+
+                    p {
+                        font-weight: $normal;
+                        font-size: 1.2rem;
+                        color: #afafaf;
+                        margin: 0.2rem 0 1.5rem 0;
+                        line-height: 1.5;
+                        display: inline-block;
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        ion-footer {
+            &::before {
+                background-image: none;
+            }
+            h6 {
+                font-weight: $normal;
+                font-size: 1rem;
+                color: #797979;
+                margin: 1rem 0 2rem;
+            }
+
+            .button {
+                font-weight: $semi-bold;
+                font-size: 1.4rem;
+                margin: 1rem 0 4rem;
+                letter-spacing: 0.5px;
+                padding: 2.3rem 2.6rem;
+                text-transform: capitalize;
+                background: #22b573;
+            }
+        }
+    }
+
+}
+

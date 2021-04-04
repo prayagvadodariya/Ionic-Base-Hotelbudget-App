@@ -1,0 +1,181 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu>
+      <ion-header class="menu-profile">
+
+        <div class="header-in">
+          <!-- <ion-item class="paddtop" >
+            <img class="logo2" src="../assets/images/logo-left-menu.svg" (click)="settingClick()">
+            <ion-label></ion-label>
+            <ion-button class="arrow-pr" slot="end" >
+              <img  src="../assets/icon/back.svg" (click)="toggleMenu()">
+            </ion-button>
+          </ion-item> -->
+          <ion-grid>
+            <div class="logo">
+              <img src="../assets/images/logo-left-menu.png" (click)="settingClick()">
+              <!-- <div class="back-btn">
+                <img src="../assets/icon/back.svg" (click)="toggleMenu()">
+              </div> -->
+            </div>
+          </ion-grid>
+          <ion-item class="profile-main" (click)="settingClick()">
+            <div class="prfl-img" slot="start">
+              <img class="img-inner" src={{profileimg}} />
+            </div>
+            <h2>
+              <i *ngIf="userdata">{{userdata.v_full_name}}</i>
+              <p *ngIf="userdata">{{userdata.roleName}}</p>
+            </h2>
+
+          </ion-item>
+        </div>
+        <div class="tab-nav">
+          <ion-segment class="leftnavsegment" [(ngModel)]="activeSegment">
+            <ion-segment-button value="budgetModule" (ionSelect)="budgetSegmentClick($event)"
+              *ngIf="userdata.roleId<=2 ">
+              <h2>
+                <!-- <i class="icon-notepad"></i> -->
+                <img src="../../assets/icon/budget.svg" />
+                Budget</h2>
+            </ion-segment-button>
+            <ion-segment-button value="PMModule" (ionSelect)="pMSegmentClick($event)">
+              <h2>
+                <!-- <i class="icon-manager-avatar"></i> -->
+                <img src="../../assets/icon/pm.svg" />
+                PM </h2>
+
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-header>
+      <ion-content>
+        <!-- <div *ngFor="let p of pages">
+ 
+
+              <ion-menu-toggle *ngIf="p.url">
+                <ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">
+                  <ion-icon [name]="p.icon" slot="start"></ion-icon>
+                  <ion-label>
+                    {{ p.title }}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+    
+         
+              <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.parent-active]="p.open" detail="false">
+                <ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>
+                <ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+         
+              <ion-list *ngIf="p.open">
+                <ion-menu-toggle>
+                  <ion-item *ngFor="let sub of p.children" class="sub-item" [routerLink]="sub.url" routerDirection="root"
+                    routerLinkActive="active">
+                    <ion-icon [name]="sub.icon" slot="start"></ion-icon>
+                    <ion-label>
+                      {{ sub.title }}
+                    </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </ion-list>
+         
+            </div> -->
+
+
+
+        <!-- <ion-icon class="icon" slot="start" [name]="p.icon" [class]="p.class"></ion-icon> -->
+
+        <!-- <ion-list *ngIf="budgetSegment" class="left-nav-icon">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+            <ion-item [routerDirection]="''" [routerLink]="[p.url]" class="m3menu" *ngIf='p.active' routerLinkActive="active-link" #rla="routerLinkActive">
+              <ion-label>
+                {{p.title}}
+              </ion-label>  
+            </ion-item>
+          </ion-menu-toggle>
+
+          <button class="bor-btm-left-nav" ion-item menuClose (click)="onLogout()">
+            <ion-button class="logout-btn">
+              <img src="../assets/images/logout.png">
+            </ion-button>
+          </button>
+        </ion-list> -->
+
+        <ion-list *ngIf="budgetSegment" class="left-nav-icon">
+          <ion-item auto-hide="false" *ngFor="let p of pages" class="m3menu">
+            <ion-menu-toggle auto-hide="false" *ngIf="p.url" [routerDirection]="''" (click)="openTab(p)" [routerLink]="[p.url]"
+              routerLinkActive="active-link" #rla="routerLinkActive">
+              {{p.title}}
+            </ion-menu-toggle>
+
+            <ion-item button *ngIf="p.children?.length > 0" (click)="M3flag = !M3flag">
+              <ion-label>{{ p.title }}</ion-label>
+              <ion-icon slot="start" name="arrow-up" *ngIf="!M3flag" class="down-m3"></ion-icon>
+              <ion-icon slot="start" name="arrow-down" *ngIf="M3flag" class="down-m3"></ion-icon>
+            </ion-item>
+
+            <ion-grid auto-hide="false" *ngIf='M3flag' class="set-submenu">
+              <ion-menu-toggle auto-hide="false" *ngFor="let sub of p.children" routerLinkActive="active" [routerLink]="[sub.url]"
+                routerDirection="root">
+                <ion-item>
+                  <!-- <ion-icon [name]="sub.icon" slot="start"></ion-icon> -->
+                  <ion-label>
+                    {{ sub.title }}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </ion-grid>
+
+          </ion-item>
+        </ion-list>
+
+        <div class="bor-btm-left-nav">
+          <ion-button class="logout-btn"  ion-item menuClose (click)="onLogout()">
+            <img src="../assets/images/logout.png">
+          </ion-button>
+        </div>
+
+        <ion-list *ngIf="!budgetSegment" class="left-nav-icon">
+          <ion-item auto-hide="false" *ngFor="let p of PMPageslist" class="m3menu">
+            <ion-menu-toggle auto-hide="false" *ngIf="p.active" [routerDirection]="''" (click)="openTab(p)" [routerLink]="[p.url]"
+              routerLinkActive="active-link" #rla="routerLinkActive">
+              {{p.title}}
+            </ion-menu-toggle>
+
+            <ion-item *ngIf="p.children?.length > 0" (click)="M3flag = !M3flag">
+              <ion-label>{{ p.title }}</ion-label>
+              <ion-icon slot="start" name="arrow-up" *ngIf="!M3flag" class="down-m3"></ion-icon>
+              <ion-icon slot="start" name="arrow-down" *ngIf="M3flag" class="down-m3"></ion-icon>
+            </ion-item>
+
+            <ion-grid auto-hide="false" *ngIf='M3flag' class="set-submenu">
+              <ion-menu-toggle auto-hide="false" *ngFor="let sub of p.children" routerLinkActive="active" [routerLink]="[sub.url]"
+                routerDirection="root">
+                <ion-item>
+                  <!-- <ion-icon [name]="sub.icon" slot="start"></ion-icon> -->
+                  <ion-label>
+                    {{ sub.title }}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </ion-grid>
+          </ion-item>
+
+
+
+        </ion-list>
+        <!-- <div class="logout-space"> -->
+        <div class="bor-btm-left-nav logout-space">
+            <ion-button class="logout-btn"  ion-item menuClose (click)="onLogout()">
+              <img src="../assets/images/logout.png">
+            </ion-button>
+        </div>
+        <!-- </div> -->
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

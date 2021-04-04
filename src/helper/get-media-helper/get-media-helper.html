@@ -1,0 +1,13 @@
+<ion-content class="progressbarCSS">
+    <div *ngIf="isMediaUploading" class="progressBarContainer">
+        <div class="c100 p{{this.totalPercentage}} small">
+            <span>{{this.totalPercentage}}%</span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
+        <div class="uploadingMediaText">Uploading Media</div>
+        <button class="cancelBtn" (click)="UploadFileCancel()" ion-button clear>Cancel</button>
+    </div>
+</ion-content>

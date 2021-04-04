@@ -1,0 +1,54 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>ModuleSignPage</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="select-date">
+    <ion-card class="cardcls">
+      <ion-card-header>
+        <ion-card-subtitle>Survey By</ion-card-subtitle>
+        <!-- <button (click)="modelClose()" class="add-exp-pop icon-cancel">
+          <ion-icon name="close"></ion-icon>
+        </button> -->
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked" >Name</ion-label>
+        <ion-input disabled > {{Name}}</ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked"> Date</ion-label>
+          <ion-datetime *ngIf="statusmy == 0" displayFormat="DD MMM,YYYY" [(ngModel)]="secdate" disabled></ion-datetime>
+          <ion-datetime *ngIf="statusmy == 1" displayFormat="DD MMM,YYYY" [(ngModel)]="surveydata.surveyDate" disabled></ion-datetime>
+          <!-- <img slot="end" src="assets/icon/calendar.svg"> -->
+        </ion-item>
+        <div lines="none" class="signecher">
+          <ion-label position="stacked">Signature<i>*</i></ion-label>
+          <span *ngIf="statusmy == 0">
+          <ion-icon  name="refresh" (click)="clearbtn()"></ion-icon>
+          </span>
+          
+          <signature-pad *ngIf="statusmy == 0" ></signature-pad>
+          <img class="temp" *ngIf="statusmy == 1" [src]="imgshow" >
+          <!-- <ion-signaturepad  style="height: 100%;width: 100%;" [backgroundColor]="'#ffffff'"></ion-signaturepad> -->
+        </div>
+        <ion-row *ngIf="statusmy == 0" >
+          <ion-col size="12" text-center>
+          <ion-button class="ok" shape="round" (click)="clickok()">Submit</ion-button>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row *ngIf="statusmy == 1" text-center>
+          <ion-col size="12">
+            <ion-button class="ok" shape="round" (click)="closebtn()">Submit</ion-button>
+            </ion-col>
+        </ion-row> -->
+      </ion-card-content>
+      
+      <button (click)="closebtn()" class="add-exp-pop">
+        <ion-icon mode="md" name="md-close"></ion-icon>
+      </button>
+    </ion-card>
+  </ion-grid>
+</ion-content>

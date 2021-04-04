@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button> -->
+      <ion-icon mode="md" name="arrow-back" (click)="modelClose()"></ion-icon>
+      <!-- </ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>Chat Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  <div *ngFor="let item of getcommentdata">
+    {{item.lastName}}
+  </div>
+</ion-content> -->
+<ion-content>
+
+  <div class="user-chat" *ngFor="let item of getcommentdata" >
+    <div class="receive-msg" *ngIf="userid != item.createdByUserId">
+      <div class="msg-time">
+        <h6>{{item.firstName}}{{item.lastName}}
+          <span>{{item.createdDate}}</span>
+        </h6>
+        <p>{{item.comment}}</p>
+      </div>
+    </div>
+
+    <div class="send-msg" *ngIf="userid == item.createdByUserId" >
+      <div class="msg-time">
+        <h6>{{item.firstName}} {{item.lastName}}
+          <span>{{item.createdDate}}</span>
+        </h6>
+        <p>{{item.comment}}</p>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="10">
+        <ion-textarea placeholder="Type a message" [(ngModel)]="sendtext"></ion-textarea>
+      </ion-col>
+      <ion-col size="2">
+        <img src="assets/icon/send-icon.svg" (click)="Addcomment()">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

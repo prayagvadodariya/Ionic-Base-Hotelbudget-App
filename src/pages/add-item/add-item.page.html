@@ -1,0 +1,32 @@
+
+<ion-content>
+  <div class="categorymargin">
+    <div class="heading">
+      {{pageStatus}} Item
+      <ion-button class="closebtn" (click)='closeModel()'>
+        <img src="assets/icon/close-black.svg"/>
+      </ion-button>
+    </div>
+    <form [formGroup]="itemForm">
+    <div class="main">
+      <ion-item>
+        <ion-label position="stacked">Item Name <i>*</i></ion-label>
+        <ion-input placeholder="Enter Item Name" formControlName="itemName"></ion-input>
+      </ion-item>
+      <div class="error category-error" *ngIf="itemForm.get('itemName').hasError('required') && itemForm.get('itemName').touched">
+      <p class="invalid-input">Item name is required.</p>
+    </div>
+    <div class="error category-error"
+        *ngIf="itemForm.controls.itemName.hasError('pattern') && itemForm.controls.itemName.touched">
+        <p class="invalid-input">Only Character is allowed</p>
+      </div>
+    </div>
+  </form>
+    <div class="button-ok" (click)='addEditItem(itemForm)'>
+      <ion-button>
+       {{pageStatus}}
+      </ion-button>
+    </div>
+  </div>
+  
+</ion-content>

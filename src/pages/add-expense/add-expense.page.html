@@ -1,0 +1,286 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button *ngIf="!expenseData">
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+      <ion-back-button *ngIf="expenseData"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <!-- <ion-item class="main-heading-add-exp">
+    <h2>{{HotelName}}</h2> 
+    <button ion-button slot="end" (click)="relloacateAmount()" class="add-exr-tpbtn">
+      Relloacate Amount
+    </button>
+  </ion-item> -->
+  <ion-card class="add-card-btm">
+    <div class="profile-setting">
+      <div class="icon-date">
+        <ion-label class="blue-label">
+          Invoice Date <i>*</i>
+        </ion-label>
+        <!-- <ion-datetime display-format="MMM DD, YYYY" placeholder="MM/DD/YYYY" [(ngModel)]='date'
+          (ionChange)="fromDateClick(fromDate,'fromDate')"></ion-datetime> -->
+        <ion-datetime display-format="MMM DD, YYYY" [(ngModel)]="fromDate" placeholder="MM/DD/YYYY"
+          (ionChange)="fromDateClick(fromDate,'fromDate')" [max]="maxValue"></ion-datetime>
+        <img src="../../assets/icon/calendar.svg" />
+      </div>
+      <!-- <div class="error" *ngIf="!date && isCheckEmptyField">
+        <p> Please enter date </p>
+      </div> -->
+      <ion-label class="blue-label">
+        Invoice Number <i>*</i>
+      </ion-label>
+      <ion-row class="col-invoice">
+        <ion-col class="col-invoice mar-invoice">
+          <ion-input placeholder="Enter Invoice Number" class="invoice-pad" [disabled]="purchaseOrder"
+            [(ngModel)]='invoiceNumber'></ion-input>
+        </ion-col>
+        <!-- (ionBlur)="checkBlur()" -->
+        <ion-col class="col-invoice purchase-or order-add">
+          <div class="check-invoice">
+            <ion-checkbox checked="true" [(ngModel)]='purchaseOrder' (ionChange)="getPurchaseOrderCLick(purchaseOrder)">
+            </ion-checkbox>
+            <p>Purchase Order</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <div *ngIf="!validExpense.validpurchaseOrder">PLease Enter invoice</div> -->
+      <ion-row class="col-invoice">
+        <!-- <ion-col class="col-invoice purchase-or">
+              <ion-checkbox checked="true" [(ngModel)]='purchaseOrder'  (ionChange)="getPurchaseOrderCLick(purchaseOrder)"></ion-checkbox> Purchase Order
+            </ion-col> -->
+      </ion-row>
+      <div class="error" *ngIf="!invoiceNumber && !purchaseOrder && isCheckEmptyField">
+        <p> Please Enter Invoice No.</p>
+      </div>
+      <ion-label class="blue-label">
+        Vendor Name<i>*</i>
+      </ion-label>
+      <ion-row class="col-invoice bor-btm-add">
+        <ion-col class="col-invoice" size="11">
+          <ion-input placeholder="Enter Vendor" class="invoice-pad" [(ngModel)]='vendor' (click)="selectVendorModel()">
+          </ion-input>
+        </ion-col>
+        <ion-col class="col-invoice ver-center">
+          <div class="add-circle-icon" *ngIf="!vendorId" (click)="getAddVendorModel()">
+            <img src="../../assets/icon/add-circular.svg">
+          </div>
+          <div *ngIf="vendorId">
+            <!-- <ion-icon class="add-circle-icon" name="trash" slot="end" (click)="deleteVendor($event)"></ion-icon> -->
+            <img slot="end" (click)="deleteVendor($event)" src="assets/icon/delete.svg" style="width: 24px;">
+          </div>
+        </ion-col>
+      </ion-row>
+      <div class="error" *ngIf="!vendor &&  isCheckEmptyField">
+        <p> Select Vendor Name</p>
+      </div>
+
+    </div>
+  </ion-card>
+  <!-- table  -->
+  <ion-card *ngFor="let input of expenseInputs;let i=index" class="mb-0">
+    <div class="item-exp">
+      Expense Item: {{i+1}}
+      <!-- <img src="../../assets/icon/minus.svg" *ngIf="i == expenseInputs.length || i != 0" (click)="removeInput(i,expenseInputs[i])">
+              <img src="../../assets/icon/add-circular-white.svg" *ngIf="i == expenseInputs.length - 1 " (click)="addInput(i,expenseInputs[i])"> -->
+
+
+      <ion-button class="btn-rubb" *ngIf="i == expenseInputs.length || i != 0"
+        (click)="removeInput(i,expenseInputs[i])">
+        <img src="../../assets/icon/rubbish-bin.svg">
+      </ion-button>
+      <ion-button class="btn-rubb down-arrow">
+
+        <!-- <img src="../../assets/icon/up-arrow.svg" > 
+              <img src="../../assets/icon/down-arrow.svg" > -->
+        <img src="{{ hideme[i] ? '../../assets/icon/down-arrow.svg' : '../../assets/icon/up-arrow.svg' }}"
+          (click)="hideme[i] = !hideme[i]">
+      </ion-button>
+      <div class="clear"></div>
+
+    </div>
+    <div class="main-box profile-setting bor-add-exp" [hidden]="hideme[i]">
+      <ion-row>
+        <ion-label class="blue-label">
+          Department <i>*</i>
+        </ion-label>
+        <!-- <ion-select placeholder="Select Department" class="select-main" [(ngModel)]='expenseInputs[i].department'
+          (ionChange)="getCategoryList($event,expenseInputs[i])">
+          <ion-select-option *ngFor="let dept of getDepartmentList" [value]="dept.departmentId">{{dept.departmentName}}
+          </ion-select-option>
+        </ion-select>
+        <div class="error" *ngIf="!expenseInputs[i].department && isCheckEmptyField">
+          <p> Please Select Department</p>
+        </div> -->
+        <ion-select placeholder="Select Department" class="select-main" (ionChange)="getListDepartment($event,i)">
+          <ion-select-option *ngFor='let dept of DapartmentData' value="{{dept.departmentId}}">
+            {{dept.departmentName}}
+          </ion-select-option>
+        </ion-select>
+        <div class="error" *ngIf="!expenseInputs[i].department && isCheckEmptyField">
+          <p> Please Select Department</p>
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-label class="blue-label">
+          Category <i>*</i>
+        </ion-label>
+        <!-- <ion-select placeholder="Select Category" class="select-main" [(ngModel)]='expenseInputs[i].category'
+          [disabled]='!expenseInputs[i].department' (ionChange)="checkConfirmExpense(expenseInputs[i],i)">
+          <ion-select-option *ngFor="let catr of GetCategoryList" [value]="catr.expenseAccountId">{{catr.accountName}}
+          </ion-select-option>
+        </ion-select> -->
+        <ion-select [disabled]="categoryActive==0" placeholder="Select Category" class="select-main"
+          (ionChange)="getListCategory($event,i)">
+          <!-- <ion-select-option value=''>Select Category</ion-select-option> -->
+          <ion-select-option *ngFor="let catr of input.democategory" value={{catr.expenseAccountId}}>
+            {{catr.accountName}}
+          </ion-select-option>
+        </ion-select>
+        <div class="error" *ngIf="!expenseInputs[i].category && isCheckEmptyField">
+          <p>Please Select Category</p>
+        </div>
+      </ion-row>
+
+      <ion-row class="dollar-pos">
+        <ion-label class="blue-label">
+          Cost <i>*</i>
+        </ion-label>
+        <ion-input type='number' placeholder="Enter Cost" class="invoice-pad" [(ngModel)]='expenseInputs[i].cost'
+          (ionBlur)="checkConfirmExpense(expenseInputs[i],i)"></ion-input>
+        <img src="../../assets/icon/coin.svg" class="dollar-sign dollarsign-space">
+      </ion-row>
+      <div class="error" *ngIf="!expenseInputs[i].cost && isCheckEmptyField">
+        <p>Please Enter Cost</p>
+      </div>
+      <ion-row class="dollar-pos" *ngIf="confirmExpensedata">
+        <ion-col>
+          <ion-label class="blue-label">
+            Remaining
+          </ion-label>
+          <ion-input placeholder="Enter Remaining Amount" class="invoice-pad"
+            [(ngModel)]="expenseInputs[i].remainingAmount" readonly></ion-input>
+          <img src="../../assets/icon/coin.svg" class="dollar-sign">
+        </ion-col>
+        <ion-col>
+          <ion-label class="blue-label">
+            Budget
+          </ion-label>
+          <ion-input placeholder="Enter Budget" class="invoice-pad" [(ngModel)]="expenseInputs[i].totalBudget" readonly>
+          </ion-input>
+          <img src="../../assets/icon/coin.svg" class="dollar-sign">
+        </ion-col>
+      </ion-row>
+      <ion-row class="dollar-pos">
+        <ion-label class="blue-label">
+          Item Description
+          <i>*</i>
+        </ion-label>
+        <ion-textarea class="ionpad" placeholder="Enter Description" [(ngModel)]='expenseInputs[i].description'>
+        </ion-textarea>
+      </ion-row>
+      <div class="error" *ngIf="!expenseInputs[i].description && isCheckEmptyField">
+        <p> Please enter Description </p>
+      </div>
+      <!-- <ion-row class="col-invoice">
+            <ion-col class="col-invoice purchase-or mart">
+              <ion-checkbox [(ngModel)]="expenseInputs[i].spreadExpense" (ionChange)="spreadExpenseClick(i,spreadExpense)"></ion-checkbox> <span>Spread Expense</span>
+            </ion-col>
+        </ion-row> -->
+      <ion-item class="col-invoice purchase-or mart checkspread">
+        <ion-label>Spread Expense</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="expenseInputs[i].spreadExpense"
+          (ionChange)="spreadExpenseClick(i,expenseInputs[i])"></ion-checkbox>
+      </ion-item>
+      <!-- Spread Expense -->
+      <div class="main-spreed" *ngIf="expenseInputs[i].spreadExpense">
+        <span>
+          Select Month to Spread the Expense
+        </span>
+        <ion-row>
+          <ion-col>
+            <ion-label class="blue-label">
+              From Month
+              <i>*</i>
+            </ion-label>
+            <ion-datetime display-format="MMM YYYY" #dateTime [(ngModel)]="expenseInputs[i].fromMonth" [min]="minValue"
+              [max]="maxValue" placeholder="MM/YYYY"
+              (ionChange)="fromMonthClick(expenseInputs[i].fromMonth);checkConfirmExpense(expenseInputs[i],i)">
+            </ion-datetime>
+            <div class="error2" *ngIf="!expenseInputs[i].fromMonth &&  isCheckEmptyField">
+              <p>Enter From Month</p>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <ion-label class="blue-label">
+              To Month
+              <i>*</i>
+            </ion-label>
+            <ion-datetime display-format="MMM YYYY" #dateTime [(ngModel)]="expenseInputs[i].toMonth" [min]="minToDate"
+              [max]="maxValue" placeholder="MM/YYYY" (ionChange)="checkConfirmExpense(expenseInputs[i],i)">
+            </ion-datetime>
+            <div class="error2" *ngIf="!expenseInputs[i].toMonth &&  isCheckEmptyField">
+              <p> Enter To Month</p>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </div>
+    </div>
+  </ion-card>
+  <!-- Table End -->
+
+  <!-- <div class="text-total-expense">
+      <span>Total Expense :
+       <i>  $ 0 </i>  
+      </span>
+  </div> -->
+
+  <!-- <div class="btn-profile profile-setting add-save add-exp-item">
+    <button ion-button (click)="addInput()"> + Add Item </button>
+  </div>
+  <div class="clear"></div>
+  <ion-card>
+    <ion-row class="bor-tab-bott total-txt total-add">
+      <ion-col>
+        Total Expense
+      </ion-col>
+      <ion-col>
+        ${{totalExpense}}
+      </ion-col>
+    </ion-row>
+  </ion-card> -->
+
+  <ion-row>
+    <ion-col size="8">
+      <ion-card>
+        <ion-row class="bor-tab-bott total-txt total-add">
+          <ion-col>
+            Total Expense
+          </ion-col>
+          <ion-col>
+            ${{totalExpense}}
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4">
+      <div class="btn-profile profile-setting add-save add-exp-item item-btns">
+        <button ion-button (click)="addInput()"> + Add Item </button>
+      </div>
+      <div class="clear"></div>
+    </ion-col>
+  </ion-row>
+  <!-- Total  -->
+  <div class="btn-profile profile-setting add-save">
+    <button ion-button="" (click)="expenseAddClick()"> Save </button>
+  </div>
+  <!-- disabled="" -->
+</ion-content>
+<footer></footer>

@@ -1,0 +1,47 @@
+ion-header{
+    ion-toolbar{
+        ion-title{-webkit-padding-start: 20px; padding-inline-start: 20px; -webkit-padding-end: 20px; padding-inline-end: 20px;}
+        img.right-icon{position: absolute; right: 10px; width: 20px;}
+    }
+}
+
+ion-content{--background:#f1f1f1;
+    ion-grid.page-head{padding-bottom: 0;
+        ion-row{align-items: center;
+            ion-col{padding: 0;
+                h5{margin: 0; color: #181818; font-size: 0.9rem; padding-left:10px; font-weight: 600;}
+                ion-button{--background:#607E9A; --color:#ffffff; --background-hover:#607E9A; --background-focused:#607E9A; --background-activated:#607E9A; font-size: 0.72rem; font-weight: 400; --padding-end: 13px; --padding-start: 13px; height: 31px; text-transform: capitalize;
+                    img{width: 9px; margin-right: 7px;}
+                }
+            }
+        }
+    }
+
+    ion-grid.service-request{
+        ion-card{margin-inline-start: 4px !important; margin-inline-end: 4px !important;
+            ion-row{
+                ion-col{
+                    ion-row{
+                        ion-col{
+                            h5{font-size: 0.7rem; font-weight: 400; color: #4C4C4C; margin: 0;}
+                            h4{font-size: 0.67rem; font-weight: 600; color: #383838; margin: 0;}
+                            ion-button.priority{font-size: 0.6rem; height: 26px; width: 80px; color: #fff; margin: 0; text-transform: capitalize;}
+                            ion-button.priority.high{--background: #FF0000; --background-activated: #FF0000; --background-focused: #FF0000; --background-hover: #FF0000;}
+                            ion-button.priority.medium{--background: #FFA500; --background-activated: #FFA500; --background-focused: #FFA500; --background-hover: #FFA500;}
+                            ion-button.priority.low{--background: #008000; --background-activated: #008000; --background-focused: #008000; --background-hover: #008000;}
+                        }
+                    }
+                }
+                ion-col.right-clm{justify-content: space-between; display: flex; flex-flow: column;
+                    p{display: block; font-size: 0.66rem; color: #181818; margin: 0; font-weight: 500; text-align: right; letter-spacing: -1;
+                        span{display: block; font-size: 0.66rem; color: #181818; letter-spacing: -1; font-weight: 500;}
+                    }
+                    h6{display: block; font-size: 0.7rem; color: #181818; margin: 0; font-weight: 500; text-align: right; 
+                        span{display: block; font-size: 0.75rem; color: #98CB51; font-weight: 600; }
+                    }
+                }
+            }
+        }
+    }
+
+}

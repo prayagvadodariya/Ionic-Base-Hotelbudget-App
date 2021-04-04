@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <!-- <img class="menu" src="../../assets/icon/menu.svg" /> -->
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="add-request-form">
+    <ion-card>
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label position="stacked"> Source <span>*</span></ion-label>
+          <ion-select placeholder="Select Source">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked"> User List <span>*</span></ion-label>
+          <ion-select placeholder="Select Users" multiple="true">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked"> Type Of Service <span>*</span></ion-label>
+          <ion-select placeholder="Select Type of Service" multiple="true">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Due Date <span>*</span></ion-label>
+          <ion-datetime mode="ios" placeholder="Select Date"></ion-datetime>
+          <img slot="end" src="assets/icon/calendar.svg">
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked"> Room Number </ion-label>
+          <ion-select placeholder="Select Room Number" multiple="true">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked"> Assign To <span>*</span></ion-label>
+          <ion-select placeholder="Select Technicions/Team" multiple="true">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked"> Priority <span>*</span></ion-label>
+          <ion-select placeholder="Set Priority" multiple="true">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Description </ion-label>
+          <ion-textarea placeholder="Enter description"></ion-textarea>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Upload Attachment </ion-label>
+          <ion-text class="attach">
+            <div class="img-add">
+              <div class="more-count">
+                <span>+</span>
+              </div>
+            </div>
+            <div class="img-add-view">
+              <img src="assets/images/attachement.png">
+              <div class="remove">
+                <img src="assets/icon/close.svg">
+              </div>
+            </div>
+          </ion-text>
+        </ion-item>
+        <ion-card>
+          <ion-card-header>
+            <ion-item lines="none">
+              <ion-label>Add Team</ion-label>
+              <ion-icon name="ios-arrow-down"></ion-icon>
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item lines="none">
+                <ion-label position="stacked"> Member <span>*</span></ion-label>
+                <ion-select placeholder="Add a Member" multiple="true">
+                  <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+                  <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+                  <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+                  <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+                  <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label position="stacked"> Team Name <span>*</span></ion-label>
+                <ion-select placeholder="Enter Team Name" multiple="true">
+                  <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+                  <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+                  <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+                  <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+                  <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label position="stacked"> Description <span>*</span></ion-label>
+                <ion-select placeholder="Add description" multiple="true">
+                  <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+                  <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+                  <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+                  <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+                  <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-card>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-button class="cancel-team" shape="round"> CANCEL </ion-button>
+  <ion-button class="add-team" shape="round"> ADD REQUEST </ion-button>
+</ion-footer>

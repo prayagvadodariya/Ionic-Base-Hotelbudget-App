@@ -1,0 +1,31 @@
+
+
+<ion-content>
+  <div class="categorymargin">
+    <div class="heading">
+        Survey By
+        <ion-button class="closebtn">
+          <img src="assets/icon/close-black.svg" />
+        </ion-button>
+    </div>
+    <div class="main">
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input placeholder="Enter Name"></ion-input>
+        </ion-item>
+    </div>
+    <div class="title">
+      Signature
+    </div>
+    <div class="signature">
+      <signature-pad [options]="signaturePadOptions"  id="signatureCanvas"></signature-pad>
+      <!-- <button ion-button full color="light" (click)="drawClear()">Clear</button> -->
+    </div>
+    <div class="button-ok">
+      <ion-button>
+          Ok
+      </ion-button>
+    </div>
+    
+ </div>
+</ion-content>

@@ -1,0 +1,20 @@
+ion-content{--ion-background-color: transparent;
+    ion-grid.select-date{max-width: 90%; margin: auto; position: absolute; width: 90%; top: 61px; bottom: 0; left: 0; right: 0; height: -moz-max-content; border-radius: 10px; max-height: 90vh; overflow: auto; padding: 0;
+        ion-card.cardcls{padding-top: 3px !important; margin-bottom: 0px !important; padding: 0 !important;
+            .noti-data{margin-top: 0; position: -webkit-sticky; position: sticky; top: 0; z-index: 999; right: 0; left: 0; background: #fff; border-bottom: 2px solid #ccc;
+                .notification-main{background: transparent; --background: transparent; padding: 5px 5px; --inner-border-width: 0px; --padding-start: 5px; --inner-padding-end: 0px;
+                    ul{font-size: 0.8rem;}
+                }
+            }
+            .abt-noti{padding-left: 40px; margin-top: 15px; max-height: 53vh; overflow: auto;
+                .notification-main{background: transparent;  --background: transparent;  padding: 5px 5px;  --inner-border-width: 0px;  --padding-start: 5px;  --inner-padding-end: 0px;
+                    ul{font-size: 0.8rem;}
+                }
+            }
+            .close-btn{
+                img{border-radius: 25px;}
+                    .cross{height: 35px; width: 35px; position: absolute; top: -10px; right: -10px; box-shadow: 0px 0px 15px #c1c1c1 !important; z-index: 1111;}
+            }
+        }
+    }
+}

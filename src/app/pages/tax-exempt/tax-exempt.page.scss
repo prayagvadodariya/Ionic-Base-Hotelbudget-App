@@ -1,0 +1,60 @@
+ion-header {
+    ion-toolbar {
+        ion-buttons {
+            ion-menu-button {
+                img {height: 20px;width: 20px;}
+            }
+        }
+        ion-title {font-size: 0.8rem;}
+    }
+}
+
+ion-content {--ion-background-color: #f1f1f1;
+    ion-grid.taxexempt-tlt {
+        ion-row {
+            ion-col.view-tlt { padding-left: 12px; padding-top: 20px;
+                ion-label { color: #181818; font-size: 0.75rem; word-spacing: -1px; font-weight: 600;
+                }
+            }
+            ion-col.tlt-content {padding: 0;
+                .select { margin-top: 8px; margin-right: 8px;
+                    ion-item { --background: #fff; --background-hover: #fff; border-radius: 50px; --min-height: 32px; --padding-start: 0; --inner-padding-end: 5px; box-shadow: 0 2px 7px 0px #ccc; width: 164px;
+                        ion-label.category { padding-left: 8px; margin-top: 0; margin-right: 0; margin-bottom: 0; font-size: 0.8rem; font-weight: 500; font-size: 0.8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ion-searchbar { --icon-color: #607e9a; --background: #fff; padding-top: 7px;
+        .searchbar-input-container .sc-ion-searchbar-ios {height: 40px;
+            .searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios { padding-inline-start: 37px; font-size: 0.8rem;
+                .searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios {width: 20px;
+                }
+            }
+        }
+    } 
+    ion-grid.main-part{padding: 0;
+        ion-card{margin-top: 0px; margin-bottom: 10px; padding-top: 10px; padding: 12px; padding-bottom: 3px;
+            ion-row{margin-top: 0px; margin-bottom: 0px;
+                ion-col{padding: 0;
+                    ion-row{margin-top: 0px; margin-bottom: 0px;
+                        ion-col{padding: 0;
+                            h5{font-size: 0.6rem; margin-top: 0; color: #585858;}
+                            ion-label {color: #585858; font-size: 0.7rem; padding-left: 0;}
+                        }
+                    }
+                    h6{color: #607e9a; font-size: 0.75rem; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; float: right;
+                        span{display: inline-block; color: #8dc53e; font-size: 1rem; padding-bottom: 2px;}
+                    }
+                    ion-button{--background: #607e9a; --background-focused: #607e9a; --background-hover: #607e9a; letter-spacing: 1px; font-size: 0.68rem; padding: 3px 3px; float: right; width: 87px; position: absolute; color: #fff; bottom: 0;}
+                }
+            }
+        }
+    }
+}
+ion-footer{
+    ion-toolbar{--background: #607e9a;
+        ion-title{color: #fff; font-weight: 500; font-size: 0.92rem; text-align: center; margin: 0 auto;}
+    }
+}

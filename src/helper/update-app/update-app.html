@@ -1,0 +1,46 @@
+
+<ion-content>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-thumbnail>
+          <img src="assets/imgs/icon.png">
+        </ion-thumbnail>
+      </ion-col>
+    </ion-row>
+  
+    <ion-card>
+      <ion-card-header text-center>
+        Updated Version Available
+      </ion-card-header>
+      <ion-card-content>
+        There is a newer version available for download! Please update the app by visiting the Store.
+      </ion-card-content>
+    </ion-card>
+    
+    <section>
+      <ion-row>
+        <ion-col>
+          <h5>{{updateListArray.features}}</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="inline" *ngFor="let items of updateListArray.versionFeature">
+            <ion-icon name="ios-checkmark-circle"></ion-icon>
+            <p>{{items.features}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </section>
+  
+  </ion-content>
+  
+  <ion-footer text-center>
+    <ion-row>
+      <ion-col text-center><h6>Current Version : {{constant.APP_VERSION}}</h6></ion-col>
+      <ion-col text-center><h6>Updated Version : {{updateListArray.appVersion}}</h6></ion-col>
+    </ion-row>
+    <button ion-button round icon-start><ion-icon name="md-download" (click)="updateAppClick()"></ion-icon>Update Now</button>
+  </ion-footer>
+  

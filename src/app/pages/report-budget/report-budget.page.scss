@@ -1,0 +1,99 @@
+ion-header{
+    ion-toolbar{
+        ion-title{font-size: 0.7rem;}
+        ion-icon{color: #fff; transform: rotate(90deg); -ms-transform: rotate(90deg);}
+    }
+}
+
+ion-content{--ion-background-color: #f1f1f1;
+    .segment-btn{background: #ffffff; box-shadow: 0 2px 7px 0px #ccc; padding-bottom: 0; position: -webkit-sticky; position: sticky; top: 0; z-index: 9; padding: 0;
+        // MD
+        ion-segment.ng-untouched.ng-pristine.ng-valid.sc-ion-segment-md-h.sc-ion-segment-md-s.md.hydrated.ion-untouched.ion-pristine.ion-valid{
+        border-bottom: 1px solid #ccc; height: 51px;}
+        
+        ion-segment-button.md.segment-button-has-label.segment-button-has-label-only.segment-button-checked.segment-button-layout-icon-top.ion-activatable.ion-activatable-instant.hydrated{text-transform: capitalize; color: #002d5b; --color-checked: #002d5b;  background: transparent; border: none;}
+        ion-segment-button.md.segment-button-has-label.segment-button-has-label-only.segment-button-layout-icon-top.ion-activatable.ion-activatable-instant.hydrated{text-transform: capitalize; color: #322e2e;  background: transparent; border: none;}
+        
+        // IOS
+        ion-segment.ng-untouched.ng-valid.sc-ion-segment-ios-h.sc-ion-segment-ios-s.ios.hydrated.ng-dirty.ion-untouched.ion-valid.ion-dirty, ion-segment.ng-untouched.ng-pristine.ng-valid.sc-ion-segment-ios-h.sc-ion-segment-ios-s.ios.hydrated.ion-untouched.ion-pristine.ion-valid, ion-segment.ng-untouched.ng-valid.sc-ion-segment-md-h.sc-ion-segment-md-s.md.hydrated.ng-dirty.ion-untouched.ion-valid.ion-dirty{
+        border-bottom: 1px solid #ccc; height: 51px;}
+        ion-segment-button.hydrated.ios.segment-button-has-label.segment-button-has-label-only.segment-button-checked.segment-button-layout-icon-top.ion-activatable.ion-activatable-instant{text-transform: capitalize; color: #002d5b; --color-checked: #002d5b; background: transparent; --background-checked: #002d5b;  border-bottom: 2px solid #002d5b; background: none;}
+        ion-segment-button.ios.segment-button-has-label.segment-button-has-label-only.segment-button-layout-icon-top.ion-activatable.ion-activatable-instant.hydrated{text-transform: capitalize; color: #322e2e;  background: transparent; border: none;}
+    }
+   
+
+    ion-row.report-tlt{color: #000000; text-align: center; display: block; font-size: 0.8rem; color: #181818; font-weight: 600;}
+    ion-grid.deprt-cate{padding-bottom: 0;
+        ion-row{
+            ion-col{
+                ion-item.left-part{float: left;
+                    ion-select{--padding-end: 15px;}
+                }
+                ion-item.right-part{float: right;
+                    ion-select{--padding-end: 15px;}
+                }
+            }
+        }
+    }
+
+    .about-expenseaccount{
+        ion-card.amt-rprt{padding: 10px; margin-top: 7px; margin-bottom: 0; padding-bottom: 5px;
+            ion-col.hotel-left{float: left; font-size: 0.98rem; color: #607e9a; font-weight: 600; padding: 0; margin-bottom: 4px;}
+            ion-col.hotel-right{text-align: right; font-size: 1rem; color: #607e9a; font-weight: 600; padding: 0; margin-bottom: 4px;}
+            ion-col{padding: 0;
+                h5{font-size: 0.76rem; color: #585858; margin-top: 0; margin-bottom: 0;
+                    span{display: inline-block; color: #333333; margin-left: 5px; font-size: 0.78rem;}
+                }
+                h6{margin-top: 0; margin-bottom: 0; text-align: right; font-size: 0.65rem; position: absolute; right: 0; bottom: 0;}
+                #progressbar{
+                    .spacing{margin-bottom: 7px; background-color: #8DC53E;}
+                }
+            }
+        }
+    }
+
+    .about-vendor,.about-purchaseorder{
+        ion-card.vendor-rprt{padding: 8px; margin-top: 7px; margin-bottom: 0; padding-bottom: 5px;
+            ion-col.hotel-left{float: left; font-size: 0.98rem; color: #607e9a; font-weight: 600; padding: 0; margin-bottom: 4px;}
+            ion-col.hotel-right{text-align: right; font-size: 1rem; color: #607e9a; font-weight: 600; padding: 0; margin-bottom: 4px;}
+            ion-col{padding: 1px;
+                h5{font-size: 0.62rem; color: #585858; margin-top: 0; margin-bottom: 0;}
+                h6{margin-top: 0; margin-bottom: 0; text-align: right; font-size: 0.65rem; position: absolute; right: 0; bottom: 0;}
+                #progressbar{
+                    .spacing{margin-bottom: 7px; background-color: #8DC53E;}
+                }
+                img{height: 12px; transform: rotate(90deg); width: 12px; float: right;}
+                ion-text{font-size: 0.66rem;}
+            }
+            .acc-detail{border: 1px solid #F0F0F0; background: #F0F0F0; border-radius: 5px; padding: 7px; margin: 2px;
+                h3{text-align: right; color: #313131; font-size: 1.1rem; margin-top: 0; margin-bottom: 0;}
+                h4{font-size: 0.8rem; text-align: right; margin-top: 0; margin-bottom: 0;}
+            }
+        }
+    }
+
+    .about-capitalexpense{
+        ion-card.cptl-exps{padding: 8px; margin-top: 7px; margin-bottom: 0; padding-bottom: 5px;
+            ion-row{
+                ion-col.hotel-nameleft{color: #607e9a; font-size: 0.87rem; font-weight: 600; text-align: left;}
+                ion-col.hotel-nameright{text-align: right;
+                    h3{margin-top: 0; margin-bottom: 0; font-size: 0.73rem; text-align: right; position: absolute; right: 0;}
+                    h4{font-size: 0.8rem; color: #607e9a; text-align: right; font-weight: 600; margin-bottom: 4px;
+                        span{display: inline-block; font-size: 1.1rem; color: #8dc53e; font-weight: 500; letter-spacing: -1px;}
+                    }
+                }
+            }
+            .acc-detail{border: 1px solid #F0F0F0; background: #F0F0F0; border-radius: 5px; padding: 7px; margin: 2px;
+                ion-row{
+                    ion-col{padding: 0;
+                        h5{font-size: 0.66rem; color: #585858; margin-top: 0; margin-bottom: 0;
+                            span{display: inline-block; color: #333333; margin-left: 3px; font-size: 0.68rem;}
+                        }
+                        h6{text-align: right; font-size: 0.7rem; margin-top: 0; margin-bottom: 0; position: absolute; right: 0; bottom: 0;}
+                        h3{text-align: right; color: #313131; font-size: 1.1rem; margin-top: 0; margin-bottom: 0;}
+                    }
+                }
+            }
+        }
+    }
+}

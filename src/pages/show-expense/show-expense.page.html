@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>{{HotelnName}}</ion-title> -->
+    <ion-title>{{categoryData.departmentName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-heading">
+      {{expenseData.label}}
+  </div>
+  <!-- <ion-grid class="page-head">
+    <ion-row>  
+        <ion-col size="7">
+            <h5>{{categoryData.departmentName}}</h5>
+        </ion-col>
+        <ion-col size="7">
+            <h5>{{expenseData.label}}</h5>
+        </ion-col>
+        <ion-col size="5" text-right>
+          <ion-button shape="round" (click)="addExpenseClick()">
+           <img slot="start" src="assets/icon/plus-icon.svg">
+              Add Expense
+          </ion-button>
+        </ion-col>
+    </ion-row>
+  </ion-grid> -->
+    <!-- <div class="main-heading caps-text">
+        {{categoryData.departmentName}}
+    </div> -->
+    <!-- main table -->
+    <ion-card class="card-pad">
+        <ion-grid>
+          <ion-row class="top-clr">
+            <ion-col size="6">
+              Category
+            </ion-col>
+            <ion-col>
+              Expense
+            </ion-col>
+            <ion-col>
+              Remaining
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid class="bor-tab-bott">
+          <ion-row *ngIf="expenseData">
+            <ion-col size="6" *ngIf="expenseData.per" >
+              <span>{{expenseData.accountName}} ({{expenseData.per}}%)</span>            
+              <div id="progressbar">
+              <div class="inner" [ngStyle]="{'background': (expenseData.per > 0 ? expenseData.rem_color : 0 )}" max="100"  [style.width]="(expenseData.per > 100 ? 100 : expenseData.per)+ '%'" style="width:40%"></div>
+            </div>
+            </ion-col>
+            <ion-col *ngIf="expenseData.expense" >
+              ${{this.constant.replace(expenseData.expense)}}
+            </ion-col>
+            <ion-col *ngIf="expenseData.expense" >
+              ${{this.constant.replace(expenseData.remaning)}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+  <!-- main table End -->
+  <!-- total -->
+  <ion-card>
+    <ion-row class="bor-tab-bott total-txt">
+        <ion-col>
+            Budget
+        </ion-col>
+        <ion-col class="ttl" *ngIf="expenseData.total">
+          Total
+          ${{this.constant.replace(expenseData.total)}}
+        </ion-col>
+    </ion-row> 
+  </ion-card> 
+  <!-- Total -->
+  <!-- main table -->
+  <ion-card class="card-pad" *ngFor="let exp of expenseList; let i=index" >
+    <!-- <ion-card class="card-pad" *ngFor="let exp of expenseList; let i=index" (click)="invoiceProgressClick(exp.expenseId)" > -->
+      <ion-row class="bor-tab-bott" >
+        <ion-col size="8">
+           <ion-item class="text-search">
+              <div slot="start">
+                  Invoice No:
+              </div>
+              <h2>{{exp.PONumber}}</h2>
+            </ion-item>
+        </ion-col>
+        <ion-col class="more-main">
+          {{exp.todate}}
+            <button ion-button class="more" (click)="openpopup($event,exp, i)"> 
+            <img src="../../assets/icon/show-more.svg"/> 
+            </button>
+        </ion-col>
+      </ion-row> 
+      <ion-row class="bor-tab-bott">
+        <ion-col size="9">
+        <ion-item class="text-search">
+            <div slot="start">
+                Vendor:
+            </div>
+            <h2>{{exp.vendorCompany}}</h2>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         
+        </ion-col>
+      </ion-row>
+      <ion-row class="bor-tab-bott">
+        <ion-col size="9">
+            <ion-item class="text-search">
+                <div slot="start">
+                    Description:
+                </div>
+                <h2>{{exp.itemDescription}}</h2>
+              </ion-item>
+        </ion-col>
+        <ion-col class="doll-txt">
+           <i> $</i>{{this.constant.replace(exp.amount)}}
+        </ion-col>
+      </ion-row>    
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addExpenseClick()">
+    <ion-fab-button>
+      <ion-icon class="icon-plus"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<footer></footer>

@@ -1,0 +1,206 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hampton Inn Boston Braintree</ion-title>
+    <img class="right-icon" slot="end" src="assets/images/filter.svg" (click)="filterpageshow()">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="page-head">
+    <ion-row>  
+        <ion-col size="7">
+            <h5>Service Request</h5>
+        </ion-col>
+        <ion-col size="5" text-right>
+          <ion-button shape="round" (click)="AddRequestPage()">
+           <img slot="start" src="assets/icon/plus-icon.svg">
+              Add Request
+          </ion-button>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid class="service-request">
+     
+      <ion-card>
+          <ion-row>
+              <ion-col size="8">
+
+                  <ion-row>
+                      <ion-col size="5">
+                          <h5>S.R. #:</h5>
+                      </ion-col>
+                      <ion-col size="7">
+                          <h4>SR2249-325-T04-010720</h4>
+                      </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="5">
+                        <h5>Created Date:</h5>
+                    </ion-col>
+                    <ion-col size="7">
+                        <h4>Jan 8, 2020 4:37 AM</h4>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="5">
+                        <h5>Assigned To:</h5>
+                    </ion-col>
+                    <ion-col size="7">
+                        <h4>Tracey Unger</h4>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="5">
+                        <h5>Type of Service:</h5>
+                    </ion-col>
+                    <ion-col size="7">
+                        <h4>(T04) - Maintenance</h4>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="5">
+                        <h5>Priority:</h5>
+                    </ion-col>
+                    <ion-col size="7">
+                       <ion-button shape="round"  class="priority high">
+                          High
+                       </ion-button>
+                    </ion-col>
+                  </ion-row>
+              </ion-col>
+              <ion-col size="4" class="right-clm">
+                  <p>Feb 03, 2019 <span>01:53 PM</span></p>
+                  <h6>Status: <span>Completed</span></h6>
+              </ion-col>
+          </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-row>
+            <ion-col size="8">
+
+                <ion-row>
+                    <ion-col size="5">
+                        <h5>S.R. #:</h5>
+                    </ion-col>
+                    <ion-col size="7">
+                        <h4>SR2249-325-T04-010720</h4>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Created Date:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                      <h4>Jan 8, 2020 4:37 AM</h4>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Assigned To:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                      <h4>Tracey Unger</h4>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Type of Service:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                      <h4>(T04) - Maintenance</h4>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Priority:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                     <ion-button shape="round"  class="priority medium">
+                        Medium
+                     </ion-button>
+                  </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col size="4" class="right-clm">
+                <p>Feb 03, 2019 <span>01:53 PM</span></p>
+                <h6>Status: <span>Completed</span></h6>
+            </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-row>
+            <ion-col size="8">
+
+                <ion-row>
+                    <ion-col size="5">
+                        <h5>S.R. #:</h5>
+                    </ion-col>
+                    <ion-col size="7">
+                        <h4>SR2249-325-T04-010720</h4>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Created Date:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                      <h4>Jan 8, 2020 4:37 AM</h4>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Assigned To:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                      <h4>Tracey Unger</h4>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Type of Service:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                      <h4>(T04) - Maintenance</h4>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="5">
+                      <h5>Priority:</h5>
+                  </ion-col>
+                  <ion-col size="7">
+                     <ion-button shape="round"  class="priority low">
+                        Low
+                     </ion-button>
+                  </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col size="4" class="right-clm">
+                <p>Feb 03, 2019 <span>01:53 PM</span></p>
+                <h6>Status: <span>Completed</span></h6>
+            </ion-col>
+        </ion-row>
+      </ion-card>
+
+  </ion-grid>
+</ion-content>

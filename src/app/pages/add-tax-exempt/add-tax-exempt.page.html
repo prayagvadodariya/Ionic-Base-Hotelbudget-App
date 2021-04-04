@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon mode="md" name="arrow-back"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hampton Inn Boston Braintree</ion-title>
+    <img slot="end" src="assets/images/reset.svg">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="add-tax">
+    <ion-card>
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label position="stacked">Confirmation No.
+            <span>*</span>
+          </ion-label>
+          <ion-select placeholder="Enter Confirmation No." multiple="true">
+            <ion-select-option value="JeffWalker">Jeff Walker</ion-select-option>
+            <ion-select-option value="Joywattford">Joy wattford</ion-select-option>
+            <ion-select-option value="SeanManning">Sean Manning</ion-select-option>
+            <ion-select-option value="AmyChiasson">Amy Chiasson</ion-select-option>
+            <ion-select-option value="ScottBaer">Joy wattford</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Arrival Date
+            <span>*</span>
+          </ion-label>
+          <ion-datetime displayFormat="DD MMM,YYYY"  ></ion-datetime>
+          <img slot="end" src="assets/icon/calendar.svg">
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Departure Date
+            <span>*</span>
+          </ion-label>
+          <ion-datetime displayFormat="DD MMM,YYYY" ></ion-datetime>
+          <img slot="end" src="assets/icon/calendar.svg">
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Room No.
+            <span>*</span>
+          </ion-label>
+          <ion-input placeholder="Enter Room No."></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Amount Of Bill
+            <span>*</span>
+          </ion-label>
+          <ion-input>$</ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Date Of Invoice
+            <span>*</span>
+          </ion-label>
+          <ion-datetime displayFormat="DD MMM,YYYY"></ion-datetime>
+          <img slot="end" src="assets/icon/calendar.svg">
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Selling Dealer's Name
+            <span>*</span>
+          </ion-label>
+          <ion-input placeholder="Enter Name"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Selling Dealer's Address
+            <span>*</span>
+          </ion-label>
+          <ion-textarea placeholder="Enter Address"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
+      <ion-row class="tax-data">
+        <p>I, the undersigned am an employee of the federal agency identified below. The purchase or lease of tangible personal
+          property or services or the rental of living quarters or sleeping accommodations on or after (Date[s]) from the
+          business identified above is in pursuit of my employer's affairs. The Government of the United States either will
+          pay the seller directly or will provide reimbursement to the employee for the actual cost of the purchase or lease
+          of tangible personal property, services, or living quarters or sleeping accommodations made on this date(s).</p>
+      </ion-row>
+
+      <ion-row class="tax-data1">
+        <p>Under penalties of perjury, I declare that I have read the foregoing and the facts stated in it are true.</p>
+      </ion-row>
+      <ion-row class="cards">
+        <ion-col size="6">
+          <h5>Credit/Debit Card Front</h5>
+          <img src="assets/images/card-front.png">
+        </ion-col>
+        <ion-col size="6">
+          <h5>Credit/Debit Card Back</h5>
+          <img src="assets/images/card-back.png">
+        </ion-col>
+      </ion-row>
+      <ion-list>
+         
+        <ion-item lines="none" >
+          <ion-label position="stacked">Signature Of Employee
+            <span>*</span>
+          </ion-label>
+          <signature-pad></signature-pad>
+        </ion-item>
+       
+        <ion-item lines="none">
+          <ion-label position="stacked">Name Of Federal Agency
+            <span>*</span>
+          </ion-label>
+          <ion-input placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked">Address Of Federal Agency
+            <span>*</span>
+          </ion-label>
+          <ion-input placeholder="Enter Address"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-row class="agency-content">
+        <p>THIS CERTIFICATE MAY NOT BE USED TO MAKE EXEMPT PURCHASES OR LEASES OF TANGIBLE PERSONAL PROPERTY OR SERVICES OR
+          RENTAL OF LIVING ACCOMMODATIONS FOR THE PERSONAL USE OF ANY INDIVIDUAL EMPLOYED BY A UNITED STATES GOVERNMENTAL
+          AGENCY. PROPER IDENTIFICATION IS REQUIRED BEFORE THIS CERTIFICATE MAY BE ACCEPTED BY THE SELLER.</p>
+      </ion-row>
+      <ion-row class="florida">
+        <ion-item lines="none">
+          <ion-label>Florida Administrative Code Rule 12A - 1.038(4)(c)</ion-label>
+        </ion-item>
+      </ion-row>
+    </ion-card>
+
+  </ion-grid>
+  <ion-row class="twobtns">
+    <ion-col size="6">
+      <ion-button class="btns" shape="round" mode="ios" >preview</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button class="btns" shape="round" mode="ios" >save</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

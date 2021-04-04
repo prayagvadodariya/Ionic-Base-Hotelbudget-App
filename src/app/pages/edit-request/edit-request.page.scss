@@ -1,0 +1,45 @@
+ion-header{
+    ion-toolbar{
+        ion-title{-webkit-padding-start: 20px; padding-inline-start: 20px; -webkit-padding-end: 20px; padding-inline-end: 20px;}
+        img{width: 20px; position: absolute; right: 10px;}
+    }
+}
+ion-content{--background:#f1f1f1;
+    ion-grid.add-request-form{
+        ion-card{border-radius: 8px !important; padding-left: 11px; padding-right: 11px;-webkit-margin-start: 5px !important; margin-inline-start: 5px !important; -webkit-margin-end: 5px !important; margin-inline-end: 5px !important; background: #fff; --background:#fff;
+            ion-list{
+                ion-item{--padding-start:0; --inner-padding-end:0; margin-bottom: 20px;--background: transparent; --background-activated: transparent; --background-focused: transparent; --background-hover: transparent; --ripple-color: transparent;
+                    &:last-child{margin-bottom: 0;}
+                    ion-label{color: #585858; font-size: 0.8rem; font-weight: 400; transform: translate3d(0,0%,0) scale(1); padding: 0;
+                        span{color: #D50000; font-size: 0.9rem;}
+                    }
+                    ion-input{color: #4C4C4C; font-size: 0.8rem; border-bottom: 1px solid #B2B2B2;}
+                    ion-select{color: #4C4C4C; font-size: 0.8rem; border-bottom: 1px solid #B2B2B2; --background: #ffffff !important; background: #ffffff !important;}
+                    ion-textarea{color: #4C4C4C; font-size: 0.8rem; border-bottom: 1px solid #B2B2B2;}
+                    ion-datetime{color: #4C4C4C; font-size: 0.8rem; border-bottom: 1px solid #B2B2B2;}
+                    img{margin: 0; width: 20px; position: absolute; bottom: 9px; right: 0;}
+                    ion-text.attach{
+                        .img-add{margin-top: 15px; height: 80px; width: 80px; position: relative; border-radius: 10px; display: inline-block;
+                            // img{height: 100%; width: 100%; position: static;}
+                            .more-count{position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #E5E5E5; border-radius: 5px;
+                                span{color: #607e9a; text-align: center; font-weight: 500; font-size: 3rem; line-height: 80px; display: block;}
+                            }
+                        }
+                        .img-add-view{margin-left:5px; margin-top: 15px; height: 80px; width: 80px; position: relative; border-radius: 10px; display: inline-block;
+                            img{height: 100%; width: 100%; position: static; border-radius: 5px;}
+                            .remove{position: absolute; top: -12px; right: -12px; width: 25px; height: 25px; line-height: 29px; border-radius: 25px; background: #9F9F9F; text-align: center;
+                                img{width: 15px; height: 15px; display: inline-block;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}    
+
+ion-footer {border-radius: 0; background: #f1f1f1; --ion-background-color: #f1f1f1; border: 0; --border: 0 ; text-align: center;
+    &::before{background: none;}
+    ion-button.add-team{--background: #607E9A; --color: #ffffff; --background-hover: #607E9A; --background-focused: #607E9A; --background-activated: #607E9A; font-size: 0.71rem; font-weight: 400; --padding-end: 20px; --padding-start: 20px; height: 32px; min-width: 118px; margin: 15px 6px; text-transform: capitalize;}
+    ion-button.cancel-team{--background: #9f9f9f; --color: #ffffff; --background-hover: #9f9f9f; --background-focused: #9f9f9f; --background-activated: #9f9f9f; font-size: 0.71rem; font-weight: 400; --padding-end: 20px; --padding-start: 20px; height: 32px; min-width: 118px; margin: 15px 6px; text-transform: capitalize;}
+}

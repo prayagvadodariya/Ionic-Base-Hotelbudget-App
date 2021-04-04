@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <img class="vendorclose" src="../../assets/icon/close.svg" *ngIf="type"  (click)="modelClose()" />
+      <ion-menu-button *ngIf="!type">
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-title >{{HotelName}}</ion-title> -->
+    <ion-title >Manage Vendors</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="search-ven">
+      <ion-searchbar placeholder="Search Vendor"  [(ngModel)]="searchInput" (ionInput)="onSearchInput($event)"  (ionCancel)="clearSearch()"></ion-searchbar>
+      <!-- <ion-button class="search-btn" (ionCancel)="clearSearch($event)">
+        <img src="../../assets/images/search.png" />
+      </ion-button> -->
+  </ion-card>
+
+  <!-- <ion-row class="padd-ven">
+    <ion-col class="venlist">
+        Vendors
+    </ion-col>
+    <ion-col class="txt-right" *ngIf="!type">
+      <ion-button class="addvendor" (click)="addVendorModel()">
+          + Add Vendor
+      </ion-button>
+    </ion-col>
+  </ion-row> -->
+
+  <!-- (click)= "type == 'vendorListModel' ? selectVendor(vendor) : updateVendor(vendor)" -->
+  <ion-card class="vendr-no"   *ngFor="let vendor of getVendorList;let i=index"  
+  (click)= "type == 'vendorListModel' ? selectVendor(vendor) : updateVendor(vendor)">
+    <ion-row>
+      <span>Company Name : </span>  {{vendor.vendorCompany}}
+    </ion-row>
+    <ion-row>
+      <span>Vendor No : </span>  {{vendor.vendorNumber}}
+    </ion-row>
+  </ion-card>
+
+  <!-- <ion-card class="vendr-no">
+      <ion-row>
+        <span>Name:</span>  Atlantic Fitness
+      </ion-row>
+      <ion-row>
+        <span>Vendor No:</span>  AAT497
+      </ion-row>
+    </ion-card> -->
+
+    <div *ngIf='message' class="no-data-found">
+      <!-- <div > -->
+        <img src="assets/images/empty-screen/vendor-list-empty.svg">
+      <h5>{{message_title}}</h5>
+      <p>{{message}}</p>
+      <!-- </div> -->
+    </div>
+
+    <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingAPI($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-refresher slot="fixed" 
+  (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-fab *ngIf="!type" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addVendorModel()" >
+      <ion-icon class="icon-plus"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<footer [step]="'vendor'"  *ngIf="!type"></footer>

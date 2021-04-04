@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button>
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button>
+        </ion-buttons>
+    <ion-title>Capital Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item style="display: none;">
+        <ion-label>{{title}}</ion-label>
+        <ion-select  [(ngModel)]="yearmodel" #yearSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" (ionChange)="onselectChangeYear(MQYsegment)">
+          <ion-select-option *ngFor="let year of yearDataList" [value]="year">{{year.name}}</ion-select-option>
+        </ion-select>
+        <ion-select [(ngModel)]="quarterModel" #quaterSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" (ionChange)="onselectChangeQuarter(MQYsegment)">
+          <ion-select-option *ngFor="let quarter of quarterDataList" [value]="quarter">{{quarter.name}}
+        </ion-select-option>
+        </ion-select>
+        <ion-select [(ngModel)]="monthModel" #monthSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" 
+          (ionChange)="onselectChangeMonth($event)">
+          <ion-select-option *ngFor="let month of monthDataList" [value]="month">{{month.name}}</ion-select-option>
+        </ion-select>
+        <!-- <ion-select [(ngModel)]="weekmodel" #weekSelect style="display: none;" (ionCancel)="onSelectChangeCancel()"
+          (ionChange)="onselectChange(MQYsegment)">
+          <ion-select-option *ngFor="let week of weekDataList" [value]="week.id">{{week.name}}</ion-select-option>
+        </ion-select> -->
+      </ion-item>
+  <!-- Top End -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="year">{{seleMonth}}</div>
+        </ion-col>
+        <ion-col>
+          <ion-segment class="yearly-segment fl" [(ngModel)]="MQYsegment" (click)="selectsegment()">
+            <ion-segment-button value="month">
+              <ion-label>m</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="quater">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+            <!-- <ion-segment-button value="day">
+              <ion-label>d</ion-label>
+            </ion-segment-button>  -->
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- Top End -->
+  <!-- ion card -->
+    <ion-card class="cap-card" *ngFor="let exp of getCapitalExpList">
+      <ion-row (click)="getxpenseDetailClick(exp)">
+        <ion-col size="6" class="hotel-txt">
+         {{exp.hotelName}}
+        </ion-col>
+        <ion-col size="6" class="hotel-txt2">
+          $<i class="clr-green">{{this.constant.replace(exp.amount)}}</i>
+        </ion-col>
+        <ion-col size="12">
+          <div id="progressbar">
+            <div class="inner" [ngStyle]="{'background': exp.color}" [style.width]="exp.percentage + '%'" style="width:40%"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  <!-- ion card -->
+   <!-- ion card -->
+   <!-- <ion-card class="cap-card">
+      <ion-row>
+        <ion-col size="6" class="hotel-txt">
+          Hampton Inn Boston Braintree
+        </ion-col>
+        <ion-col size="6" class="hotel-txt2">
+          $<i class="clr-green">1357.14</i>
+        </ion-col>
+        <ion-col size="12">
+          <div id="progressbar">
+            <div class="inner progress-green" style="width:40%"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card> -->
+  <!-- ion card -->
+</ion-content>
+<footer></footer>
+

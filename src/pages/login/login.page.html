@@ -1,0 +1,54 @@
+<ion-content class="no-scroll">
+  <div class="img-bg">
+    <div class="bg">
+      <div class="mainlogin">
+        <img src="../assets/images/logo-new.svg" class="logo" />
+
+
+
+        <ion-item class="bg-none" mode="ios">
+          <img src="../../assets/images/user-new.svg" slot="start" class="icon-user">
+          <ion-label position="stacked" class="input-text">Username</ion-label>
+          <ion-input type="text" [(ngModel)]="username" placeholder="Enter Your Username"></ion-input>
+        </ion-item>
+
+        <ion-item class="pass-btm">
+          <img src="../../assets/images/password-new.svg" slot="start" class="icon-user">
+          <ion-label position="stacked" class="input-text">Password</ion-label>
+          <ion-input [type]="passwordType" [(ngModel)]="password" placeholder="Enter Your Password"></ion-input>
+          <ion-icon slot="end" [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+          <!-- <ion-icon slot="end"  name="eye"></ion-icon> -->
+        </ion-item>
+
+        <!-- <ion-item class="remember-me">
+            <ion-checkbox [(ngModel)]="rememberChecked" (ionChange)="rememberCLick(rememberChecked)" slot="start"></ion-checkbox>
+            <ion-label>Remember Me</ion-label>
+        </ion-item> -->
+        <ion-row class="remember-me">
+          <ion-col size="1">
+            <ion-checkbox [(ngModel)]="rememberChecked" (ionChange)="rememberCLick(rememberChecked)">
+            </ion-checkbox>
+          </ion-col>
+          <ion-col size="11">
+           <ion-label>Remember Me</ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="login">
+          <ion-button shape="round" expand="full" (click)="userLoginClick()">Sign In</ion-button>
+        </ion-row>
+
+        <ion-row class="forgot-pass">
+          <ion-button clear fill="outline" routerLink="/forgotpassword">Forgot Password?</ion-button>
+        </ion-row>
+
+        <ion-grid class="hotel-budget">
+          <!-- <h5>Hotel</h5>
+            <p>Budget</p> -->
+          <img src="assets/images/hotel-budget-logo-new.svg">
+        </ion-grid>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

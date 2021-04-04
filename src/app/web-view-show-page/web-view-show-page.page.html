@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>General Cleaning</ion-title>
+    <ion-icon class="noti" slot="end" name="notifications" (click)='gotoNotification()' ></ion-icon>
+    <div class="noticount-header" *ngIf="pmNotification && pmNotification!=0">
+      <h2>{{pmNotification}}</h2>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+
+</ion-content> -->
+<ion-content >
+  <a class="item" href="#" onclick="window.open('http://staging.ancubate.com/hotel-budget-web/pm/general-clean/generate', '_system', 'location=yes'); return false;">
+    Open a Browser
+</a>
+  <!-- <div class="iframe-fix">
+  <iframe
+  [src]='mainurl'
+  frameborder="0"
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen>
+</iframe>
+</div> -->
+</ion-content>

@@ -1,0 +1,73 @@
+<ion-content>
+  <div class="popup-main">
+    <button (click)="modelClose()" class="add-exp-pop icon-cancel">
+        <!-- <ion-icon name="close"></ion-icon> -->
+      </button>
+  <div class="header-p">
+    Transfer Amount
+  </div>
+  <div class="form-pop">
+    <ion-row>
+      <ion-col> 
+        <ion-label>Department<i>*</i></ion-label> 
+        <ion-select placeholder="Rooms" class="select-main" [(ngModel)]='department' (ionChange)="getCategoryList($event)">
+          <ion-select-option *ngFor="let dept of getDepartmentList" [value]="dept.i_hotel_department_id">{{dept.v_department_name}}</ion-select-option>
+        </ion-select>
+        <div class="error" *ngIf="!department && isCheckEmptyField"> Enter Department</div>
+      </ion-col>
+
+      <ion-col>
+        <div class="icon-date">
+          <ion-label class="blue-label">
+              Month <i>*</i>
+          </ion-label>
+          <ion-datetime display-format="MMM DD, YYYY" placeholder="MM/DD/YYYY" [(ngModel)]='date'></ion-datetime>
+          <img src="../../assets/icon/calendar.svg" />
+        </div> 
+        <div class="error" *ngIf="!date && isCheckEmptyField"> Enter Department</div> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>From Category<i>*</i></ion-label>
+        <ion-select placeholder="Select Category" class="select-main" [(ngModel)]='category'>
+          <ion-select-option *ngFor="let catr of GetCategoryList" [value]="catr.i_hotel_expense_account_id">{{catr.v_expense_account_name}}</ion-select-option>
+        </ion-select> 
+        <div class="error" *ngIf="!category && isCheckEmptyField"> Enter Department</div> 
+      </ion-col>
+      <ion-col>
+        <ion-label>Available Amount<i>*</i></ion-label>
+        <ion-input placeholder="0.00" class="invoice-pad add-pop" [(ngModel)]='amount'></ion-input>  
+        <div class="error" *ngIf="!amount && isCheckEmptyField"> Enter Department</div> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>To Category<i>*</i></ion-label>
+        <ion-select placeholder="Select Category" class="select-main" [(ngModel)]='toCategory'>
+          <ion-select-option *ngFor="let catr of GetCategoryList" [value]="catr.i_hotel_expense_account_id">{{catr.v_expense_account_name}}</ion-select-option>
+        </ion-select> 
+        <div class="error" *ngIf="!toCategory && isCheckEmptyField">  Enter Department</div>
+      </ion-col>
+      <ion-col>
+        <ion-label>Available Amount<i>*</i></ion-label>
+        <ion-input placeholder="0.00" class="invoice-pad add-pop" [(ngModel)]='toAmount'></ion-input>  
+        <div class="error" *ngIf="!toAmount && isCheckEmptyField">  Enter Department</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Transfer Amount<i>*</i></ion-label>
+        <ion-input placeholder="0.00" class="invoice-pad add-pop" [(ngModel)]='transAmount'></ion-input>  
+        <div class="error" *ngIf="!transAmount && isCheckEmptyField"> Enter Department</div>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row class="padd-trans">
+        <button ion-button class="add-ex trans-wid" (click)="reallocationAmount()">Transfer</button>
+    </ion-row> -->
+    <ion-row class="transfer-btn">
+      <ion-button shape="round">transfer</ion-button>
+    </ion-row>
+  </div>
+</div>
+</ion-content>

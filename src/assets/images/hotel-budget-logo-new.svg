@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="182.344" viewBox="0 0 360 182.344">
+  <g id="Group_41" data-name="Group 41" transform="translate(-1540 -1677.656)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="240" height="4" rx="2" transform="translate(1600 1828)" fill="#fff" opacity="0.102"/>
+    <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" width="240" height="4" rx="2" transform="translate(1600 1856)" fill="#fff" opacity="0.102"/>
+    <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" width="360" height="4" rx="2" transform="translate(1540 1842)" fill="#fff" opacity="0.102"/>
+    <text id="HOTEL" transform="translate(1544.345 1776.656)" fill="#fff" font-size="99.838" font-family="Lato-Bold, Lato" font-weight="700" letter-spacing="0.05em"><tspan x="0" y="0">HOTEL</tspan></text>
+    <text id="BUDGET" transform="translate(1720.299 1812.102)" fill="#fff" font-size="29.951" font-family="Lato-Regular, Lato" letter-spacing="1.43em"><tspan x="-167.593" y="0">BUDGET</tspan></text>
+  </g>
+</svg>

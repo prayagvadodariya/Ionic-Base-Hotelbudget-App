@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button>
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button>
+        </ion-buttons>
+    <ion-title>M3 Export Invoices </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- top search -->
+<ion-grid>
+    <ion-row>
+      <ion-col class="search-top-txt">
+        Transferred Invoices
+      </ion-col>
+      <ion-col>
+        <ion-item class="all-store">
+            <ion-select placeholder="All Hotels" class="select-nav" >
+              <ion-select-option> Option </ion-select-option>
+            </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<!-- top search End -->
+<!-- date picker -->
+<ion-card class="search-pad export-invoice-pad">
+  <ion-row>
+    <ion-col >
+      <div class="gap profile-setting">
+        <div class="icon-date">
+          <ion-label>
+            From (Date)<i>*</i>
+          </ion-label>
+          <ion-datetime display-format="MMM DD, YYYY" placeholder="Select Date"></ion-datetime>
+          <img src="../../assets/icon/calendar.svg" />
+        </div>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="gap profile-setting">
+        <div class="icon-date">
+          <ion-label>
+            To (Date) <i>*</i>
+          </ion-label>
+          <ion-datetime display-format="MMM DD, YYYY" placeholder="Select Date"></ion-datetime>
+          <img src="../../assets/icon/calendar.svg" />
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-card>
+<!-- date picker End -->
+<!-- chart -->
+<div class="chart-export-invoice">
+  <div class="chart2"> 
+    <div id="exportInvoice" style="height: 200px"></div>
+  </div>
+</div>
+<!-- chart End -->
+<!-- Schedular -->
+<ion-card >
+  <ion-row>
+    <ion-col class="schedular bor-right-schedular">
+      <span>Last Schedular at</span>
+      23:50:02 PM
+    </ion-col>
+    <ion-col class="schedular">
+      <span>Next Schedular at</span>
+      23:50:02 PM
+    </ion-col>
+  </ion-row>
+</ion-card>
+<!-- Schedular End -->
+<!-- table -->
+  <ion-card class="padd-btmcard">
+    <ion-row class="top-clr">
+      <ion-col size="4">Date</ion-col>
+      <ion-col size="5" class="txt-m3">
+        Transferred (28)
+       </ion-col>
+      <ion-col size="3" class="txt-m3">
+        Failed (122)        
+      </ion-col>
+    </ion-row>
+    <ion-row class="m3-borbtm">
+      <ion-col size="4">Feb 15, 2019</ion-col>
+      <ion-col size="5">0</ion-col>
+      <ion-col size="3">122</ion-col>
+      <!-- <ion-col size="2" class="align-r"> <img class="icon-m3" src="../../assets/icon/arrow-r.svg" /> </ion-col> -->
+    </ion-row>
+    <ion-row class="m3-borbtm">
+        <ion-col size="4">Feb 15, 2019</ion-col>
+        <ion-col size="5">0</ion-col>
+        <ion-col size="3">122</ion-col>
+        <!-- <ion-col size="2" class="align-r"> <img class="icon-m3" src="../../assets/icon/arrow-r.svg" /> </ion-col> -->
+      </ion-row>
+  </ion-card>
+<!-- table -->
+</ion-content>

@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>PM For Room</ion-title>
+    <span class="ion-width" slot="end">
+      <ion-icon class="save" slot="end"  name="md-checkmark" *ngIf="roomId"  (click)="saveSurvey($event)"></ion-icon>
+    </span>
+    <ion-icon class="noti" slot="end" *ngIf="!roomId" name="notifications" (click)='gotoNotification()'></ion-icon>
+    <div class="noticount-header" *ngIf="!roomId && pmNotification && pmNotification!=0">
+      <h2>{{pmNotification}}</h2>
+    </div> 
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="generate">
+    <ion-row>
+      <ion-col class="quater" size="6">
+        <h2>
+          <b> Q{{quater}}-{{date}}</b>
+        </h2>
+      </ion-col>
+      <ion-col class="selectpart" size="6">
+        <ion-item class="all-store">
+          <ion-select placeholder="Select Room" class="select-nav" [(ngModel)]="roomId">
+            <ion-select-option *ngFor="let item of roomList" [value]="item.roomId">{{item.room}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row class="many-part">
+    <ion-col listingsize="8" *ngIf="optionType?.length >= 1" >
+      <p>{{optionType[categories[countlist - 1].optionsTypeId - 1].name}}</p>
+    </ion-col>
+    <ion-col size="4" text-right class="reset-top" >
+      <ion-button  shape="round" (click)="onAddItem()">
+        <img src="assets/icon/plus-icon.svg">item
+      </ion-button>
+     <img class="reset" src="assets/icon/reset.svg" (click)="ClearField()">
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="generatesurvy-content" *ngIf="optionType?.length >= 1">
+    <ion-card class="listing-part">
+      <ion-row class="items" *ngIf="optionType?.length >= 1">
+        <ion-col class="main-tlt" size="3">items</ion-col>
+
+        <ion-col *ngFor="let item of optionType[categories[countlist - 1].optionsTypeId - 1].options">
+          {{item.name}}
+        </ion-col> 
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <ion-radio-group mode="md"  *ngFor="let itemlist of allItemdata[countlist - 1];let i=index"
+      [(ngModel)]="itemlist.status" (ionChange)="radioChecked()"
+        >
+        <ion-row >
+          <ion-col class="main-tlt-1" size="3">{{itemlist.item}}</ion-col>
+            <ion-col *ngFor="let itemoptionType of optionType[categories[countlist - 1].optionsTypeId - 1].options">          
+              <ion-radio mode="md" value="{{itemoptionType.id}}"></ion-radio>
+            </ion-col>       
+          <ion-col>
+            <img *ngIf="itemlist.comment" src="assets/images/chat-icn.png" 
+            (click)="onAddComment(itemlist.item,i,1)"
+               />
+            <img *ngIf="!itemlist.comment" src="assets/images/chat.png"
+            (click)="onAddComment(itemlist.item,i,2)" />
+          </ion-col>
+          <ion-col>
+            <img *ngIf="!itemlist.itemImage" 
+              src="assets/images/img-thumb.png"(click)="UploadItemImage(countlist - 1,i)">
+            <img *ngIf="itemlist.itemImage" 
+              [src]="this.Imageurl+itemlist.itemImage" (error)="handleImgError($event, itemlist.itemImage)" (click)="openViewer(itemlist)">
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </ion-card>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid class="progress">
+
+      <ion-item lines="none">
+        <ion-text *ngIf="categories?.length >= 1">{{categories[countlist - 1].category}}
+          {{selectedradiobtncount}} / {{allItemdata[countlist - 1]?.length}}
+          <span>
+            <ion-progress-bar value="{{showprograssbar}}"></ion-progress-bar>
+          </span>
+        </ion-text>
+        <ion-icon slot="end" name="ios-arrow-back" *ngIf="countlist > 1" (click)="backgot()"></ion-icon>
+        <ion-icon slot="end" name="ios-arrow-forward" *ngIf="countlist != categories?.length" (click)="forwardgo()"></ion-icon>
+      </ion-item>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="pr-card">
+    <ion-item class="profile-main">
+      <div class="prfl-img" slot="start">
+        <!-- <ion-img   class="img-inner" src="{{profileimg}}"></ion-img> -->
+        <img class="img-inner" src="{{profileimg}}" />
+      </div>
+      <h2 *ngIf="UserDetailsArry">
+        <i>{{UserDetailsArry.v_full_name}}</i> <br>
+        <p>{{UserDetailsArry.roleName}}</p>
+      </h2>
+
+    </ion-item>
+    <ion-button class="edit-profile" (click)="goToEditProfileCLick()">Edit Profile</ion-button>
+  </ion-card>
+
+  <ion-card class="prl-content">
+    <!-- <div class="bor-profile">
+      <div class="firstname">First Name </div>
+      <div class="right-txt-part">{{UserDetailsArry.firstName}}</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+      <div class="firstname">Last Name</div>
+      <div class="right-txt-part">{{UserDetailsArry.lastName}}</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">Email</div>
+        <div class="right-txt-part">{{UserDetailsArry.emailAddress}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">Phone</div>
+        <div class="right-txt-part">{{UserDetailsArry.phone}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">Mobile</div>
+        <div class="right-txt-part">{{UserDetailsArry.cellPhone}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">Fax</div>
+        <div class="right-txt-part">{{UserDetailsArry.fax}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">Address</div>
+        <div class="right-txt-part">{{UserDetailsArry.address}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">City</div>
+        <div class="right-txt-part">{{UserDetailsArry.city}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">State</div>
+        <div class="right-txt-part">{{UserDetailsArry.state}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="bor-profile">
+        <div class="firstname">Zip Code</div>
+        <div class="right-txt-part">{{UserDetailsArry.zip}}</div>
+        <div class="clear"></div>
+    </div> -->
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">First Name<i>*</i></ion-label>
+        <ion-text>Jhonny Bravo</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Last Name<i>*</i></ion-label>
+        <ion-text>Henry</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Email<i>*</i></ion-label>
+        <ion-text>rm@gmail.com</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Phone<i>*</i></ion-label>
+        <ion-text>+1 123-456-7890</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Mobile<i>*</i></ion-label>
+        <ion-text>+1 123-456-7890</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Fax<i>*</i></ion-label>
+        <ion-text>+1 123-456-7890</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Country<i>*</i></ion-label>
+        <ion-text>United State</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">State<i>*</i></ion-label>
+        <ion-text>California</ion-text>
+      </ion-item> 
+       <ion-item>
+        <ion-label style="font-size: 0.7rem;">City<i>*</i></ion-label>
+        <ion-text>Los Angeles</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Adress<i>*</i></ion-label>
+        <ion-text>1124 andom Rd. Ei Cajon</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 0.7rem;">Zip Code<i>*</i></ion-label>
+        <ion-text>9001</ion-text>
+      </ion-item>
+
+
+  </ion-card>
+  <div class="btn-profile profile-setting add-save">
+    <button ion-button="" (click)="goToCHhangePasswordCLick()"> Change Password </button>
+  </div>
+
+</ion-content>
+<!-- <footer></footer> -->

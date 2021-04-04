@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <!-- <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>M3 Export Capital Invoices</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+
+<ion-card class="datecard">
+    <ion-row class="date">
+      <ion-col class="survey-txt">
+        Date:
+      </ion-col>
+      <ion-col>  
+       {{invoicedata.transferedDate}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card *ngFor="let item of SubInvoiceRecordArr">
+    <ion-item>
+      <ion-label>
+        <h2>{{item.hotelName}}</h2>
+        <p>Invoice No: <i>{{item.PONumber}}</i> </p>
+        <p *ngIf="item.m3_status == 0">M3 Status: <i>Pending</i> </p>
+        <p *ngIf="item.m3_status == 1">M3 Status: <i>Pass</i> </p>
+        <p *ngIf="item.m3_status == 2">M3 Status: <i>Fail</i> </p>
+        
+      </ion-label>
+      <div slot="end" class="righttransferred">
+        {{item.transferedDate}}
+        <div class="transbtn" *ngIf="item.currentStatus == 1">
+          Transferred
+        </div>
+        <div class="transbtn" *ngIf="item.currentStatus == 0">
+          Pending
+        </div>
+        <div class="transbtn" *ngIf="item.currentStatus == 2">
+          Failed
+        </div>
+      </div>
+    </ion-item>
+  </ion-card>
+  <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrolling($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- <ion-card>
+    <ion-item>
+      <ion-label>
+        <h2>Q&C New Orleans</h2>
+        <p>Invoice No: <i>00169-02-014402</i> </p>
+        <p>M3 Status: <i>Pending</i> </p>
+      </ion-label>
+      <div slot="end" class="righttransferred">
+        Feb 10, 2019
+        <div class="transbtn">
+          Transferred
+        </div>
+      </div>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-label>
+        <h2>Q&C New Orleans</h2>
+        <p>Invoice No: <i>00169-02-014402</i> </p>
+        <p>M3 Status: <i>Pending</i> </p>
+      </ion-label>
+      <div slot="end" class="righttransferred">
+        Feb 10, 2019
+        <div class="transbtn">
+          Transferred
+        </div>
+      </div>
+    </ion-item>
+  </ion-card> -->
+</ion-content>

@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button *ngIf="userData.roleId==2">
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button>
+          <ion-back-button (click)="back()" *ngIf="!roleid">
+            <!-- <ion-icon name="arrow-round-back"></ion-icon> -->
+          </ion-back-button>
+        </ion-buttons>
+    <!-- <ion-title *ngIf="hotelName">{{hotelName}}</ion-title> -->
+    <ion-title>Capital Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content> 
+  <!-- total -->
+  <ion-card>
+    <ion-row class="bor-tab-bott total-txt">
+        <ion-col size="8">
+            Total Expense          
+        </ion-col>
+        <ion-col class="ttl" *ngIf="totalExpense" >
+          $ {{ this.constant.replace(totalExpense)}}
+          <!-- $ {{ this.constant.replace("15000")}} -->
+        </ion-col>
+        <ion-col class="ttl" *ngIf="message" >
+          $ 0.00
+          <!-- $ {{ this.constant.replace("15000")}} -->
+        </ion-col>
+    </ion-row>  
+  </ion-card> 
+  <ion-row class="">
+      <ion-col class="exp">
+          Expense Details          
+      </ion-col>
+      <!-- <ion-col>
+       <button ion-button class="btnadd"> <img src="../../assets/icon/plus-icon.svg" /> Add Expense </button>
+      </ion-col> -->
+  </ion-row>
+  <!-- Total -->
+  <!-- main table -->
+  <ion-card class="card-pad cap-card-inn" *ngFor="let exp of getexpenseData" (click)="openActionSheet(exp)">
+      <ion-row class="bor-tab-bott">
+        <ion-col size="8">
+           <ion-item class="text-search">
+              <div slot="start">
+                  Invoice No:
+              </div>
+              <h2>{{exp.invoiceNo}}</h2>
+            </ion-item>
+        </ion-col>
+        <ion-col>
+          {{exp.dateDMY}}
+        </ion-col>
+      </ion-row> 
+      <ion-row class="bor-tab-bott">
+        <ion-col size="9">
+        <ion-item class="text-search">
+            <div slot="start">
+                Vendor:
+            </div>
+            <h2>{{exp.vendorCompany}}</h2>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         
+        </ion-col>
+      </ion-row>
+      <ion-row class="bor-tab-bott">
+        <ion-col size="9">
+            <ion-item class="text-search">
+                <div slot="start">
+                    Category:
+                </div>
+                <h2 class="dis-btn">{{exp.expenseAccountName}}</h2>
+              </ion-item>
+        </ion-col>
+        <ion-col class="doll-txt">
+           <i> $</i>{{this.constant.replace(exp.cost)}}
+        </ion-col>
+      </ion-row>    
+  </ion-card>
+
+  <div *ngIf='message' class="no-data-found">
+    <!-- <div > -->
+      <img src="assets/images/empty-screen/capital-expense-empty.svg">
+    <h5>{{message_title}}</h5>
+    <p>{{message}}</p>
+    <!-- </div> -->
+  </div>
+<!-- main table End -->
+<!-- main table -->
+<!-- <ion-card class="card-pad cap-card-inn">
+  <ion-row class="bor-tab-bott">
+    <ion-col size="8">
+       <ion-item class="text-search">
+          <div slot="start">
+              Invoice No:
+          </div>
+          <h2>1961201204</h2>
+        </ion-item>
+    </ion-col>
+    <ion-col>
+      Feb 22, 2019
+    </ion-col>
+  </ion-row> 
+  <ion-row class="bor-tab-bott">
+    <ion-col size="9">
+    <ion-item class="text-search">
+        <div slot="start">
+            Vendor:
+        </div>
+        <h2>AT&T Corp</h2>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+     
+    </ion-col>
+  </ion-row>
+  <ion-row class="bor-tab-bott">
+    <ion-col size="9">
+        <ion-item class="text-search">
+            <div slot="start">
+                Category:
+            </div>
+            <h2 class="dis-btn">Pool Service</h2>
+          </ion-item>
+    </ion-col>
+    <ion-col class="doll-txt">
+       <i> $</i>188.45
+    </ion-col>
+  </ion-row>    
+</ion-card> -->
+<!-- main table End -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addCapitalExpense()" >
+      <ion-icon class="icon-plus"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<footer></footer>

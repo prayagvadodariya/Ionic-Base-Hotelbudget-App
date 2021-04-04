@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hampton Inn Boston Braintree</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="search-top-txt">
+        Search Expense
+      </ion-col>
+      <ion-col>
+        <ion-segment class="yearly-segment search-invoice-btn">
+          <ion-segment-button value="yearly">
+            <ion-label>y</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="quartely">
+            <ion-label>q</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="monthly">
+            <ion-label>m</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="day">
+            <ion-label>D</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+      <ion-card>
+        <div class="gap profile-setting">
+          <ion-row>
+            <ion-col>
+              <div class="icon-date">
+                <ion-label>
+                  From (Date)<i>*</i>
+                </ion-label>
+                <ion-datetime display-format="MMM DD, YYYY HH:mm" placeholder="MM/DD/YYYY"></ion-datetime>
+                <img src="../../assets/icon/calendar.svg" />
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="icon-date">
+                <ion-label>
+                  To (Date)<i>*</i>
+                </ion-label>
+                <ion-datetime display-format="MMM DD, YYYY HH:mm" placeholder="MM/DD/YYYY"></ion-datetime>
+                <img src="../../assets/icon/calendar.svg" />
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+       </ion-card>
+
+      <ion-card>
+        <div class="gap profile-setting">
+          <ion-label>
+            Department
+          </ion-label>
+          <ion-select placeholder="Select Department" class="select-main">
+              <ion-select-option value="f">Rooms</ion-select-option>
+          </ion-select>
+          <ion-label>
+            Category
+          </ion-label>
+          <ion-select placeholder="Select Category" class="select-main">
+              <ion-select-option value="f">Rooms</ion-select-option>
+          </ion-select>
+          <ion-label>
+            Vendor
+          </ion-label>
+          <ion-input placeholder="Enter Vendor" class="invoice-pad marbot"></ion-input>
+        </div>
+      </ion-card>
+    <div  class="align-c profile-setting paddtop"><button ion-button="" disabled=""> Search </button></div>
+</ion-content>

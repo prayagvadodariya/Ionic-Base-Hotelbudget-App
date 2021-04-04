@@ -1,0 +1,158 @@
+<ion-header role="banner" class="ios header-ios header-collapse-none hydrated">
+  <ion-toolbar class="in-toolbar ios toolbar-title-default hydrated">
+    <ion-buttons slot="start"
+      class="buttons-first-slot sc-ion-buttons-ios-h sc-ion-buttons-ios-s ios hydrated">
+      <ion-back-button _ngcontent-tbi-c5=""
+        class="sc-ion-back-button-ios-h sc-ion-back-button-ios-s ios button ion-activatable ion-focusable hydrated">
+        <button type="button" class="button-native sc-ion-back-button-ios"><span
+            class="button-inner sc-ion-back-button-ios">
+            <ion-icon class="sc-ion-back-button-ios ios hydrated" role="img" aria-label="arrow back"></ion-icon><span
+              class="button-text sc-ion-back-button-ios">Back</span>
+          </span></button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ios title-ios title-default hydrated">Edit PM For Room</ion-title><span
+      class="ion-width" slot="end">
+      <!--bindings={
+  "ng-reflect-ng-if": "1102"
+}-->
+      <ion-icon class="save ios hydrated" name="md-checkmark" slot="end"
+        ng-reflect-name="md-checkmark" role="img" aria-label="checkmark"></ion-icon>
+    </span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="generate">
+    <ion-row>
+      <!-- <ion-col class="view-tlt">
+        <ion-label>PM For Room</ion-label>
+      </ion-col> -->
+      <ion-col class="quater" size="5">
+        <h2>
+          <b> Q{{quater}}-{{date}}</b>
+        </h2>
+      </ion-col>
+      <ion-col>
+        <ion-item class="all-store">
+          <ion-select placeholder="Select Category" class="select-nav">
+            <ion-select-option> Option </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row class="many-part">
+    <ion-col listingsize="8" *ngIf="showstatusmy">
+      <p>{{showstatusmy}}</p>
+    </ion-col>
+    <ion-col size="4" text-right class="reset-top">
+      <ion-button shape="round" (click)="onAddItem()">
+        <img src="assets/icon/plus-icon.svg">item
+      </ion-button>
+      <img class="reset" src="assets/icon/reset.svg" (click)="ClearField()">
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-grid class="add-item">
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label> Room :- {{roomName}}</ion-label>
+          <ion-select   placeholder="Select Room" class="select-nav" [(ngModel)]="roomId">
+            <ion-select-option *ngFor="let item of roomList" [value]="item.roomId">{{item.room}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-button shape="round" (click)="onAddItem()">
+          <img src="assets/icon/plus-icon.svg">Add item
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <!-- <ion-grid class="listing" >
+    <ion-row>
+      <ion-col size="9" *ngIf="showstatusmy" >
+        <p>{{showstatusmy}}</p>
+      </ion-col>
+      <ion-col size="3" text-right>
+          <img src="assets/icon/reset.svg" (click)="ClearField()">
+      </ion-col>
+  </ion-row>
+  </ion-grid> -->
+
+  <ion-grid class="generatesurvy-content">
+    <ion-card class="listing-part">
+      <ion-row class="items">
+        <ion-col class="main-tlt" size="3">items</ion-col>
+        <ion-col *ngIf="showstatusmy == '(Y - Yes, N - No)'">Y</ion-col>
+        <ion-col *ngIf="showstatusmy == '(Y - Yes, N - No)'">N</ion-col>
+        <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">0</ion-col>
+        <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">1</ion-col>
+        <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">2</ion-col>
+        <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">3</ion-col>
+        <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">4</ion-col>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <ion-radio-group *ngFor="let item of backdatacollect[checkprogressbar - 1];let i=index" [(ngModel)]="item.status"
+        (ionChange)="radioChecked()">
+        <ion-row>
+          <ion-col class="main-tlt-1" size="3">{{item.item}}</ion-col>
+          <ion-col>
+            <ion-radio mode="md" *ngIf="showstatusmy != '(Y - Yes, N - No)'" value="0"></ion-radio>
+            <ion-radio mode="md" *ngIf="showstatusmy == '(Y - Yes, N - No)'" value="5"></ion-radio>
+          </ion-col>
+          <ion-col>
+            <ion-radio mode="md" *ngIf="showstatusmy != '(Y - Yes, N - No)'" value="1"></ion-radio>
+            <ion-radio mode="md" *ngIf="showstatusmy == '(Y - Yes, N - No)'" value="6"></ion-radio>
+          </ion-col>
+          <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">
+            <ion-radio mode="md" value="2"></ion-radio>
+          </ion-col>
+          <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">
+            <ion-radio mode="md" value="3"></ion-radio>
+          </ion-col>
+          <ion-col *ngIf="showstatusmy != '(Y - Yes, N - No)'">
+            <ion-radio mode="md" value="4"></ion-radio>
+          </ion-col>
+
+          <ion-col>
+            <img *ngIf="item.comment" src="assets/images/chat-icn.png"
+              (click)="onAddComment(item.item,checkprogressbar - 1,i,1)" />
+            <img *ngIf="!item.comment" src="assets/images/chat.png"
+              (click)="onAddComment(item.item,checkprogressbar - 1,i,2)" />
+          </ion-col>
+          <ion-col>
+            <img *ngIf="!item.itemImage" (click)="userProfileUpdate(checkprogressbar - 1,i)"
+              src="assets/images/img-thumb.png">
+            <img *ngIf="item.itemImage" (click)="userProfileUpdate(checkprogressbar - 1,i)"
+              [src]="this.Imageurl+item.itemImage" (error)="handleImgError($event, item.itemImage)">
+
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </ion-card>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid class="progress">
+      <ion-item lines="none">
+
+        <ion-text *ngIf="categoryalldata?.length > 0">{{this.categoryalldata[checkprogressbar - 1].category}}
+          {{selectedradiobtncount}}/{{backdatacollect[checkprogressbar - 1]?.length}}
+          <span>
+            <ion-progress-bar value="{{showprograssbar}}"></ion-progress-bar>
+          </span>
+        </ion-text>
+        <ion-icon slot="end" name="ios-arrow-back" *ngIf="checkprogressbar != 1" (click)="backgo()"></ion-icon>
+        <ion-icon slot="end" name="ios-arrow-forward" *ngIf="categoryalldata.length != checkprogressbar"
+          (click)="nextgo()"></ion-icon>
+
+      </ion-item>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,242 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" class="backBtn" slot="start" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>{{hotelName}}</ion-title> -->
+    <ion-title>View PM For Room</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <!-- <ion-col class="view-tlt">
+      <ion-label>View PM Survey</ion-label>
+    </ion-col> -->
+    <ion-col class="tlt-content">
+      <div class="select">
+          <ion-item class="all-store">
+              <ion-select placeholder="Select Room"  class="select-nav" [(ngModel)]="roomId" (ionChange)="selectcategory(roomId)">
+                <ion-select-option *ngFor="let data1 of surveyItemData;let i=index;" [value]="i" >{{data1.category}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="rooms">
+    <ion-card>
+      <ion-row>
+        <ion-col>
+          <ion-text class="room" ngi>Room: {{RoomNumber}}</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-label class="feb">{{maindateshow}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+
+  <ion-grid class="name-sts">
+    <ion-card>
+      <ion-row>
+        <ion-col class="name">Name</ion-col>
+        <ion-col class="name">Status</ion-col>
+      </ion-row>
+
+      <!-- <div *ngIf="roomId" > -->
+                <ion-row class="forpart" *ngFor="let data of this.surveyItemArr" >
+                  <ion-col size="6">{{data.item}}</ion-col>
+                  <ion-col size="4" >
+                    <div *ngIf="data.optionsTypeId == 1">
+                          <div *ngIf="data.status != ''" >
+                              <div  *ngFor="let item2 of surveyStatusArr;let ii = index">
+                                  <div size="4" *ngIf='ii == data.status' >
+                                    {{item2.name}}
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      <div *ngIf="data.status == ''">-None-</div>
+                    </div>
+                    <div  *ngIf="data.optionsTypeId == 2">
+                        <div *ngIf="data.status == '5'">Y - Yes</div>
+                        <div *ngIf="data.status == '6'">N - No</div>   
+                        <div *ngIf="data.status == ''">-None-</div>                 
+                    </div>
+                    
+                  </ion-col>
+                      
+                     
+                  <ion-col size="1">
+                    <img *ngIf="data.comment"  src="assets/images/chat-icn.png"  (click)="showComment(data.comment)"/>
+                      <img  *ngIf="!data.comment" src="assets/images/chat.png" />            
+                  </ion-col>
+                  <ion-col size="1">
+                    <img *ngIf="!data.itemImage"  src="assets/images/img-thumb.png">
+                    <img *ngIf="data.itemImage"  src="{{this.Imageurl}}{{data.itemImage}}"(click)="openViewer(data)">
+                  </ion-col>
+                </ion-row>     
+     
+    </ion-card>
+  </ion-grid>
+
+  <div class="survey-btn">
+    <ion-button shape="round" (click)="Showdatasurvey()">
+      <img src="assets/images/i-icns.png">Survey By
+    </ion-button>
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+   
+      <ion-back-button [text]="buttonText" icon="buttonIcon">
+      </ion-back-button>
+      -->
+<!-- <ion-buttons slot="start"> -->
+<!-- <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button> -->
+<!-- <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+<!-- <ion-title>View PM Survey</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- View PM Survey -->
+<!-- <ion-grid>
+    <ion-row>
+      <!-- <ion-col class="search-top-txt">
+        View PM Survey
+      </ion-col> -->
+<!-- <ion-col class="search-top-txt pmsurvey">
+        <h2>
+          Room: <i class="font">AS</i>
+        </h2>
+      </ion-col>
+
+      <ion-col class="search-top-txt pmsurvey" slot="end">
+        <h2>
+          Room: <i class="font">AS</i>
+        </h2>
+      </ion-col> -->
+<!-- <ion-col>
+        <ion-item class="all-store">
+          <ion-select placeholder="Select Category" class="select-nav">
+            <ion-select-option> Option </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col> -->
+<!-- </ion-row>
+    </ion-grid> -->
+<!-- View PM Survey -->
+<!-- <div class="main-heading">{{Hotel_Name}}</div>
+  <ion-card>
+    <ion-row class="date">
+      <ion-col>
+        Room: 202
+      </ion-col>
+     {{surveyItem.category}}-- {{totalStatusCount}}/{{categoryCount}}
+      <ion-col>
+       {{surveyItem.surveyDate}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card class="pm-survey">
+    <ion-row>
+      <ion-col> Name </ion-col>
+      <ion-col size="3"> Status </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of surveyItemArr; let i= index">
+      <ion-col> {{item.item}} </ion-col>
+      <ion-col size="3">{{getSurveyStatus(item.status)}}</ion-col>
+
+      <ion-col size="3" class="chat-icon-survey">
+        <button ion-button class="chat-survery"> <img src="assets/icon/chat.svg" /> </button> 
+        <button ion-button (click)="surveyByPopup()" class="chat-survery"> <img src="assets/images/img-thumb.png" /> </button> -->
+<!-- </ion-col>
+    </ion-row> -->
+<!-- <ion-row>
+      <ion-col> Door & Frame Condition </ion-col>
+      <ion-col size="3">0 - Okay</ion-col>
+      <ion-col size="3" class="chat-icon-survey">
+        <button ion-button class="chat-survery"> <img src="assets/icon/chat.svg" /> </button> <button ion-button
+          class="chat-survery"> <img src="assets/icon/img-thumb.svg" /> </button>
+      </ion-col>
+    </ion-row> -->
+<!-- </ion-card>
+
+  <ion-row>
+    <ion-col  col-25>
+      <ion-icon  name="arrow-dropleft" click="previousPMSurvey()"></ion-icon>
+    </ion-col>
+    <ion-col col-50>
+
+    </ion-col>
+    <ion-col col-25>
+      <ion-icon  name="arrow-dropright" click="nextPMSurvey()"></ion-icon>
+    </ion-col>
+  </ion-row> -->
+
+
+  <!-- New data  -->
+  <!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button>
+                <img class="menu" src="../../assets/icon/menu.svg" />
+            </ion-menu-button>
+        </ion-buttons>
+        <ion-title >PM Survey</ion-title>
+        <ion-icon class="icon" slot="end" name="notifications" (click)='gotoNotification()'></ion-icon>
+    </ion-toolbar>
+</ion-header>
+<ion-content >
+<div class="main-heading">{{Hotel_Name}}</div>
+<ion-card class="pm-survey">
+    <ion-row>
+        <ion-col (click)="sorting()"> Date </ion-col>
+        <ion-col size="2"> Room </ion-col>
+        <ion-col> Survey By </ion-col>
+        <ion-col size="3"> Status </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let survey of getSurveyList" (click)="viewSurvey(survey)">
+        <ion-col> {{survey.surveyDate}} </ion-col>
+        <ion-col size="2"> {{survey.room}} </ion-col>   
+        <ion-col> {{survey.userName}} </ion-col>
+        <ion-col size="3" *ngIf="survey.surveyStatus=='1'" style="color: green">Complete</ion-col>
+        <ion-col size="3" *ngIf="survey.surveyStatus=='2'" style="color: red">Partial</ion-col>
+        <ion-col size="3" *ngIf="survey.surveyStatus=='3'">Incomplete</ion-col>
+    </ion-row>
+    
+</ion-card>
+<ion-fab *ngIf='userData.roleId == 6 || userData.roleId == 7'  vertical="bottom" horizontal="end" slot="fixed" class="btn-plus" (click)="addPmSurvey()" >
+    <ion-fab-button>
+      <ion-icon class="icon-plus"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingAPI($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> 
+</ion-content> -->
+

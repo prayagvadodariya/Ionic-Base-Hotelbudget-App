@@ -1,0 +1,310 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Help</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <!-- <ion-grid class="help-segment">
+    <ion-segment mode="md">
+      <ion-segment-button value="customer support" mode="md">
+        <ion-label>Customer Support</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="guide video" mode="md">
+        <ion-label>Guide Video</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="manage inqury" mode="md">
+        <ion-label>Manage Inqury</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-grid> -->
+  <ion-grid class="customersupport">
+    <!-- <ion-grid class="customersupport" *ngIf="MQYsegment=='customer support'"> -->
+    <ion-card>
+      <h2>How are we Doing?</h2>
+      <p>We would like to here form you if you have any Inquiry / Query/ Feedback from you on our app. The more details you
+        can provide, the better.</p>
+      <ion-item lines="none">
+        <ion-label position="stacked">Description
+          <i>*</i>
+        </ion-label>
+        <ion-input placeholder="Please leave detailed description" [(ngModel)]="descriptiondata"></ion-input>
+      </ion-item>
+      <ion-text>Add Image here</ion-text>
+      <ion-row>
+        <!-- <ion-col >
+          <img src="assets/images/nature-1.jpg">
+         <img class="cross" src="assets/icon/cancel.png" (click)="removeImg()">
+        </ion-col> -->
+        <!-- <ion-col>
+          <img src="assets/images/nature-1.jpg">
+          <img class="cross" src="assets/icon/cancel.png">
+        </ion-col> -->
+        <ion-col size="3"  *ngFor="let item of ImageData;let i = index" >
+          <img  *ngIf="item" src = "{{item.urlmy}}{{item.name}}">
+          <img  class="cross" src="assets/icon/cancel.png" (click)="DeleteImage(i);">
+        </ion-col>
+        <ion-col size="3">
+          <img src="assets/images/add-icon.png" (click)="addNewImg()">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-row class="submit-btn">
+      <ion-button shape="round" (click)="HelpSubmit()">submit</ion-button>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-grid class="guidevideo">
+  
+    <ion-card>
+      <ion-item lines="none">
+        <img slot="start" src="assets/images/play.png">
+        <ion-text>How To Do Capital Exense</ion-text>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none">
+        <img slot="start" src="assets/images/play.png">
+        <ion-text> How To Add Preventative Maintenance Survey
+        </ion-text>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none">
+        <img slot="start" src="assets/images/play.png">
+        <ion-text>How To Do Capital Exense</ion-text>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none">
+        <img slot="start" src="assets/images/play.png">
+        <ion-text>How To Do Capital Exense</ion-text>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none">
+        <img slot="start" src="assets/images/play.png">
+        <ion-text> How To Add Preventative Maintenance Survey
+        </ion-text>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none">
+        <img slot="start" src="assets/images/play.png">
+        <ion-text>How To Do Capital Exense</ion-text>
+      </ion-item>
+    </ion-card>
+  </ion-grid> -->
+  <!-- <ion-grid class="manageinqury">
+   
+    <ion-row>
+      <ion-col>
+        <ion-item style="float: left;" class="all-store">
+          <ion-select placeholder="Role" class="select-nav">
+            <ion-select-option></ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item style="float: right;" class="all-store">
+          <ion-select placeholder="Hotel" class="select-nav">
+            <ion-select-option>room</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-searchbar mode="ios" placeholder="Search"></ion-searchbar>
+    <ion-card>
+      <ion-row class="hotel">
+        <ion-col size="2">
+          <h5>Hotel:</h5>
+        </ion-col>
+        <ion-col class="pl-8" size="8">
+          <ion-label>
+            DoubleTree Hilton Westminster
+          </ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text>jan 08,2020
+            <span>04:37 PM</span>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury-by">
+        <ion-col size="2">
+          <h5>Inqury By:</h5>
+        </ion-col>
+        <ion-col size="10">
+          <ion-label>DoubleTree Hilton Westminster </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury">
+        <ion-col size="2">
+          <h5>Inqury:</h5>
+        </ion-col>
+        <ion-col size="8">
+          <ion-text>
+            We have a new Housekeeping Manager and she needs to be set up in Checkbook. Victoria Montoya Let me know if you need anything
+            else. Thank You
+          </ion-text>
+        </ion-col>
+        <ion-col align-self-end text-right size="2">
+          <div class="img-more">
+            <img src="assets/images/attachement.png">
+            <div class="more-count">
+                <span>+7</span>
+            </div>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-row class="hotel">
+        <ion-col size="2">
+          <h5>Hotel:</h5>
+        </ion-col>
+        <ion-col class="pl-8" size="8">
+          <ion-label>
+            DoubleTree Hilton Westminster
+          </ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text>jan 08,2020
+            <span>04:37 PM</span>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury-by">
+        <ion-col size="2">
+          <h5>Inqury By:</h5>
+        </ion-col>
+        <ion-col size="10">
+          <ion-label>DoubleTree Hilton Westminster </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury">
+        <ion-col size="2">
+          <h5>Inqury:</h5>
+        </ion-col>
+        <ion-col size="8">
+          <ion-text>
+            We have a new Housekeeping Manager and she needs to be set up in Checkbook. Victoria Montoya Let me know if you need anything
+            else. Thank You
+          </ion-text>
+        </ion-col>
+        <ion-col align-self-end text-right size="2">
+          <div class="img-more">
+            <img src="assets/images/attachement.png">
+            <div class="more-count">
+                <span>+6</span>
+            </div>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-row class="hotel">
+        <ion-col size="2">
+          <h5>Hotel:</h5>
+        </ion-col>
+        <ion-col class="pl-8" size="8">
+          <ion-label>
+            DoubleTree Hilton Westminster
+          </ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text>jan 08,2020
+            <span>04:37 PM</span>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury-by">
+        <ion-col size="2">
+          <h5>Inqury By:</h5>
+        </ion-col>
+        <ion-col size="10">
+          <ion-label>DoubleTree Hilton Westminster </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury">
+        <ion-col size="2">
+          <h5>Inqury:</h5>
+        </ion-col>
+        <ion-col size="8">
+          <ion-text>
+            We have a new Housekeeping Manager and she needs to be set up in Checkbook. Victoria Montoya Let me know if you need anything
+            else. Thank You
+          </ion-text>
+        </ion-col>
+        <ion-col align-self-end text-right size="2">
+          <div class="img-more">
+            <img src="assets/images/attachement.png">
+            <div class="more-count">
+                <span>+3</span>
+            </div>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-row class="hotel">
+        <ion-col size="2">
+          <h5>Hotel:</h5>
+        </ion-col>
+        <ion-col class="pl-8" size="8">
+          <ion-label>
+            DoubleTree Hilton Westminster
+          </ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text>jan 08,2020
+            <span>04:37 PM</span>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury-by">
+        <ion-col size="2">
+          <h5>Inqury By:</h5>
+        </ion-col>
+        <ion-col size="10">
+          <ion-label>DoubleTree Hilton Westminster </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inqury">
+        <ion-col size="2">
+          <h5>Inqury:</h5>
+        </ion-col>
+        <ion-col size="8">
+          <ion-text>
+            We have a new Housekeeping Manager and she needs to be set up in Checkbook. Victoria Montoya Let me know if you need anything
+            else. Thank You
+          </ion-text>
+        </ion-col>
+        <ion-col align-self-end text-right size="2">
+          <div class="img-more">
+            <img src="assets/images/attachement.png">
+            <div class="more-count">
+                <span>+6</span>
+            </div>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid> -->
+
+
+
+
+</ion-content>

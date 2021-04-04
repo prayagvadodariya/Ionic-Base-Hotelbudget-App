@@ -1,0 +1,20 @@
+ion-content{
+
+    --ion-background-color:#f1f1f1;
+
+    .css-class-1 {
+
+        color: red;
+        
+    }
+    ion-card{
+        ion-label{padding-left: 0; margin-top: 0;}
+        // ion-textarea{--padding-start: 0;}
+        ion-select{--padding-start: 0;}
+        ion-datetime{--padding-start: 0;}
+    }
+    ion-row.dollar-pos{
+        .dollarsign-space{bottom: 25px;}
+    }
+    
+}

@@ -1,0 +1,198 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Update Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div class="main-heading">
+   {{HotelName}}
+  </div> -->
+  <form [formGroup]="authForm">
+  <ion-card>
+    
+      <div class="profile-setting">
+        <ion-label class="blue-label">
+          Invoice Date <i>*</i>
+        </ion-label>
+        <ion-datetime display-format="MMM DD, YYYY" placeholder="MM/DD/YYYY" formControlName="date" [min]="minDate" [max]="maxData" [(ngModel)]="dataResultArr.date">
+        </ion-datetime>
+
+        <ion-label class="blue-label">
+          Invoice Number <i>*</i>
+        </ion-label>
+        <ion-row class="col-invoice">
+          <ion-col class="col-invoice mar-invoice">
+            <ion-input placeholder="Enter Invoice Number" class="invoice-pad" [disabled]="purchaseOrder"
+            [ngModelOptions]="{standalone: true}" [(ngModel)]="dataResultArr.PONumber" ></ion-input>
+          </ion-col>
+          <!-- (ionBlur)="checkBlur()" -->
+          <ion-col class="col-invoice purchase-or order-add">
+            <div class="check-invoice">
+              <ion-checkbox checked="true" [(ngModel)]='purchaseOrder' (ionChange)="getPurchaseOrderCLick(purchaseOrder)" [ngModelOptions]="{standalone: true}">
+              </ion-checkbox>
+              <p>Purchase Order</p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col size="7">
+            <ion-label class="blue-label">
+              Invoice Number <i>*</i>
+            </ion-label>
+            <ion-row class="col-invoice">
+              <ion-col class="col-invoice mar-invoice">
+                <ion-input placeholder="Enter Invoice Number" class="invoice-pad" formControlName="invoiceNumber" [(ngModel)]="dataResultArr.PONumber">
+                </ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col>
+            <ion-row class="col-invoice">
+              <ion-col class="col-invoice purchase-or purchase-pad">
+                <ion-checkbox></ion-checkbox> Purchase Order
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row> -->
+
+
+
+        <ion-label class="blue-label">
+          Vendor <i>*</i>
+        </ion-label>
+        <!-- <ion-row  class="col-invoice bor-btm-add"> -->
+        <ion-col class="col-invoice ver-center">
+          <ion-col class="col-invoice" size="11">
+            <ion-input placeholder="Enter Vendor" class="invoice-pad" [(ngModel)]="dataResultArr.vendorCompany" formControlName="vendor" (click)="selectVendorModel()">
+            </ion-input>
+          </ion-col>
+          <div class="add-circle-icon" *ngIf="!dataResultArr.vendorCompany" (click)="getAddVendorModel()">
+            <img src="../../assets/icon/add-circular.svg">
+          </div>
+          <div *ngIf="dataResultArr.vendorCompany">
+            <!-- <ion-icon class="add-circle-icon" name="trash" slot="end" (click)="deleteVendor($event)"></ion-icon> -->
+            <img slot="end" (click)="deleteVendor($event)" src="assets/icon/delete.svg"   style="width: 24px;">
+          </div>
+        </ion-col>
+      <!-- </ion-row> -->
+        <!-- <ion-row class="col-invoice">
+
+          
+          <ion-col class="col-invoice mar-invoice size-circle">
+            <ion-input placeholder="Enter Vendor" class="invoice-pad" [(ngModel)]="dataResultArr.vendorCompany" formControlName="vendor"
+              (click)="selectVendorModel()"></ion-input>
+            <img src="../../assets/icon/add-circular.svg" (click)="getAddVendorModel()">
+          </ion-col>
+        </ion-row> -->
+      </div>
+  </ion-card>
+
+
+  <!-- table  -->
+  <ion-card>
+    <ion-grid>
+      <ion-row class="top-clr">
+        <ion-col class="icon-plus-minus">
+          Expense Item
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="main-box profile-setting">
+      <ion-row>
+        <ion-label class="blue-label">
+          Department <i>*</i>
+        </ion-label>
+        <!-- <ion-select placeholder="Select Department" class="select-main" [(ngModel)]='expenseInputs[i].department'
+          (ionChange)="getCategoryList($event,expenseInputs[i])">
+          <ion-select-option *ngFor="let dept of getDepartmentList" [value]="dept.departmentId">{{dept.departmentName}}
+          </ion-select-option>
+        </ion-select>
+        <div class="error" *ngIf="!expenseInputs[i].department && isCheckEmptyField">
+          <p> Please Select Department</p>
+        </div> -->
+        <ion-select placeholder="Select Department" class="select-main"
+         [(ngModel)]='this.dataResultArr.departmentId'  (ionChange)="getCategoryList()"
+          [ngModelOptions]="{standalone: true}">
+          <ion-select-option  *ngFor='let dept of DapartmentData'  value="{{dept.departmentId}}">
+            {{dept.departmentName}}
+          </ion-select-option>
+        </ion-select>       
+      </ion-row>
+      <ion-row>
+          <ion-label class="blue-label">
+            Category <i>*</i>
+          </ion-label>
+          
+          <ion-select placeholder="Select Category" class="select-main" 
+          [(ngModel)]="dataResultArr.expenseAccountId" 
+          [ngModelOptions]="{standalone: true}"
+          [selectedText]="dataResultArr.accountName"
+          (ionChange)="CategoryData($event)">
+         <ion-select-option *ngFor="let catr of catagory"  value= "{{catr.expenseAccountId}}">
+           {{catr.accountName}}
+          </ion-select-option>
+          </ion-select>
+        </ion-row>
+      <ion-row class="dollar-pos">
+        <ion-label class="blue-label">
+          Cost <i>*</i>
+        </ion-label>
+        <ion-input type='number' placeholder="Enter Cost" class="invoice-pad" formControlName="amount" 
+         [(ngModel)]='dataResultArr.amount'
+         (ionBlur)="CategoryData(null)" ></ion-input>
+        <!-- [(ngModel)]="dataResultArr.amount" -->
+        <img src="../../assets/icon/coin.svg" class="dollar-sign pt-23 ">
+      </ion-row>
+      <div class="error"
+      *ngIf="authForm.controls.amount.hasError('pattern') && authForm.controls.amount.touched">
+      <p class="invalid-input">Only Number is allowed</p>
+      </div>
+      <!-- <div class="error" *ngIf="!expenseInputs[i].cost && isCheckEmptyField"> -->
+      <!-- <div class="error">
+        <p>Please enter Cost</p>
+      </div> -->
+      <ion-row class="dollar-pos">
+        <ion-col>
+          <ion-label class="blue-label" >
+            Remaining
+          </ion-label>
+          <ion-input readonly placeholder="Enter Remaining Amount" class="invoice-pad" formControlName="remainingamount" [(ngModel)]='dataResultArr.remainingAmount' ></ion-input>
+          <img src="../../assets/icon/coin.svg" class="dollar-sign">
+        </ion-col>
+        <ion-col>
+          <ion-label class="blue-label">
+            Budget
+          </ion-label>
+          <ion-input readonly placeholder="Enter Budget" class="invoice-pad" formControlName="budget" [(ngModel)]='dataResultArr.budget' ></ion-input>
+          <img src="../../assets/icon/coin.svg" class="dollar-sign">
+        </ion-col>
+      </ion-row>
+      <!-- <div *ngIf="!expenseInputs[i].cost && isCheckEmptyField">Please enter Cost</div> -->
+      <!-- <ion-row class="dollar-pos">
+        <ion-label class="blue-label">
+          Remaining
+        </ion-label>
+        <ion-input placeholder="Enter Remaining Amount" class="invoice-pad" [(ngModel)]="expenseData.remainingAmount" [ngModelOptions]="{standalone: true}"></ion-input>
+        <img src="../../assets/icon/coin.svg" class="dollar-sign">
+      </ion-row> -->
+      <ion-row class="dollar-pos">
+        <ion-label class="blue-label">
+          Item Description
+          <i>*</i>
+        </ion-label>
+        <ion-textarea class="ionpad" placeholder="Enter Description" formControlName="itemDescription"  [(ngModel)]="dataResultArr.itemDescription"></ion-textarea>
+      </ion-row>
+    </div>
+    
+  </ion-card>
+  <div class="btn-profile profile-setting add-save">
+    <button ion-button [disabled]="!authForm.value" (click)="UpdateExpense(dataResultArr)"> Update </button>
+  </div>
+</form>
+  
+  <!-- Table End -->
+ 
+</ion-content>

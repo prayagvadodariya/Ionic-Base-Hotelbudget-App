@@ -1,0 +1,50 @@
+<ion-footer no-border>
+  <ion-toolbar transparent>
+    <ion-tabs>
+
+      <ion-tab-bar slot="bottom">
+
+        <ion-tab-button (click)="tab('dashboard')" [className]="active=='dashboard' ? 'css-class-1' : ''  ">
+
+          <i class="icon-dashboard"></i>
+          <ion-label class="footer-txt">Dashboard</ion-label>
+
+
+        </ion-tab-button>
+        <!-- [disabled]="authForm" -->
+        <ion-tab-button (click)="tab('expense')" [className]="active=='expense' ? 'css-class-1' : ''  "
+          [disabled]='hotelId==0'>
+          <i class="icon-dollar-symbol"></i>
+          <ion-label class="footer-txt">Expense</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="tab('vendor')" [className]="active=='vendor' ? 'css-class-1' : ''  "
+          [disabled]='hotelId==0'>
+          <i class="icon-user-male-black-shape"></i>
+          <ion-label class="footer-txt">Vendor</ion-label>
+        </ion-tab-button>
+        <ion-tab-button (click)="tab('search')" [className]="active=='search' ? 'css-class-1' : ''  "
+          [disabled]='hotelId==0'>
+          <i class="icon-magnifier-tool"></i>
+          <ion-label class="footer-txt">Search</ion-label>
+        </ion-tab-button>
+
+
+        <ion-tab-button (click)="tab('notification')" class="line-right">
+          <div [className]="active=='notification' ? 'css-class-2' : 'main-noify'  ">
+          <i class="icon-notification"></i>
+          <ion-label class="footer-txt">Notification</ion-label>
+          <h2 class="noti-count">{{countnotification}}</h2>
+          </div>
+          <!-- <div class="noti-count"> -->
+            
+          <!-- </div> -->
+        </ion-tab-button>
+
+
+
+      </ion-tab-bar>
+
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

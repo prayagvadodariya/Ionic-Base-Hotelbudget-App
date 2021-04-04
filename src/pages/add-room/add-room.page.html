@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="categorymargin">
+    <div class="heading">
+      {{pageStatus}} Room
+      <ion-button class="closebtn" (click)="closeModel()">
+        <img src="assets/icon/close-black.svg" />
+      </ion-button>
+    </div>
+    <form [formGroup]="roomForm">
+      <div class="main">
+        <ion-item>
+          <ion-label position="stacked">Room Name & No<i>*</i></ion-label>
+          <ion-input
+            type="number"
+            placeholder="Room Name & No"
+            formControlName="room"
+          ></ion-input>
+        </ion-item>
+        <div
+          class="error category-error"
+          *ngIf="roomForm.get('room').hasError('required') && roomForm.get('room').touched"
+        >
+          <p class="invalid-input">Room is required.</p>
+        </div>
+        <div
+          class="error category-error"
+          *ngIf="roomForm.get('room').hasError('pattern') && roomForm.get('room').touched"
+        >
+          <p class="invalid-input">Enter Valid Room.</p>
+        </div>
+      </div>
+    </form>
+    <div class="button-ok">
+      <ion-button (click)="addEditRoom(roomForm)">
+        {{pageStatus}}
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>

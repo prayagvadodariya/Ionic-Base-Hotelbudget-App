@@ -1,0 +1,7 @@
+{
+  "name": "HotelBudgerNewAppI4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

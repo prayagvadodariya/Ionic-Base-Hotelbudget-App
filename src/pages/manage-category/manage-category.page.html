@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Manage Category</ion-title>
+    <ion-icon slot="end" name="notifications" (click)='gotoNotification()'></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item class="main-heading-add-exp">
+    <!-- <h2>Manage Category</h2>  -->
+    <ion-item class="all-store" *ngIf='userData.roleId == 1'>
+      <ion-select
+        placeholder="Select Hotels"
+        [(ngModel)]="reqparam.hotelId"
+        class="select-nav"
+        (ionChange)="changeHotel($event)"
+      >
+        <ion-select-option
+          *ngFor="let data of hotelList"
+          [value]="data.hotelId"
+          >{{ data.hotelName }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <button ion-button slot="end" class="add-exr-tpbtn" (click)="onAddCategory()"> <img class="menu" src="../../assets/icon/plus-icon.svg" /> Add Category</button>
+  </ion-item>
+ 
+  <div class="main-heading">{{hotelName}}</div>
+
+  <ion-card *ngIf='categoryList.length > 0'>
+    <ion-row class="toptitlecategory" >
+      <ion-col>
+        Name 
+      </ion-col>
+      <ion-col>  
+        View Order 
+      </ion-col>
+      <ion-col class="stts-lft">  
+        Status
+      </ion-col>
+    </ion-row>
+    <ion-row class="subtxt" *ngFor=" let category of categoryList">
+      <ion-col (click)='presentActionSheet(category)'>
+        {{category.category}}
+      </ion-col>
+      <ion-col (click)='presentActionSheet(category)'>  
+        {{category.viewOrder}}
+      </ion-col>
+      <ion-col class="chat-icon-survey stts-lft"> 
+        <ion-toggle mode="md" class="toggle-b" [(ngModel)]="category.catStatus"  (ngModelChange)="activeDeactiveCategory(category)"></ion-toggle>
+        <!-- <button ion-button class="chat-survery"> <img src="assets/icon/pencil-edit.svg" /> </button> <button ion-button (click)="onDeleteCategory()" class="chat-survery"> <img src="assets/icon/delete.svg" /> </button>   -->
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- <ion-card *ngIf='categoryList.length == 0' class="no-date-found">
+    No Data Found
+  </ion-card> -->
+
+  <div *ngIf='message' class="no-data-found">
+    <!-- <div > -->
+      <img src="assets/images/empty-screen/pm-category-list-empty.svg">
+    <h5>{{message_title}}</h5>
+    <p>{{message}}</p>
+    <!-- </div> -->
+  </div>
+
+  <ion-infinite-scroll *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingProject($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+</ion-content>

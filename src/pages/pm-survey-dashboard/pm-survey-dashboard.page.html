@@ -1,0 +1,168 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button>
+                <img class="menu" src="../../assets/icon/menu.svg" />
+            </ion-menu-button>
+        </ion-buttons>
+        <ion-title>Hampton Inn Boston Braintree</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+<ion-content>
+    <div class="abt-hampton">
+        <ion-item lines="none">
+            <ion-label slot="start">
+                PM Survey
+            </ion-label>
+            <ion-text slot="end">
+                February 2019
+            </ion-text>
+        </ion-item>
+        <ion-card>
+            <ion-row class="heading">
+                <ion-col class="tlt"> Date </ion-col>
+                <ion-col class="tlt ml-4"> Room </ion-col>
+                <ion-col class="tlt ml-4"> Survey By </ion-col>
+                <ion-col class="tlt ml-4"> Status </ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4 "> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+            <ion-row class="heading-text">
+                <ion-col class="tlt-text"> Feb,10,2019 </ion-col>
+                <ion-col class="tlt-text ml-4"> 503</ion-col>
+                <ion-col class="tlt-text ml-4"> Tracy </ion-col>
+                <ion-col class="tlt-text ml-4">Complete</ion-col>
+            </ion-row>
+        </ion-card>
+    </div>
+</ion-content>
+ -->
+
+
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button>
+                <img class="menu" src="../../assets/icon/menu.svg" />
+            </ion-menu-button>
+        </ion-buttons>
+        <ion-title>Manage Pm Room</ion-title> 
+        <ion-icon class="icon" slot="end" name="notifications" (click)='gotoNotification()'></ion-icon>
+        <div class="noticount-header" *ngIf="pmNotification && pmNotification!=0">
+            <h2>{{pmNotification}}</h2>
+          </div>
+    </ion-toolbar>
+</ion-header>
+<ion-content >
+<div class="main-heading"></div> 
+<!-- {{Hotel_Name}} -->
+<ion-card>
+    <ion-row class="heading">
+        <ion-col (click)="sorting()"> Date </ion-col>
+        <ion-col size="2"> Room </ion-col>
+        <ion-col> Survey By </ion-col>
+        <ion-col size="3"> Status </ion-col>
+    </ion-row>
+    <!-- (click)="viewSurvey(survey)" -->
+    <ion-row *ngFor="let survey of getSurveyList" class="heading-text">
+        <ion-col> {{survey.surveyDate}} </ion-col>
+        <ion-col size="2"> {{survey.room}} </ion-col>   
+        <ion-col> {{survey.userName}} </ion-col>
+        <ion-col size="3" *ngIf="survey.surveyStatus=='1'" style="color: green"> Complete<ion-icon mode="md" (click)="openComponent($event,1,survey)" style="color: #607e9a;" name="more"></ion-icon></ion-col>
+        <ion-col size="3" *ngIf="survey.surveyStatus=='2'" style="color: red">Partial<ion-icon  mode="md" (click)="openComponent($event,2,survey)"  style="color: #607e9a;" name="more"></ion-icon></ion-col>
+        <ion-col size="3" *ngIf="survey.surveyStatus=='3'"> Incomplete<ion-icon  mode="md" (click)="openComponent($event,3,survey)" style="color: #607e9a;" name="more"></ion-icon></ion-col>
+    </ion-row>
+    
+</ion-card>
+<ion-fab   vertical="bottom" horizontal="end" slot="fixed" class="btn-plus" (click)="addPmSurvey()" >
+    <ion-fab-button>
+      <ion-icon class="icon-plus"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+    <div *ngIf='message' class="no-data-found">
+        <!-- <div > -->
+        <img src="assets/images/empty-screen/pm-room-list-empty.svg">
+        <h5>{{message_title}}</h5>
+        <p>{{message}}</p>
+        <!-- </div> -->
+    </div>
+<ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingAPI($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+</ion-content>

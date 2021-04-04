@@ -1,0 +1,189 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pass On Notes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-datetime #datePicker style="display: none;" pickerFormat="DD:MMM:YYYY"  (ionChange)="datechange()" (ionCancel)="Canceldate()" [(ngModel)]="myDate"></ion-datetime>
+  <div class="passonnotes">
+    <ion-grid class="segment-design">
+      <ion-segment [(ngModel)]="allmynotes" (click)="allNotes()" mode="md">
+        <ion-segment-button value="AllNotes"  mode="md">
+          <ion-label>All Notes</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="MyNotes"  mode="md">
+          <ion-label>My Notes</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-grid>
+
+    <ion-grid class="filter-data">
+      <ion-row>
+        <ion-col>
+            <h5>{{showselectedate}}</h5>
+        </ion-col>
+        <ion-col text-right>
+          <ion-segment class="yearly-segment" [(ngModel)]="YMDsegment" (click)="yearcheck()">
+            <ion-segment-button value="day">
+              <ion-label>d</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="month">
+              <ion-label>m</ion-label>
+            </ion-segment-button>            
+            <ion-segment-button value="year">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <!-- new -->
+    <ion-grid class="notes-data" *ngIf="allmynotes == 'AllNotes'">
+      <div >
+          <!-- <ion-col size="6"> -->
+              <ion-card class="notes-box" *ngFor="let item of getallnote; let index = index" >
+                <ion-card-header>
+                  <ion-item lines="none">
+                    <ion-label> {{item.Date}} </ion-label>
+                    <ion-text slot="end">
+                        <img [src]="item.isPin == 1 ? 'assets/images/bg-pin.svg' : 'assets/images/bg-remove-pin.svg'" (click)="pinClick(item.ponId, index)">
+                    </ion-text>
+                  </ion-item>
+                </ion-card-header>
+                <div class="notes-descript" (click)="showbody(item.ponBody, index)">
+                    <p [innerHTML]="item.ponBody"></p>
+                </div>
+              </ion-card>         
+        </div>
+
+
+  </ion-grid>
+    <ion-grid class="notes-data" *ngIf="allmynotes == 'MyNotes'">
+      <div >
+        <!-- <ion-col size="6"> -->
+            <ion-card class="notes-box" *ngFor="let item of getmynote; let index = index" >
+              <ion-card-header>
+                <ion-item lines="none">
+                  <ion-label> {{item.Date}} </ion-label>
+                  <ion-text slot="end">
+                    <img [src]="item.isPin == 1 ? 'assets/images/bg-pin.svg' : 'assets/images/bg-remove-pin.svg'" (click)="pinClick(item.ponId, index)">
+                </ion-text>
+                </ion-item>
+              </ion-card-header>
+              <div class="notes-descript" (click)="EditandDelete(item)">
+                  <p [innerHTML]="item.ponBody"></p>
+              </div>
+            </ion-card>         
+      </div>
+  </ion-grid>
+
+
+
+</div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNote()" >
+      <img src="assets/icon/add-new.svg">
+    </ion-fab-button>
+  </ion-fab>
+  
+<ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrolling($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+<!-- <ion-content>
+  <ion-datetime #datePicker style="display: none;" pickerFormat="HH:mm" [(ngModel)]="myDate"></ion-datetime>
+  <ion-segment [(ngModel)]="allmynotes" (click)="allNotes()">
+    <ion-segment-button value="all notes" >
+      <ion-label>All Notes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="my notes">
+      <ion-label>My Notes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-grid class="segment-Btn">
+    <ion-row>
+      <ion-col>
+        <h5>2020</h5>
+      </ion-col>
+      <ion-col>
+        <ion-segment class="yearly-segment" [(ngModel)]="YMDsegment" (click)="yearcheck()">
+          <ion-segment-button value="year">
+            <ion-label>Y</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="month">
+            <ion-label>M</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="day">
+            <ion-label>D</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="parts">
+    <ion-card>
+      <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="space">
+            <ion-item lines="none">
+              <ion-text slot="start">02jan2020</ion-text>
+              <img slot="end" src="assets/images/pushpin.png">
+            </ion-item>
+            <p class="notes">(AM/PM/NightAudit) SHIFT- 3pm-11pm</p>
+            <p class="notes">(AM/PM/NightAudit) SHIFT- 3pm-11pm</p>
+            <p class="notes">(AM/PM/NightAudit) SHIFT- 3pm-11pm</p>
+            <p class="notes">(AM/PM/NightAudit) SHIFT- 3pm-11pm</p>
+          </div>
+        </ion-col> -->
+        <!-- <ion-col>
+          <ion-segment class="yearly-segment" [(ngModel)]="YMDsegment" (click)="yearcheck()">
+            <ion-segment-button value="year">
+              <ion-label>Y</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="month">
+              <ion-label>M</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="day">
+              <ion-label>D</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col> -->
+      <!-- </ion-row>
+      </ion-grid>
+
+    <ion-grid>
+      <ion-row >
+      <ion-col col-6 ></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-card>
+    </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon mode="md" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content> -->
+
+
+
+
+
+
+

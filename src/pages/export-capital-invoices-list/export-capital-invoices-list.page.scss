@@ -1,0 +1,87 @@
+ion-content{
+    --ion-background-color:#f1f1f1;
+    .datecard{
+
+        margin-top:10px;
+        margin-bottom:10px;
+
+    }
+
+    ion-card{
+
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+    }
+
+    ion-item{
+
+        --background:transparent!important;
+        --padding-start: 0px;
+        --inner-border-width:0 0 0px 0;
+        --inner-padding-end:5px;
+        padding: 5px 5px;
+
+        ion-label{
+
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding-left: 0px;
+
+        }
+
+        ::slotted([slot=end]) {
+
+            margin-left: unset;
+            -webkit-margin-start: 10px;
+            margin-inline-start: 10px;
+
+        }
+
+        h2{
+
+            font-size: 0.9rem;
+            color: #607e9a;
+            font-weight: 600;
+
+        }
+
+        p{
+
+            font-size: 0.8rem;
+            color: #4c4c4c;
+            margin-bottom: 0px;
+            padding-bottom: 5px;
+
+            i{
+
+                font-weight: 600;
+                color: #383838;
+                font-style: normal;
+
+            }
+        }
+
+        .righttransferred{
+
+            font-size: 0.8rem;
+            height: 100%;
+            text-align: right;
+            -webkit-margin-end: 0px;
+            margin-inline-end: 0px;
+
+        }
+
+        .transbtn{
+
+            background: #607e9a;
+            color: #fff;
+            padding: 4px 7px;
+            border-radius: 50px;
+            position: absolute;
+            bottom: 4px;
+            right: 0px;
+
+        }
+    }
+}

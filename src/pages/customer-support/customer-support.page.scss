@@ -1,0 +1,134 @@
+ion-content{
+
+    ion-card{
+
+        h2{
+
+            font-size: 1rem;
+            font-weight: 600;
+            color: #607e9a;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+        }
+
+        p{
+
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4c4c4c;
+            text-align: center;
+            padding: 5px 50px;
+            margin: 0px;
+
+        }
+    }
+
+    ion-item{
+
+        --background:transparent!important;
+        --padding-start: 0px;
+        --inner-border-width:0 0 0px 0;
+        --inner-padding-end:5px;
+        padding: 5px 5px;
+
+    }
+
+    .heading-img{
+
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #585858;
+        padding: 0px 15px 5px 15px;
+
+    }
+
+ ion-item[_ngcontent-c0]{
+
+        --inner-padding-end: 0px;
+        padding: 0px 0px;
+
+    }
+
+    .profile-setting{
+
+        --inner-padding-end: 0px;
+        margin: 0px 5px;
+        padding: 20px 10px 0 10px;
+
+        .item-label-stacked .sc-ion-input-md-h{
+
+            --padding-top: 8px;
+            --padding-bottom: 0px;
+            --padding-start: 0;
+            margin-bottom: 0px;
+
+        }
+
+        .item{
+
+            margin-bottom: 20px;
+            padding:0px;
+
+        }
+
+        ion-input{
+
+            margin-bottom: 0px;
+        }
+    }
+
+    .browsethumb{
+
+        background: #e5e5e5;
+        height: 50px;
+        width: 50px;
+        border-radius: 5px;
+        float: left;
+        margin: 5px 5px 0 0;
+        position: relative;
+        // display: flex;
+        // align-content: center;
+        // align-items: center;
+
+        img{
+
+            width: 20px;
+            display: inline-block;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+    }
+
+    .browseimg{
+
+        height: 50px;
+        width: 50px;
+        border-radius: 5px;
+        float: left;
+        margin: 5px 5px 0 0;
+
+        img{
+
+            height: 50px;
+            width: 50px;
+            border-radius: 5px;
+
+      }
+    }
+
+    .mainpickup{
+
+        display: block;
+        padding-left: 15px;
+        padding-bottom: 10px;
+        padding-right: 15px;
+
+    }
+ }

@@ -1,0 +1,69 @@
+
+
+<ion-content>
+    
+  <div class="popup-main">
+      <button (click)="modelClose()" class="add-exp-pop icon-cancel">
+          <!-- <ion-icon name="close"></ion-icon> -->
+      </button>
+
+        
+    <div class="header-p">
+      Add Expense Category
+    </div>
+    <!-- *ngIf="!account_no && isCheckEmptyField" -->
+    <div class="form-pop">  
+      <form [formGroup]="ExpenseForm">
+      <ion-label>Account No.<i>*</i></ion-label>
+      <ion-input placeholder="Enter Account No." formControlName="acountNo"></ion-input>
+      <!-- <div class="error">
+          <p>please enter Account No.</p>
+      </div> -->
+      <div class="error"
+      *ngIf="ExpenseForm.controls.acountNo.hasError('required') && ExpenseForm.controls.acountNo.touched">
+      <p class="invalid-input">Account No. is required.</p>
+    </div>
+    <div
+        *ngIf="!ExpenseForm.get('acountNo').hasError('whitespace') || !ExpenseForm.get('acountNo').touched">
+    <div class="error"
+      *ngIf="ExpenseForm.controls.acountNo.hasError('pattern') && ExpenseForm.controls.acountNo.touched">
+      <p class="invalid-input">Only No. is required</p>
+    </div>
+    </div>
+    <div *ngIf="ExpenseForm.value.acountNo">
+      <div class="error"
+        *ngIf="ExpenseForm.get('acountNo').hasError('whitespace') && ExpenseForm.get('acountNo').touched">
+        <p class="invalid-input">Blank spaces are not allowed.</p>
+      </div>
+    </div>
+
+      <ion-label>Account Name<i>*</i></ion-label>
+      <ion-input  placeholder="Enter Account Name" formControlName="acountName"></ion-input>
+      <!-- <div class="error" >
+          <p>please enter Account Name</p>
+      </div> -->
+      <div class="error"
+      *ngIf="ExpenseForm.controls.acountName.hasError('required') && ExpenseForm.controls.acountName.touched">
+      <p class="invalid-input">Account Name is required.</p>
+    </div>
+    <div
+        *ngIf="!ExpenseForm.get('acountName').hasError('whitespace') || !ExpenseForm.get('acountName').touched">
+    <div class="error"
+      *ngIf="ExpenseForm.controls.acountName.hasError('pattern') && ExpenseForm.controls.acountName.touched">
+      <p class="invalid-input">Only Character is required</p>
+    </div>
+  </div>
+  <div *ngIf="ExpenseForm.value.acountName">
+    <div class="error"
+      *ngIf="ExpenseForm.get('acountName').hasError('whitespace') && ExpenseForm.get('acountName').touched">
+      <p class="invalid-input">Blank spaces are not allowed.</p>
+    </div>
+  </div>
+    </form>
+      <ion-row>
+          <button ion-button class="add-ex" (click)="accountAddClick(ExpenseForm.value)" [disabled]="!ExpenseForm.valid">Add</button>
+      </ion-row>
+    </div>
+   
+  </div>
+</ion-content>

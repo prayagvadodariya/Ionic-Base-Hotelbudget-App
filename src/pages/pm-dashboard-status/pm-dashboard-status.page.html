@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Preventative Maintenance</ion-title>
+    <ion-icon class="noti" slot="end"  name="notifications" (click)='gotoNotification()' ></ion-icon>
+    <div class="noticount-header" *ngIf="pmNotification!=0">
+      <h2>{{pmNotification}}</h2>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div class="main-heading" >
+    {{hotelName}}<br/>
+  </div> -->
+    <ion-item style="display: none;">
+        <ion-label>{{ title }}</ion-label>
+        <ion-select
+          [(ngModel)]="yearmodel"
+          #yearSelect
+          style="display: none;"
+          (ionChange)="onselectChangeYear(MQYsegment)"
+        >
+          <ion-select-option *ngFor="let year of yearDataList" [value]="year.id">{{
+            year.name
+          }}</ion-select-option>
+        </ion-select>
+        <ion-select
+          [(ngModel)]="quarterModel"
+          #quaterSelect
+          style="display: none;"
+          (ionChange)="onselectChangeQuarter(MQYsegment)">
+          <ion-select-option
+            *ngFor="let quarter of quarterDataList"
+            [value]="quarter.name"
+            >{{ quarter.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+  <!-- month -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-segment class="yearly-segment two-segment" [(ngModel)]="MQYsegment" (click)="selectsegment()">
+            <!-- <ion-segment-button value="month">
+              <ion-label>m</ion-label>
+            </ion-segment-button> -->
+            <ion-segment-button value="quater">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+        <ion-col>
+          <ion-item class="all-store">
+            <ion-select placeholder= "All Rooms" class="select-nav"   [(ngModel)]="params.roomId" (ionChange)="getSelectRoom($event)">
+              <ion-select-option *ngFor="let room of roomList" value="{{room.roomId}}"> {{room.room}} </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- month -->
+
+  <!-- category status survey -->
+    <ion-card  class="pm-dashboard-data"> 
+      <ion-row class="date">
+        <ion-col class="">
+          <ion-item class="all-store no-color" >
+            <ion-select placeholder="Select Category" [(ngModel)]="params.categoryId" 
+            (ionChange)="getSelectCategory($event)" [selectedText]="category"> 
+              <ion-select-option value="">All Category</ion-select-option>
+              <ion-select-option *ngFor="let category of categoryList" value="{{category.categoryId}}">
+                {{category.category}}
+              </ion-select-option>
+            </ion-select>
+            <img src="assets/icon/bath.png" slot="end" >
+          </ion-item>        
+        </ion-col>
+        <ion-col>  
+          <ion-item class="all-store no-color" >
+            <ion-select placeholder="Select Status" [(ngModel)]="data.id" 
+            (ionChange)="getSurveyStatus($event)" [selectedText]="name" >
+           <ion-select-option value="all">All Status</ion-select-option>
+            <ion-select-option *ngFor="let status of surveyStatus" value="{{status.id}}" >
+              {{status.name}}
+            </ion-select-option>    
+          </ion-select>
+            <img src="assets/icon/touchup.svg" slot="end" >
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  <!-- category status survey -->
+    <!-- <div class="monthstatus">
+      February 2019
+    </div> -->
+  <!-- category -->
+  <div *ngIf="PMStatusDataList.length==0" class="nodata">No Data Found</div>
+    <ion-card *ngIf="PMStatusDataList.length > 0">
+      <ion-row class="toptitlecategory">
+        <ion-col>
+          Date 
+        </ion-col>
+        <ion-col size="2">  
+          Room 
+        </ion-col>
+        <ion-col>  
+          Item
+        </ion-col>
+        <ion-col>  
+          Status
+        </ion-col>
+      </ion-row>
+      <ion-row class="subtxt" *ngFor="let item of  PMStatusDataList">
+        <ion-col>
+          {{item.surveyDate}}
+        </ion-col>
+        <ion-col size="2">  
+         {{item.room}}
+        </ion-col>
+        <ion-col>
+          {{item.item}}
+        </ion-col>
+        <ion-col>
+            {{getstatus(item.status)}}
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="subtxt">
+        <ion-col>
+          Feb 10, 2019
+        </ion-col>
+        <ion-col size="2">  
+          458
+        </ion-col>
+        <ion-col>
+          All Caulking
+        </ion-col>
+        <ion-col>
+          1 - Touchup
+        </ion-col>
+      </ion-row> -->
+    </ion-card>
+  <!-- category -->
+  <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable"
+  (ionInfinite)="InfinitScrollingAPI($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

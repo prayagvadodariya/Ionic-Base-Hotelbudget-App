@@ -1,0 +1,15 @@
+ion-content{
+
+    --ion-background-color:#f1f1f1;
+    ion-fab{
+        ion-fab-button{--background: #607e9a;--background-hover: #607e9a;
+            --background-activated: #607e9a;
+            --background-focused: #607e9a;
+            --color: #ffffff;
+            --color-activated: #ffffff;
+            --color-focused: #ffffff;
+        img{height: 24px; width: 24px;}
+        }
+    }
+    
+}

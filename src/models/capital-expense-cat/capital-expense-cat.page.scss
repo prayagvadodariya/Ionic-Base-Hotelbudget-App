@@ -1,0 +1,165 @@
+// app-capital-expense-cat {
+
+//     position: relative;
+//     background: rgba(0, 0, 0, 0.4);
+//     --background: rgba(0, 0, 0, 0.4);
+
+//     ion-content {
+
+//         left: 50%;
+//         top: 50%;
+//         position: absolute;
+//         display: block;
+//         width: 280px;
+//         margin-left: -140px;
+//         height: 200px;
+//         margin-top: -100px;
+//         // border: 5px solid #666;
+//         box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+
+//     }
+    
+//         .modal-wrapper{
+    
+//             background: transparent!important;
+//             --background: transparent!important;
+    
+//         }
+    
+//         // app-capital-expense-cat{
+    
+//         //     padding: 0px;
+//         //     background: transparent!important;
+//         //     --background: transparent!important;
+    
+//         // }
+    
+//         ion-toolbar {
+    
+//             --ion-background-color: #e2e5e8;
+//             --ion-color: #fff;
+//             --background: #e2e5e8;
+//             z-index: -1;
+//             border-radius: 10px 10px 0 0;
+    
+//         }
+    
+//         ion-title {
+    
+//             color: #607e9a;
+//             text-align: center;
+//             width: 100%;
+//             font-size: 1.3rem;
+//             text-transform: uppercase;
+//             font-weight: 500;
+    
+//         }
+    
+//         ion-icon{
+    
+//             font-size: 22px;
+//             background: #fff;
+//             border-radius: 50px;
+//             padding: 5px;
+//             color: #666;
+//             box-shadow: -3px 5px 19px 1px rgba(0, 0, 0, 0.1);
+    
+//             svg{
+    
+//                 width: 15px;
+    
+//             }
+    
+//         }
+    
+//         ion-header{
+    
+//             position: relative;
+//             padding: 10px 10px 0px 10px;
+//             background: transparent;
+    
+//             button{
+    
+//                 background: transparent;
+//                 position: absolute;
+//                 right: -4px;
+//                 top: -1px;
+    
+//             }
+//         }
+    
+//         .btn-to{
+    
+//             background: transparent;
+//             position: absolute;
+//             right: -10px;
+//             top: -10px;
+    
+//         }
+    
+//         .popup-main{
+    
+//             display: block;
+//             padding: 15px 20px 0px 20px;
+//             background: #fff;
+//             margin: 0px 10px 0px 10px;
+//             border-radius: 0px 0px 10px 10px;
+    
+//             ion-label{
+    
+//                 color: #585858;
+//                 font-size: 1rem;
+//                 font-weight: 500;
+    
+//                 i{
+    
+//                     font-style: normal;
+//                     color: red;
+    
+//                 }
+//             }
+//         }
+    
+//         ion-input{
+    
+//             border-bottom: 1px solid #787878;
+//             font-size: 0.9rem;
+//             margin-bottom: 15px;
+    
+//         }
+    
+//         .add-ex{
+    
+//             background: #607e9a !important;
+//             color: #fff;
+//             border-radius: 50px !important;
+//             min-height: auto;
+//             height: auto;
+//             height: 37px !important;
+//             line-height: 37px !important;
+//             font-size: 13px !important;
+//             border-right: 0px;
+//             width: 80px;
+//             margin:0px auto 15px!important;
+    
+//         }
+    
+//         ion-row{
+    
+//             text-align: center;
+    
+//         }
+    
+//         // ion-content{
+    
+//         //     background: transparent!important;
+//         //     --background: transparent!important;
+//         //     border-radius: 0px 0px 10px 10px;
+    
+//         // }
+    
+    
+   
+// }
+
+.form-pop{max-height: 194px !important; overflow: auto !important;}

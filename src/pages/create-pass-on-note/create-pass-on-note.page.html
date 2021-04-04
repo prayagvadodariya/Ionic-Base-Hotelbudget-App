@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="backBtn" slot="start" icon="arrow-back"></ion-back-button>
+  </ion-buttons>
+  
+    <span slot="end" class="ion-width">
+      <ion-icon class="save" slot="end" name="trash" *ngIf="stateCheck == 1" (click)='onDeleteItem()'></ion-icon>
+    </span>
+    <span slot="end" class="ion-width">
+    <ion-icon class="save" slot="end"  name="md-checkmark" (click)='savePassonnotedata()'></ion-icon>
+    </span>
+   
+    <ion-title *ngIf="stateCheck == 0"> Add Note </ion-title>
+    <ion-title *ngIf="stateCheck == 1"> Edit Note ({{noteDate}}) </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-margin ion-no-padding edit-height">
+
+  <ion-card *ngIf="stateCheck == 0">
+    <div class="gap profile-setting">
+      <ion-row>
+        <ion-col>
+          <div class="icon-date">
+            <ion-label>
+              From (Date)<i>*</i>
+            </ion-label>
+            <ion-datetime display-format="MMM DD, YYYY" [(ngModel)]="fromDate" [min]="currentdata" [max]="fromMaxDate" (ionChange)="fromdatechange()"   placeholder="MM/DD/YYYY"></ion-datetime>
+            <img src="../../assets/icon/calendar.svg" />
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <div class="icon-date">
+            <ion-label>
+              To (Date)<i>*</i>
+            </ion-label>
+            <ion-datetime display-format="MMM DD, YYYY" [(ngModel)]="toDate" [min]="fromDate" [max]="fromMaxDate" placeholder="MM/DD/YYYY"></ion-datetime>
+            <img src="../../assets/icon/calendar.svg" />
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <!-- <div class="error" 
+          *ngIf="datevalidationForm.controls.fromDate.hasError('required') && datevalidationForm.controls.fromDate.touched">
+            <p>Please enter FromDate</p>
+          </div> -->
+        </ion-col>
+        <ion-col>
+          <!-- <div class="error" 
+          *ngIf="datevalidationForm.controls.toDate.hasError('required') && datevalidationForm.controls.toDate.touched">
+            <p>Please enter ToDate</p>
+          </div> -->
+        </ion-col>
+        <!-- <div class="error" *ngIf="!dateflag">
+          <p>To Date must be  greater than From Date</p>
+        </div>  -->
+      </ion-row>
+    </div>
+  </ion-card>
+
+<ion-card class="height-full">
+  <!-- <ion-datetime #datePicker style="display: none;" pickerFormat="DD:MMM:YYYY" (ionChange)="datechange()"  [(ngModel)]="myDate"></ion-datetime> -->
+  <quill-editor  [(ngModel)]="htmlText"  value="center"></quill-editor>
+</ion-card>
+</ion-content>

@@ -1,0 +1,321 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button> -->
+      <ion-back-button >
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title  *ngIf="active"> Add Capital Expense</ion-title>
+    <ion-title *ngIf="!active">Update Capital Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+        <ion-card *ngIf="active">
+          <div class="gap profile-setting">
+            <form [formGroup]="ExpenseForm">
+              <div class="icon-date">
+                <ion-label>
+                  Expense Date<i>*</i>
+                </ion-label>
+                <ion-datetime display-format="DD-MM-YYYY"  formControlName="date"
+                  placeholder="DD/MM/YYYY">
+                </ion-datetime>
+                <img src="../../assets/icon/calendar.svg" />
+              </div>
+              <div class="error" *ngIf="ExpenseForm.controls.date.hasError('required') && ExpenseForm.controls.date.touched">
+                <p class="invalid-input">Date is required.</p>
+              </div>
+
+              <ion-label>
+                Invoice Number<i>*</i>
+              </ion-label>
+              <ion-row class="col-invoice">
+                <ion-col class="col-invoice mar-invoice">
+                  <ion-input placeholder="Enter Invoice Number" class="invoice-pad" [disabled]="purchaseOrder"
+                  formControlName="invoiceNo" ></ion-input>
+                </ion-col>
+                <!-- (ionBlur)="checkBlur()" -->
+                <ion-col class="col-invoice purchase-or order-add">
+                  <div class="check-invoice">
+                    <ion-checkbox checked="true" [(ngModel)]='purchaseOrder' (ionChange)="getPurchaseOrderCLick(purchaseOrder)" [ngModelOptions]="{standalone: true}">
+                    </ion-checkbox>
+                    <p>Purchase Order</p>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <!-- <ion-input placeholder="Enter Invoice Number"  
+                class="invoice-pad"></ion-input>
+                <ion-col class="col-invoice purchase-or order-add">
+                  <div class="check-invoice">
+                    <ion-checkbox checked="true"  (ionChange)="getPurchaseOrderCLick(purchaseOrder)" >
+                    </ion-checkbox>
+                    <p>Purchase Order</p>
+                  </div>
+                </ion-col> -->
+              <!-- <div class="error"
+                *ngIf="ExpenseForm.controls.invoiceNo.hasError('required') && ExpenseForm.controls.invoiceNo.touched">
+                <p class="invalid-input">Invoice No. is required.</p>
+              </div> -->
+              <!-- <div
+              *ngIf="!ExpenseForm.get('invoiceNo').hasError('whitespace') || !ExpenseForm.get('invoiceNo').touched">
+              <div class="error"
+              *ngIf="ExpenseForm.controls.invoiceNo.hasError('pattern') && ExpenseForm.controls.invoiceNo.touched">
+              <p class="invalid-input">Only No. is allowed</p>
+              </div>
+              </div> -->
+
+              <!-- <div *ngIf="ExpenseForm.value.invoiceNo">
+                <div class="error"
+                  *ngIf="ExpenseForm.get('invoiceNo').hasError('whitespace') && ExpenseForm.get('invoiceNo').touched">
+                  <p class="invalid-input">Blank spaces are not allowed.</p>
+                </div>
+              </div> -->
+
+              <ion-label>
+                Vendor <i>*</i>
+              </ion-label>
+              <ion-row class="col-invoice bor-btm-add">
+                <ion-col class="col-invoice" size="11">
+              <ion-input placeholder="Enter Vendor" [(ngModel)]='vendorCompany' formControlName="vendor"
+                class="invoice-pad" (click)="selectVendorModel()">
+              </ion-input>
+              </ion-col>
+              <ion-col class="col-invoice ver-center">
+                <div class="add-circle-icon" *ngIf="!vendorId" (click)="getAddVendorModel()">
+                  <img src="../../assets/icon/add-circular.svg">
+                </div>
+                <div *ngIf="vendorId"(click)="deleteVendor($event)">
+                  <!-- <ion-icon class="add-circle-icon" name="trash" slot="end" (click)="deleteVendor($event)"></ion-icon> -->
+                  <img slot="end" src="assets/icon/delete.svg"  style="width: 24px;">
+                </div>
+              </ion-col>
+              </ion-row>
+              <div class="error"
+                *ngIf="ExpenseForm.controls.vendor.hasError('required') && ExpenseForm.controls.vendor.touched">
+                <p class="invalid-input">Vendor id is required.</p>
+              </div>
+              <ion-label>
+                Expense Category <i>*</i>
+              </ion-label>
+              <ion-row class="sel-bor">
+                <ion-col size="10">
+                  <ion-select placeholder="Select Category" class="select-main" formControlName="capitalExpenseAccountId" 
+                  (ionChange)="CategoryData($event)">
+                <ion-select-option *ngFor="let catr of getExpenseList" [value] = "catr">{{catr.expenseAccountName}}
+                  </ion-select-option>
+                  </ion-select>
+
+                </ion-col>
+                <ion-col>
+                  <button ion-button (click)="addExpense()" class="plus-btn" type="button"> <img _ngcontent-c1=""
+                      src="../../assets/icon/add-circular.svg"> </button>
+                </ion-col>
+              </ion-row>
+              <div *ngIf="expense.cap_category">
+                <div class="error" *ngIf="ExpenseForm.controls.capitalExpenseAccountId.hasError('required') && ExpenseForm.controls.capitalExpenseAccountId.touched">
+                  <p class="invalid-input">Expense Category is required.</p>
+                </div>
+              </div>
+              <ion-label>
+                Cost <i>*</i>
+              </ion-label>
+              <ion-input placeholder="Enter Cost"  formControlName="cost"
+                class="invoice-pad"></ion-input>
+              <div class="error" *ngIf="ExpenseForm.controls.cost.hasError('required') && ExpenseForm.controls.cost.touched">
+                <p class="invalid-input">Cost is required.</p>
+              </div>
+              <div
+              *ngIf="!ExpenseForm.get('cost').hasError('whitespace') || !ExpenseForm.get('cost').touched">
+              <div class="error"
+              *ngIf="ExpenseForm.controls.cost.hasError('pattern') && ExpenseForm.controls.cost.touched">
+              <p class="invalid-input">Only Number is allowed</p>
+              </div>
+              </div>
+
+              <div *ngIf="ExpenseForm.value.cost">
+                <div class="error"
+                  *ngIf="ExpenseForm.get('cost').hasError('whitespace') && ExpenseForm.get('cost').touched">
+                  <p class="invalid-input">Blank spaces are not allowed.</p>
+                </div>
+              </div>
+
+              <ion-label>
+                Description <i>*</i>
+              </ion-label>
+              <ion-input type="text" placeholder="Description"  formControlName="description"
+                class="invoice-pad" ></ion-input>
+              <div
+              *ngIf="!ExpenseForm.get('description').hasError('whitespace') || !ExpenseForm.get('description').touched">
+              <div class="error"
+                *ngIf="ExpenseForm.controls.description.hasError('required') && ExpenseForm.controls.description.touched">
+                <p class="invalid-input">Description is required.</p>
+              </div>
+              </div>
+
+              <div *ngIf="ExpenseForm.value.description">
+                <div class="error"
+                  *ngIf="ExpenseForm.get('description').hasError('whitespace') && ExpenseForm.get('description').touched">
+                  <p class="invalid-input">Blank spaces are not allowed.</p>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </ion-card>
+
+        <ion-card *ngIf="!active">
+          <div class="gap profile-setting">
+              <form [formGroup]="ExpenseForm" >
+                <div class="icon-date">
+                  <ion-label>
+                    Expense Date<i>*</i>
+                  </ion-label>
+                  <ion-datetime display-format="DD-MM-YYYY" [(ngModel)]='expUpdate.date' formControlName="date"
+                    placeholder="DD/MM/YYYY">
+                  </ion-datetime>
+                  <img src="../../assets/icon/calendar.svg" />
+                </div>
+                <div class="error" *ngIf="ExpenseForm.controls.date.hasError('required') && ExpenseForm.controls.date.touched">
+                  <p class="invalid-input">Date is required.</p>
+                </div>
+        
+                <ion-label>
+                  Invoice Number<i>*</i>
+                </ion-label>
+                <ion-row class="col-invoice">
+                  <ion-col class="col-invoice mar-invoice">
+                    <ion-input placeholder="Enter Invoice Number" [(ngModel)]='expUpdate.invoiceNo' class="invoice-pad" [disabled]="purchaseOrder"
+                    formControlName="invoiceNo" ></ion-input>
+                  </ion-col>
+                  <!-- (ionBlur)="checkBlur()" -->
+                  <ion-col class="col-invoice purchase-or order-add">
+                    <div class="check-invoice">
+                      <ion-checkbox checked="true" [(ngModel)]='purchaseOrder' (ionChange)="getPurchaseOrderCLick(purchaseOrder)" [ngModelOptions]="{standalone: true}">
+                      </ion-checkbox>
+                      <p>Purchase Order</p>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <!-- <ion-input placeholder="Enter Invoice Number" [(ngModel)]='expUpdate.invoiceNo' formControlName="invoiceNo"
+                  class="invoice-pad"></ion-input>
+        
+                <div class="error"
+                  *ngIf="ExpenseForm.controls.invoiceNo.hasError('required') && ExpenseForm.controls.invoiceNo.touched">
+                  <p class="invalid-input">Invoice No is required.</p>
+                </div>
+                <div
+                *ngIf="!ExpenseForm.get('invoiceNo').hasError('whitespace') || !ExpenseForm.get('invoiceNo').touched">
+                <div class="error"
+                *ngIf="ExpenseForm.controls.invoiceNo.hasError('pattern') && ExpenseForm.controls.invoiceNo.touched">
+                <p class="invalid-input">Only No. is allowed</p>
+                </div>
+                </div> -->
+        
+                <div *ngIf="ExpenseForm.value.invoiceNo">
+                  <div class="error"
+                    *ngIf="ExpenseForm.get('invoiceNo').hasError('whitespace') && ExpenseForm.get('invoiceNo').touched">
+                    <p class="invalid-input">Blank spaces are not allowed.</p>
+                  </div>
+                </div>
+                
+                <ion-label>
+                  Vendor <i>*</i>
+                </ion-label>
+                <ion-row class="col-invoice bor-btm-add">
+                <ion-col class="col-invoice" size="11">
+                <ion-input placeholder="Enter Vendor" [(ngModel)]='expUpdate.vendorCompany' formControlName="vendor"
+                  class="invoice-pad" (click)="selectupdateVendorModel()">
+                </ion-input>
+              </ion-col>
+                <ion-col class="col-invoice ver-center">
+                  <div class="add-circle-icon" *ngIf="!expUpdate.vendorId" (click)="getAddVendorModel()">
+                    <img src="../../assets/icon/add-circular.svg">
+                  </div>
+                  <div *ngIf="expUpdate.vendorId">
+                    <!-- <ion-icon class="add-circle-icon" name="trash" slot="end" (click)="deleteVendor($event)"></ion-icon> -->
+                    <img slot="end" (click)="removeVendor($event)" src="assets/icon/delete.svg"  style="width: 24px;">
+                  </div>
+                </ion-col>
+              </ion-row>
+                <div class="error"
+                  *ngIf="ExpenseForm.controls.vendor.hasError('required') && ExpenseForm.controls.vendor.touched">
+                  <p class="invalid-input">Vendor id is required.</p>
+                </div>
+                <ion-label>
+                  Expense Category <i>*</i>
+                </ion-label>
+                <ion-row class="sel-bor">
+                  <ion-col size="10">
+                    <ion-select placeholder="Select Category" class="select-main" formControlName="capitalExpenseAccountId" [selectedText]="expUpdate.expenseAccountName"
+                    (ionChange)="CategoryData($event)">
+                  <ion-select-option *ngFor="let catr of getExpenseList" [value] = "catr">{{catr.expenseAccountName}}
+                    </ion-select-option>
+                    </ion-select>      
+                  </ion-col>
+                  <ion-col>
+                    <button ion-button (click)="addExpense()" class="plus-btn" type="button"> <img _ngcontent-c1=""
+                        src="../../assets/icon/add-circular.svg"> </button>
+                  </ion-col>
+                </ion-row>
+                <div *ngIf="expense.cap_category">
+                  <div class="error" *ngIf="ExpenseForm.controls.capitalExpenseAccountId.hasError('required') && ExpenseForm.controls.capitalExpenseAccountId.touched">
+                    <p class="invalid-input">Expense Category is required.</p>
+                  </div>
+                </div>
+                <ion-label>
+                  Cost <i>*</i>
+                </ion-label>
+                <ion-input placeholder="Enter Cost" [(ngModel)]='expUpdate.cost' formControlName="cost"
+                  class="invoice-pad"></ion-input>
+                <div class="error" *ngIf="ExpenseForm.controls.cost.hasError('required') && ExpenseForm.controls.cost.touched">
+                  <p class="invalid-input">Cost is required.</p>
+                </div>
+                <div
+                *ngIf="!ExpenseForm.get('cost').hasError('whitespace') || !ExpenseForm.get('cost').touched">
+                <div class="error"
+                *ngIf="ExpenseForm.controls.cost.hasError('pattern') && ExpenseForm.controls.cost.touched">
+                <p class="invalid-input">Only Number is allowed</p>
+                </div>
+                </div>
+        
+                <div *ngIf="ExpenseForm.value.cost">
+                  <div class="error"
+                    *ngIf="ExpenseForm.get('cost').hasError('whitespace') && ExpenseForm.get('cost').touched">
+                    <p class="invalid-input">Blank spaces are not allowed.</p>
+                  </div>
+                </div>
+        
+                <ion-label>
+                  Description <i>*</i>
+                </ion-label>
+                <ion-input placeholder="Description" [(ngModel)]='expUpdate.description' formControlName="description"
+                  class="invoice-pad"></ion-input>
+                  <div
+                *ngIf="!ExpenseForm.get('description').hasError('whitespace') || !ExpenseForm.get('description').touched">
+                <div class="error"
+                  *ngIf="ExpenseForm.controls.description.hasError('required') && ExpenseForm.controls.description.touched">
+                  <p class="invalid-input">Description is required.</p>
+                </div>
+                </div>
+        
+                <div *ngIf="ExpenseForm.value.description">
+                  <div class="error"
+                    *ngIf="ExpenseForm.get('description').hasError('whitespace') && ExpenseForm.get('description').touched">
+                    <p class="invalid-input">Blank spaces are not allowed.</p>
+                  </div>
+                </div>
+        
+              </form>
+          </div>
+        </ion-card>
+  
+    <div class="align-c profile-setting paddtop">
+      <button ion-button="" *ngIf="active" (click)="capitalExpenseAddClick(ExpenseForm)"> Save </button>
+      <button ion-button=""  *ngIf="!active" (click)="capitalExpenseUpdateClick(!ExpenseForm.valid)"> Update Expense </button>
+    </div>
+</ion-content>
+<footer></footer>

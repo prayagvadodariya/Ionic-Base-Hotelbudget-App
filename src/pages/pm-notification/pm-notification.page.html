@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+    <ion-icon class="icon" slot="end" name="notifications"></ion-icon>
+    <div class="noticount-header" *ngIf="pmNotification && pmNotification!=0">
+      <h2>{{pmNotification}}</h2>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor=" let notification of notificationsList">
+    <ion-item class="notification-pm">
+      <div slot="start" class="thumb">
+        <ion-thumbnail>
+          <img src="{{imgPath}}{{notification.profileimg}}" alt="">
+        </ion-thumbnail>
+      </div>
+      <ion-label>
+        <h2>{{notification.hotelName}}</h2>
+        <p>Created by: <i>{{notification.userName}}</i></p>
+        <p>Room No: <i>{{notification.room}}</i></p>
+        <p>Survey Status: <i>{{notification.description}}</i></p>
+      </ion-label>
+      <div  slot="end" class="date">
+        <div>{{notification.createdDate}}</div>
+        <!-- <div>01:53 PM</div> -->
+      </div>
+    </ion-item>
+  </ion-card>
+  <div *ngIf='message' class="no-data-found">
+    <!-- <div > -->
+      <img src="assets/images/empty-screen/notifications-pm-empty.svg">
+    <h5>{{message_title}}</h5>
+    <p>{{message}}</p>
+    <!-- </div> -->
+  </div>
+
+
+  <ion-infinite-scroll *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingProject($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+</ion-content>

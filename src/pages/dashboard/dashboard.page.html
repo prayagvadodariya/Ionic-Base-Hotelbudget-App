@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg"/>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Regional Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+   <!-- <ion-item style="display: none;">
+    <ion-label>{{getMQYtitle}}</ion-label>
+    <ion-select [(ngModel)]="selectValue" placeholder="All Stores" #MQYSelect (ionChange)="onSelectChange()" (ionCancel)="onSelectChangeCancel()">
+      <ion-select-option *ngFor="let d of data" [value]="d.id">{{d.value}}</ion-select-option>
+    </ion-select>
+  </ion-item>  -->
+  <ion-item style="display: none;">
+    <ion-label>{{title}}</ion-label>
+    <ion-select  [(ngModel)]="yearmodel" #yearSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" (ionChange)="onselectChangeYear(MQYsegment)">
+      <ion-select-option *ngFor="let year of yearDataList" [value]="year.id">{{year.name}}</ion-select-option>
+    </ion-select>
+    <ion-select [(ngModel)]="quarterModel" #quaterSelect style="display: none;" (ionCancel)="onSelectChangeCancel()" (ionChange)="onselectChangeQuarter(MQYsegment)">
+      <ion-select-option *ngFor="let quarter of quarterDataList" [value]="quarter.name">{{quarter.name}}
+    </ion-select-option>
+    </ion-select>
+    <ion-select [(ngModel)]="monthModel" #monthSelect style="display: none;" (ionCancel)="onSelectChangeCancel()"
+      (ionChange)="onselectChangeMonth(MQYsegment)">
+      <ion-select-option *ngFor="let month of monthDataList" [value]="month">{{month.name}}</ion-select-option>
+    </ion-select>
+    <!-- <ion-select [(ngModel)]="weekmodel" #weekSelect style="display: none;" (ionCancel)="onSelectChangeCancel()"
+      (ionChange)="onselectChange(MQYsegment)">
+      <ion-select-option *ngFor="let week of weekDataList" [value]="week.id">{{week.name}}</ion-select-option>
+    </ion-select> -->
+  </ion-item>
+
+  <!-- <ion-item class="float-inp">
+    <ion-label position="floating">Floating Label</ion-label>
+    <ion-input></ion-input>
+  </ion-item> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-segment class="yearly-segment" [(ngModel)]="MQYsegment" (click)="selectsegment()">
+          <!-- <ion-segment-button value="week">
+            <ion-label>w</ion-label>
+          </ion-segment-button> -->
+          <ion-segment-button value="month">
+            <ion-label>m</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="quater">
+            <ion-label>q</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="year">
+            <ion-label>y</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+      <ion-col>
+        <ion-item class="all-store">
+          <ion-select placeholder= "Select Hotel" class="select-nav" (ionChange)="selectDashboardClick($event)">
+            <ion-select-option   *ngFor="let data of SelectBrandData" [value]="data">{{data.hotelName}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- chart -->
+  <div class="main-heading">
+    <!-- September 2018 //{{dashboardData.total_expense_amount}} -->
+  </div>
+  <div class="chart-dashboard" *ngIf="dashboardData">
+    <div  *ngIf="dashboardData.total_expense_amount!=0" id="getDashboardChart" style="height: 260px"></div>
+    <div class="chart-dashboard " *ngIf="dashboardData.total_expense_amount==0">
+      <div class="total-exp">
+      <div>Total Expense </div>
+     <i> $ 0.00 </i>
+     {{dashboardData.label}}
+    </div>
+    </div>
+  </div>
+  <!-- chart -->
+  <!-- over budget -->
+  <div class="overprofit" *ngIf="openProgress">
+    <div class="tophead" (click)="selectSubDashboardClick(progressCartDataList)">
+      <span>{{progressCartDataList.hotelName}}</span>
+      ${{expense}} of ${{total}}
+    </div>
+    <ion-row class="over-width" >
+      <ion-col class="cirpos">
+        <div class="circle-prog">
+          <circle-progress [percent]="progressCartDataList.expensePer" [radius]="55" [outerStrokeWidth]="10" [innerStrokeWidth]="10"
+            [outerStrokeColor]="progressCartDataList.color" [innerStrokeColor]="'#e5e5e5'" [animation]="true" [animationDuration]="300"
+            [backgroundStroke]="transparent" [showInnerStroke]="true" [imageWidth]="50" [responsive]="true" [unitsFontSize]="20"
+            [showSubtitle]="false" [space]="-10"></circle-progress>
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <div class="borpad">
+            <!-- class="overbudget borleft-orange" -->
+          <div [className]="progressCartDataList.remaningAmount>0 ? 'overbudget borleft-green' : 'overbudget borleft-orange'" >
+            <span>Under Budget</span>
+            <strong>${{remaningAmount}}</strong>
+          </div>
+        </div>
+        <div [className]="progressCartDataList.expensePer>0 ? 'overbudget borleft-green' : 'overbudget borleft-orange'">
+          <span>of Budget </span>
+          <strong>{{progressCartDataList.expensePer}}%</strong>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <!-- over budget -->
+  <!-- OverProfit -->
+  <div class="overprofit"  *ngIf='dashboardData'>
+    <div class="tophead no-border">
+      {{dashboardData.total_persentage}}% of budget spent
+    </div>
+    <div id="progressbar">
+
+      <div class="inner progress-green" [style.width]="(dashboardData.total_persentage > 100 ? 100 : dashboardData.total_persentage) + '%'" style="width:40%"></div>
+    </div>
+    <ion-row class="exp-content">
+      <ion-col>
+        <span>Expense</span>
+        <strong>${{total_expense_amount}}</strong>
+      </ion-col>
+      <ion-col>
+        <span>Budget</span>
+        <strong>${{total_budget_amount}}</strong>
+      </ion-col>
+    </ion-row>
+    
+  </div>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+</ion-content>
+
+<footer class="dashbrd-ftr" *ngIf="hotelId=='0'" [step]="'dashboard'"></footer>

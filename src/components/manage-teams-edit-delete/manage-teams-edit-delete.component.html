@@ -1,0 +1,14 @@
+<!-- <div class="edit-delete">
+  <ul>
+    <li><a (click)='edit()'> Edit</a></li>
+    <li><a (click)='delete()'> Delete</a></li>
+  </ul>
+</div> -->
+<ion-grid class="card-options">
+  <ion-list>
+    <ion-item (click)="clickshow(item)" *ngFor="let item of showlist" >
+      {{item}}
+    </ion-item>
+
+  </ion-list>
+</ion-grid>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!editList">Add Team</ion-title>
+    <ion-title *ngIf="editList">Edit Team</ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content>
+    <ion-grid  class="add-team-form">
+        <ion-card>
+          <form [formGroup]="ManageTeamsForm">
+            <ion-list>
+                <ion-item lines="none">
+                  <ion-label  position="stacked">Team Name <span>*</span></ion-label>
+                  <ion-input placeholder="Team Name" formControlName="TeamName"></ion-input>
+                </ion-item>
+                <div class="error category-error" *ngIf="ManageTeamsForm.get('TeamName').hasError('required') && ManageTeamsForm.get('TeamName').touched ">
+                  <p class="invalid-input">Team name is required.</p>
+                </div>
+
+                <ion-item lines="none">
+                  <!-- <ion-label  position="stacked">Members <span>*</span></ion-label> -->
+                  <!-- <ion-input placeholder="Select Members"></ion-input> -->
+                  <ion-label position="stacked">Members <span>*</span></ion-label>
+                  <ion-select placeholder="Select Members"  multiple="true" formControlName="SelectMembers" >
+                    <ion-select-option *ngFor="let item of UserListdata"  value="{{item.userId}}">{{item.firstName}} {{item.lastName}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <div class="error category-error" *ngIf="ManageTeamsForm.get('SelectMembers').hasError('required') && ManageTeamsForm.get('SelectMembers').touched">
+                  <p class="invalid-input">Select Members</p>
+                </div>
+                <ion-item lines="none">
+                  <ion-label  position="stacked">Description </ion-label>
+                  <ion-textarea placeholder="Add Description" formControlName="TeamDes"></ion-textarea>
+                </ion-item>
+                <div class="error category-error" *ngIf="ManageTeamsForm.get('TeamDes').hasError('required') && ManageTeamsForm.get('TeamDes').touched">
+                  <p class="invalid-input">Team Description is required.</p>
+                </div>
+            </ion-list>
+          </form>
+        </ion-card>
+    </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+    <ion-button class="cancel-team" shape="round" (click)="back()"> Cancel </ion-button>
+    <ion-button *ngIf="!editList" class="add-team" shape="round" (click)="AddTeam()"> Add Team </ion-button>
+    <ion-button *ngIf="editList" class="add-team" shape="round" (click)="EditTeam()"> Edit Team </ion-button>
+</ion-footer>

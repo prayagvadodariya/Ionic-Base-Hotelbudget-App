@@ -1,0 +1,96 @@
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <!-- <ion-menu-button>
+              <img class="menu" src="../../assets/icon/menu.svg" />
+            </ion-menu-button> -->
+            <ion-back-button></ion-back-button>
+          </ion-buttons>
+      <ion-buttons slot="start">
+      </ion-buttons>
+      <!-- <ion-title>{{Hotelname}}</ion-title> -->
+      <ion-title>{{deptData.departmentName}}</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+
+<ion-content>
+    <div class="main-heading">
+        <!-- {{deptData.departmentName}} -->
+        {{deptData.label}}
+    </div>
+  
+    <!-- main table -->
+    <ion-card class="card-pad">
+        <ion-grid>
+          <ion-row class="top-clr">
+            <ion-col size="6">
+              Categories
+            </ion-col>
+            <ion-col>
+              Expense
+            </ion-col>
+            <ion-col>
+              Remaining
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid class="bor-tab-bott" *ngFor=" let data of categoryData" (click)="getExpenseClick(data)">
+          <ion-row>
+            <ion-col size="6">
+              <span>{{data.accountName}} ({{data.per}}%)</span>            
+              <div id="progressbar">
+                  <!-- {width: (percent < 100 ? percent : 100) + '%'} -->
+                <div class="inner" [ngStyle]="{'background': (data.per > 0 ? data.rem_color : 0 )}" max="100"  [style.width]="(data.per > 100 ? 100 : data.per)+ '%'" style="width:40%"></div>
+              </div>
+            </ion-col>
+            <ion-col>
+                ${{this.constant.replace(data.expense)}}  
+            </ion-col>
+            <ion-col>
+                ${{this.constant.replace(data.remaning)}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <ion-grid class="bor-tab-bott">
+          <ion-row>
+            <ion-col size="6">
+              <span>High Speed Internet Expense (63.94%)</span>
+              <div id="progressbar">
+                <div class="inner progress-red" style="width:40%"></div>
+              </div>
+            </ion-col>
+            <ion-col>
+                $2,185.3  
+            </ion-col>
+            <ion-col>
+                $30.601.84
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+      </ion-card>
+  <!-- main table End -->
+  <div *ngIf='message' class="no-data-found">
+    <!-- <div > -->
+      <img src="assets/images/empty-screen/expense-list-empty.svg">
+    <h5>{{message_title}}</h5>
+    <p>{{message}}</p>
+    <!-- </div> -->
+  </div>
+
+  <ion-infinite-scroll style="position: absolute;" *ngIf="infiniteScrollEnable" (ionInfinite)="InfinitScrollingAPI($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="ionRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+</ion-content>
+<footer [step]="'expense'"></footer>

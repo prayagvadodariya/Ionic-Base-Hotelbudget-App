@@ -1,0 +1,101 @@
+ion-header{
+    ion-toolbar{
+        .noti{color: #fff; margin-right: 8px; font-size: 1.9rem; position: absolute; right: 0;}
+        .save{color: #fff; margin-right: 8px; font-size: 1.5rem; }
+        ion-title{font-weight: 400; font-size: 0.90rem;}
+        ion-buttons{
+            ion-menu-button{
+                img{height: 20px; width: 20px;}
+            }
+        }
+        // ion-title{font-size: 0.8rem;}
+        // span.ion-width{
+          
+        // }
+        
+    }
+}
+
+ion-content{
+    ion-grid.generate{padding-top: 0; padding-bottom: 0;
+        ion-row{
+            ion-col.selectpart{
+                ion-item.all-store{float: right; margin-top: 3px;}
+                    ion-button{width: 101px; --background: #607e9a; --background-focused: #607e9a; --background-hover: #607e9a; text-transform: uppercase; letter-spacing: 1px; font-size: 0.68rem; height: 31px; margin-top: 5px;
+                        img{height: 10px; width: 10px; margin-right: 10px;}
+                }
+            }
+            ion-col.quater{
+                h2{margin-top: 10px; text-align: left; font-size: 0.85rem;
+                    // i{color: #313131; font-size: 0.8rem; margin-right: 14px; float: right;}
+                }
+            }
+        }
+    }
+
+   ion-row.many-part{
+       ion-col{
+           p{margin-top: 10px; margin-bottom: 0; font-size: 0.8rem; margin-left: 5px;}
+           ion-button{width: 80px; --background: #607e9a; --background-focused: #607e9a; --background-hover: #607e9a; text-transform: uppercase; letter-spacing: 1px; font-size: 0.68rem; height: 28px; margin-top: 5px;
+               img{width: 9px; margin-right: 8px;}
+           }
+           img.reset{vertical-align: middle; margin-left: 5px; width: 17px; margin-right: 8px;}
+        }
+        .reset-top{display: flex; justify-content: flex-end; align-items: center;}
+    }
+
+    ion-grid.generatesurvy-content{padding-top: 0; padding-bottom: 20px;
+        ion-card.listing-part{margin-bottom: 0; margin-top: 0; margin-inline-start: 6px !important; margin-inline-end: 6px !important;
+            ion-row.items{border-bottom: 1px solid #b2b2b2;
+                ion-col.main-tlt{color: #343434; font-weight: 600; padding-top: 7px; padding-bottom: 10px;
+                }
+            }
+
+            ion-radio-group{
+                ion-row{border-bottom: 1px solid #b2b2b2;
+                    ion-col.main-tlt-1{color: #212121; padding-top: 9px; padding-bottom: 8px; font-size: 0.6rem;} 
+                    ion-col{
+                        ion-radio{--color: #999; --color-checked: #607e9a; --border-width: 1px; --border-style: solid; width: 16px; height: 16px; vertical-align: middle;}          
+                        img{height: 15px; width: 15px; }
+                    }
+                }
+            }
+        }
+    }
+}
+
+ion-footer{background: #fff;
+    ion-toolbar{
+        ion-grid.progress{padding: 0; background: #fff;
+            ion-item{--background: #fff;
+                ion-text{font-size: 0.7rem; color: #607e9a;
+                    span{
+                        ion-progress-bar{--progress-background: #ff9600; --buffer-background: #cccccc; border-radius: 10px; width: 230px; padding-top: 7px; margin-top: 5px;}
+                    }
+                }
+                ion-icon{background: #607e9a; color: #fff; border-radius: 9px; font-size: 1.5rem; margin-left: 12px; padding: 7px;}
+            }
+        }
+    }
+}
+
+@media screen and (min-width:767px){
+   ion-grid.generatesurvy-content ion-card.listing-part ion-radio-group ion-row ion-col.main-tlt-1{font-size: 1.1rem !important;}
+   .all-store ion-select {font-size: 1.1rem !important;}
+   ion-grid.generate ion-row ion-col.quater h2 i{font-size: 1.1rem !important;}
+   ion-grid.generatesurvy-content ion-card.listing-part ion-row.items ion-col.main-tlt{font-size: 1.1rem !important;}
+   ion-grid.add-item ion-row ion-col ion-button{width: 150px !important; padding: 3px 0px; font-size: 1.1rem !important;}
+    ion-grid.generatesurvy-content ion-card.listing-part ion-radio-group ion-row ion-col ion-radio{ --border-width: 2px; width: 25px !important; height: 25px !important;}
+    ion-grid.generatesurvy-content ion-card.listing-part ion-radio-group ion-row ion-col img { height: 25px !important; width: 25px !important;}
+    ion-grid.listin ion-row ion-col img {width: 35px !important;}
+    ion-grid.listing ion-row ion-col p{font-size: 1.1rem !important;}
+    ion-card ion-col {font-size: 1.1rem !important;}
+    ion-grid.generate ion-row ion-col.quater h2 {font-size: 1.1rem !important;}
+    ion-row.many-part ion-col p{font-size: 1.1rem !important;}
+    ion-grid.generate ion-row ion-col.quater h2 {font-size: 0.85rem !important;}
+    ion-row.many-part ion-col img.reset {width: 25px !important;}
+}
+
+   
+
+

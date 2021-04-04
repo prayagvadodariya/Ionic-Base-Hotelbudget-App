@@ -1,0 +1,583 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hampton Inn Boston Braintree</ion-title>
+    <ion-icon  slot="end" name="ios-more"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="segment-btn">
+    <ion-segment [(ngModel)]="selectedindex" mode="ios">
+      <ion-segment-button value="expense account" >
+        <ion-label> Expense Account</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="vendor" >
+        <ion-label> Vendor</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="capital expense" >
+        <ion-label> Capital Expense</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="purchase order">
+        <ion-label> Purchase Order</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+  </div>
+
+  <div class="about-expenseaccount" *ngIf="selectedindex == 'expense account'">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="year">January,2020</div>
+        </ion-col>
+        <ion-col>
+          <ion-segment class="yearly-segment fl" [(ngModel)]="MQYsegment" >
+            <ion-segment-button value="month">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="quater">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>m</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row class="report-tlt">Expense Account Reports</ion-row>
+
+    <ion-grid class="deprt-cate">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="all-store left-part">
+            <ion-select placeholder="Category">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="all-store right-part">
+            <ion-select placeholder="Department">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card class="cap-card amt-rprt">
+      <ion-row>
+        <ion-col size="6" class="hotel-left">
+          SF Courtyard
+        </ion-col>
+        <ion-col size="6" class="hotel-right">
+          1%
+        </ion-col>
+        <ion-col size="12">
+          <div id="progressbar">
+            <div class="inner spacing" [ngStyle]="{'background': exp.color}"  style="width:8%"></div>
+          </div>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Expense:
+            <span>$629.98</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h5 style="text-align:right;">Occupied Rooms:
+            <span>0</span>
+          </h5>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Remaining:
+            <span>$62,625.04</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h6>Total Budget</h6>
+        </ion-col>
+
+        <ion-col class="left-part" size="6">
+          <h5>CPOR:
+            <span>$2.88</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6" class="hotel-txt2">
+          $
+          <i class="clr-green">62,625.04</i>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card class="cap-card amt-rprt">
+      <ion-row>
+        <ion-col size="6" class="hotel-left">
+          Harrisonburg
+        </ion-col>
+        <ion-col size="6" class="hotel-right">
+          1%
+        </ion-col>
+        <ion-col size="12">
+          <div id="progressbar">
+            <div class="inner spacing" [ngStyle]="{'background': exp.color}" style="width:13%"></div>
+          </div>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Expense:
+            <span>$629.98</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h5 style="text-align:right;">Occupied Rooms:
+            <span>0</span>
+          </h5>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Remaining:
+            <span>$62,625.04</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h6>Total Budget</h6>
+        </ion-col>
+
+        <ion-col class="left-part" size="6">
+          <h5>CPOR:
+            <span>$2.88</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6" class="hotel-txt2">
+          $
+          <i class="clr-green">62,625.04</i>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card class="cap-card amt-rprt">
+      <ion-row>
+        <ion-col size="10" class="hotel-left">
+          DoubleTree Hilton- Westminster
+        </ion-col>
+        <ion-col size="2" class="hotel-right">
+          1%
+        </ion-col>
+        <ion-col size="12">
+          <div id="progressbar">
+            <div class="inner spacing" [ngStyle]="{'background': exp.color}" style="width:23%"></div>
+          </div>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Expense:
+            <span>$629.98</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h5 style="text-align:right;">Occupied Rooms:
+            <span>0</span>
+          </h5>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Remaining:
+            <span>$62,625.04</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h6>Total Budget</h6>
+        </ion-col>
+
+        <ion-col class="left-part" size="6">
+          <h5>CPOR:
+            <span>$2.88</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6" class="hotel-txt2">
+          $
+          <i class="clr-green">62,625.04</i>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card class="cap-card amt-rprt">
+      <ion-row>
+        <ion-col size="6" class="hotel-left">
+          SF Courtyard
+        </ion-col>
+        <ion-col size="6" class="hotel-right">
+          1%
+        </ion-col>
+        <ion-col size="12">
+          <div id="progressbar">
+            <div class="inner spacing" [ngStyle]="{'background': exp.color}"  style="width:40%"></div>
+          </div>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Expense:
+            <span>$629.98</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h5 style="text-align:right;">Occupied Rooms:
+            <span>0</span>
+          </h5>
+        </ion-col>
+        <ion-col class="left-part" size="6">
+          <h5>Remaining:
+            <span>$62,625.04</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6">
+          <h6>Total Budget</h6>
+        </ion-col>
+
+        <ion-col class="left-part" size="6">
+          <h5>CPOR:
+            <span>$2.88</span>
+          </h5>
+        </ion-col>
+        <ion-col size="6" class="hotel-txt2">
+          $
+          <i class="clr-green">62,625.04</i>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div class="about-vendor" *ngIf="selectedindex == 'vendor'">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="year">Quarter-2, 2020 </div>
+        </ion-col>
+        <ion-col>
+          <ion-segment class="yearly-segment fl" [(ngModel)]="MQYsegment" >
+            <ion-segment-button value="month">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="quater">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>m</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row class="report-tlt">Vendor Reports</ion-row>
+
+    <ion-grid class="deprt-cate">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="all-store left-part">
+            <ion-select placeholder="Hotel">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="all-store right-part">
+            <ion-select placeholder="Vendor ">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card class="cap-card vendor-rprt">
+      <ion-row>
+        <ion-col size="3">
+          <h5>Invoice Date:</h5>
+        </ion-col>
+        <ion-col size="5">
+          <ion-text>Jan 03, 2020</ion-text>
+        </ion-col>
+        <ion-col size="4">
+          <h6>Total Budget</h6>
+        </ion-col>
+
+        <ion-col size="3">
+          <h5>Invoice Number:</h5>
+        </ion-col>
+        <ion-col size="5">
+          <ion-text>Jan 03, 2020</ion-text>
+        </ion-col>
+        <ion-col size="4" class="hotel-txt2">
+          $
+          <i class="clr-green">62,625.04</i>
+        </ion-col>
+        <ion-col size="3">
+          <h5>Created By:</h5>
+        </ion-col>
+        <ion-col size="7">
+          <ion-text>Admin</ion-text>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+
+        <ion-col size="3">
+          <h5>Vendor:</h5>
+        </ion-col>
+        <ion-col size="7">
+          <ion-text>2014 SE Lessee 5 Emory LLC Hampton Inn Druid (LES844)</ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <img src="assets/icon/arrow-down.svg">
+        </ion-col>
+      </ion-row>
+
+      <div class="acc-detail">
+        <ion-row>
+
+          <ion-col size="3">
+            <h5>Account Name:</h5>
+          </ion-col>
+          <ion-col size="7">
+            <ion-text>Cabel Television</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <h6>Amount</h6>
+          </ion-col>
+          <ion-col size="3">
+            <h5>Account Number:</h5>
+          </ion-col>
+          <ion-col size="7">
+            <ion-text>410060800</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <h4>$177.02</h4>
+          </ion-col>
+
+          <ion-col size="3">
+            <h5>Description</h5>
+          </ion-col>
+          <ion-col size="7">
+            <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.</ion-text>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+
+  <div class="about-capitalexpense" *ngIf="selectedindex == 'capital expense'">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="year">Quarter-2, 2020 </div>
+        </ion-col>
+        <ion-col>
+          <ion-segment class="yearly-segment fl" [(ngModel)]="MQYsegment">
+            <ion-segment-button value="month">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="quater">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>m</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row class="report-tlt">Capital Expense Reports</ion-row>
+
+    <ion-grid class="deprt-cate">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="all-store left-part">
+            <ion-select placeholder="Hotel">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="all-store right-part">
+            <ion-select placeholder="Department ">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-card class="cap-card cptl-exps">
+      <ion-row>
+        <ion-col size="6" class="hotel-nameleft">DoubleTree Hilton - Westminster
+        </ion-col>
+        <ion-col size="6" class="hotel-nameright">
+          <h3>Total Amount</h3>
+          <h4>$
+            <span>1,112,725,834.38</span>
+          </h4>
+        </ion-col>
+      </ion-row>
+
+      <div class="acc-detail">
+        <ion-row>
+          <ion-col class="left-part" size="8">
+            <h5>Invoice Date:
+              <span>Jan 02, 2020</span>
+            </h5>
+          </ion-col>
+          <ion-col size="4">
+            <h6>Amount</h6>
+          </ion-col>
+          <ion-col class="left-part" size="6">
+            <h5>Invoice Number:
+              <span>01032020</span>
+            </h5>
+          </ion-col>
+          <ion-col size="6">
+            <h3>$125.20</h3>
+          </ion-col>
+          <ion-col class="left-part" size="6">
+            <h5>Created By:
+              <span>Thaddeus</span>
+            </h5>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+
+  <div class="about-purchaseorder" *ngIf="selectedindex == 'purchase order'">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="year">Quarter-2, 2020 </div>
+        </ion-col>
+        <ion-col>
+          <ion-segment class="yearly-segment fl" [(ngModel)]="MQYsegment" >
+            <ion-segment-button value="month">
+              <ion-label>y</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="quater">
+              <ion-label>q</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="year">
+              <ion-label>m</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row class="report-tlt">Purchase Order Reports</ion-row>
+
+    <ion-grid class="deprt-cate">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="all-store left-part">
+            <ion-select placeholder="Hotel">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="all-store right-part">
+            <ion-select placeholder="Vendor ">
+              <ion-select-option value="f">1</ion-select-option>
+              <ion-select-option value="m">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card class="cap-card vendor-rprt">
+      <ion-row>
+        <ion-col size="3">
+          <h5>Invoice Date:</h5>
+        </ion-col>
+        <ion-col size="5">
+          <ion-text>Jan 03, 2020</ion-text>
+        </ion-col>
+        <ion-col size="4">
+          <h6>Total Budget</h6>
+        </ion-col>
+
+        <ion-col size="3">
+          <h5>Invoice Number:</h5>
+        </ion-col>
+        <ion-col size="5">
+          <ion-text>Jan 03, 2020</ion-text>
+        </ion-col>
+        <ion-col size="4" class="hotel-txt2">
+          $
+          <i class="clr-green">62,625.04</i>
+        </ion-col>
+        <ion-col size="3">
+          <h5>Created By:</h5>
+        </ion-col>
+        <ion-col size="7">
+          <ion-text>Admin</ion-text>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+
+
+        <ion-col size="3">
+          <h5>Vendor:</h5>
+        </ion-col>
+        <ion-col size="7">
+          <ion-text>2014 SE Lessee 5 Emory LLC Hampton Inn Druid (LES844)</ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <img src="assets/icon/arrow-down.svg">
+        </ion-col>
+      </ion-row>
+
+      <div class="acc-detail">
+        <ion-row>
+
+          <ion-col size="3">
+            <h5>Account Name:</h5>
+          </ion-col>
+          <ion-col size="7">
+            <ion-text>Cabel Television</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <h6>Amount</h6>
+          </ion-col>
+          <ion-col size="3">
+            <h5>Account Number:</h5>
+          </ion-col>
+          <ion-col size="7">
+            <ion-text>410060800</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <h4>$177.02</h4>
+          </ion-col>
+
+          <ion-col size="3">
+            <h5>Description</h5>
+          </ion-col>
+          <ion-col size="7">
+            <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.</ion-text>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+
+</ion-content>

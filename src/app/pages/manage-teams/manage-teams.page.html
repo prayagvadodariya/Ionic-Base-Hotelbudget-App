@@ -1,0 +1,232 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{hotelName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Hampton Inn Boston Braintree</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="page-head">
+      <ion-row>  
+          <ion-col size="7">
+              <h5>Manage Teams</h5>
+          </ion-col>
+
+          <ion-col size="5" text-right>
+            <ion-button shape="round" (click)="addTeam()">
+             <img slot="start" src="assets/icon/plus-icon.svg" >
+              Add Team
+            </ion-button>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-grid class="team-details">
+      <ion-card *ngFor="let item of listData">
+          <ion-row>
+              <ion-col size="3">
+                  <span class="head">Team Name:</span>
+              </ion-col>
+              <ion-col size="9">
+                  <ion-item lines="none">
+                      <ion-label>{{item.teamName}}</ion-label>
+                      <ion-icon slot="end" name="md-more" (click)="openComponent($event, item)"></ion-icon>
+                  </ion-item>
+              </ion-col>
+          </ion-row>
+
+          <ion-row >
+              <ion-col size="3">
+                  <span class="head">Members:</span>
+              </ion-col>
+              <div *ngFor="let member of item.memberData">
+              <ion-col size="9">
+                <ion-badge mode="ios">{{member.firstName}} {{member.lastName}}</ion-badge>
+                <!-- <ion-badge mode="ios">Joy wattford</ion-badge>
+                <ion-badge mode="ios">Sean Manning</ion-badge>
+                <ion-badge mode="ios">Amy Chiasson</ion-badge>
+                <ion-badge mode="ios">Scott Baer</ion-badge> -->
+              </ion-col>
+            </div>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="3">
+                <span class="head">Description:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-text>{{item.description}}</ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Status:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-toggle mode="md" class="toggle-b" [(ngModel)]="item.status" (ngModelChange)="statusActiveDeactive(item)"></ion-toggle>
+            </ion-col>
+        </ion-row>
+      </ion-card>
+
+
+      <!-- <ion-card>
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Team Name:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-item lines="none">
+                    <ion-label>Managers</ion-label>
+                    <ion-icon slot="end" name="md-more"></ion-icon>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Members:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-badge mode="ios">Jeff Walker</ion-badge>
+              <ion-badge mode="ios">Joy wattford</ion-badge>
+              <ion-badge mode="ios">Sean Manning</ion-badge>
+              <ion-badge mode="ios">Amy Chiasson</ion-badge>
+              <ion-badge mode="ios">Scott Baer</ion-badge>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Description:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Status:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-toggle mode="md"></ion-toggle>
+            </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Team Name:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-item lines="none">
+                    <ion-label>Managers</ion-label>
+                    <ion-icon slot="end" name="md-more"></ion-icon>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Members:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-badge mode="ios">Jeff Walker</ion-badge>
+              <ion-badge mode="ios">Joy wattford</ion-badge>
+              <ion-badge mode="ios">Sean Manning</ion-badge>
+              <ion-badge mode="ios">Amy Chiasson</ion-badge>
+              <ion-badge mode="ios">Scott Baer</ion-badge>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Description:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Status:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-toggle mode="md" checked></ion-toggle>
+            </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Team Name:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-item lines="none">
+                    <ion-label>Managers</ion-label>
+                    <ion-icon slot="end" name="md-more"></ion-icon>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Members:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-badge mode="ios">Jeff Walker</ion-badge>
+              <ion-badge mode="ios">Joy wattford</ion-badge>
+              <ion-badge mode="ios">Sean Manning</ion-badge>
+              <ion-badge mode="ios">Amy Chiasson</ion-badge>
+              <ion-badge mode="ios">Scott Baer</ion-badge>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Description:</span>
+            </ion-col>
+            <ion-col size="9">
+              <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="3">
+                <span class="head">Status:</span>
+            </ion-col>
+            <ion-col size="9">
+                <ion-toggle mode="md"></ion-toggle>
+            </ion-col>
+        </ion-row>
+      </ion-card> -->
+
+
+  </ion-grid>
+
+
+ 
+</ion-content>

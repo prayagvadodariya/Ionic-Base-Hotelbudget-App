@@ -1,0 +1,259 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <img class="vendorclose" src="../../assets/icon/close.svg" *ngIf="mediaType=='vendorModel'" (click)="modelClose()"/>
+        <ion-back-button *ngIf="mediaType=='updateVendor' || 'vendorModel'"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="mediaType!='updateVendor'">Add Vendor</ion-title>
+    <ion-title *ngIf="mediaType=='updateVendor'">Update Vendor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div class="profile-setting">
+      <form [formGroup]="vendorForm">
+        
+        <ion-label>Vendor No.<i>*</i></ion-label>
+        <ion-input placeholder="Enter Vendor Number" [(ngModel)]="vendorArry.vendorNumber"
+          formControlName="vendorNumber"></ion-input>
+        <div class="error"
+          *ngIf="vendorForm.controls.vendorNumber.hasError('required') && vendorForm.controls.vendorNumber.touched">
+          <p class="invalid-input">Vendor No. is required.</p>
+        </div>
+        <div
+        *ngIf="!vendorForm.get('vendorNumber').hasError('whitespace') || !vendorForm.get('vendorNumber').touched">
+        <div class="error"
+        *ngIf="vendorForm.controls.vendorNumber.hasError('pattern') && vendorForm.controls.vendorNumber.touched">
+        <p class="invalid-input">Only No. are allowed</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorNumber">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorNumber').hasError('whitespace') && vendorForm.get('vendorNumber').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+      <ion-label>Company (DBA)<i>*</i></ion-label>
+      <ion-input placeholder="Enter Company(DBA) Name" [(ngModel)]="vendorArry.vendorCompany"
+        formControlName="vendorCompany"></ion-input>
+      <div class="error"
+        *ngIf="vendorForm.controls.vendorCompany.hasError('required') && vendorForm.controls.vendorCompany.touched">
+        <p class="invalid-input">Vendor Company is required.</p>
+      </div>
+      <div
+      *ngIf="!vendorForm.get('vendorCompany').hasError('whitespace') || !vendorForm.get('vendorCompany').touched">
+      <div class="error"
+      *ngIf="vendorForm.controls.vendorCompany.hasError('pattern') && vendorForm.controls.vendorCompany.touched">
+      <p class="invalid-input">Only Character are allowed</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorCompany">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorCompany').hasError('whitespace') && vendorForm.get('vendorCompany').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+        
+        <ion-label>Name</ion-label>
+        <ion-input placeholder="Vendor Name" [(ngModel)]="vendorArry.vendorName"  
+        formControlName="vendorName">
+        </ion-input>
+        <div class="error"
+          *ngIf="vendorForm.controls.vendorName.hasError('required') && vendorForm.controls.vendorName.touched">
+          <p class="invalid-input">Name is required.</p>
+        </div>
+        <div
+        *ngIf="!vendorForm.get('vendorName').hasError('whitespace') || !vendorForm.get('vendorName').touched">
+        <div class="error"
+        *ngIf="vendorForm.controls.vendorName.hasError('pattern') && vendorForm.controls.vendorName.touched">
+        <p class="invalid-input">Only Character are allowed</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorName">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorName').hasError('whitespace') && vendorForm.get('vendorName').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+
+      <ion-label>E-mail</ion-label>
+      <ion-input placeholder="Enter Email" [(ngModel)]="vendorArry.vendorEmail"
+      formControlName="vendorEmail"></ion-input>
+      <div class="error" *ngIf="vendorForm.controls.vendorEmail.hasError('required') && vendorForm.controls.vendorEmail.touched">
+        <p class="invalid-input">E-mail is required!</p>
+      </div>
+      <div
+      *ngIf="!vendorForm.get('vendorEmail').hasError('whitespace') || !vendorForm.get('vendorEmail').touched">
+      <div class="error" *ngIf="vendorForm.controls.vendorEmail.hasError('pattern') && vendorForm.controls.vendorEmail.touched">
+        <p class="invalid-input">Enter valid e-mail!</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorEmail">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorEmail').hasError('whitespace') && vendorForm.get('vendorEmail').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+     
+
+      <ion-label>Phone No.</ion-label>
+      <ion-input placeholder="Enter Phone" [(ngModel)]="vendorArry.vendorPhone"
+      formControlName="vendorPhone">
+      </ion-input>
+      <div class="error" *ngIf="vendorForm.controls.vendorPhone.hasError('required') && vendorForm.controls.vendorPhone.touched">
+        <p class="invalid-input">Phone No is required!</p>
+      </div>
+      <div
+      *ngIf="!vendorForm.get('vendorPhone').hasError('whitespace') || !vendorForm.get('vendorPhone').touched">
+      <div class="error" *ngIf="vendorForm.controls.vendorPhone.hasError('pattern') && vendorForm.controls.vendorPhone.touched">
+        <p class="invalid-input">Please enter valid phone no( ex. (123)456-7890 & 911234567890)</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorPhone">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorPhone').hasError('whitespace') && vendorForm.get('vendorPhone').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+       
+
+      <ion-label>Fax</ion-label>
+      <ion-input placeholder="Enter Fax" [(ngModel)]="vendorArry.vendorFax"
+      formControlName="vendorFax">
+      </ion-input>
+      <div class="error" *ngIf="vendorForm.controls.vendorFax.hasError('required') && vendorForm.controls.vendorFax.touched">
+        <p class="invalid-input">Fax is required</p>
+      </div>
+      <div
+      *ngIf="!vendorForm.get('vendorFax').hasError('whitespace') || !vendorForm.get('vendorFax').touched">
+      <div class="error" *ngIf="vendorForm.controls.vendorFax.hasError('pattern') && vendorForm.controls.vendorFax.touched">
+        <p class="invalid-input">Please enter valid Fax( ex. +1-123-1234567)</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorFax">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorFax').hasError('whitespace') && vendorForm.get('vendorFax').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+
+        <ion-label>Address</ion-label>
+        <ion-textarea placeholder="Enter Address" [(ngModel)]="vendorArry.vendorAddress" 
+        formControlName="vendorAddress"></ion-textarea>
+        <div
+        *ngIf="!vendorForm.get('vendorAddress').hasError('whitespace') || !vendorForm.get('vendorAddress').touched">
+        <div class="error" *ngIf="vendorForm.controls.vendorAddress.hasError('required') && vendorForm.controls.vendorAddress.touched">
+          <p class="invalid-input">Address is required.</p>
+        </div>
+        </div>
+        <div *ngIf="vendorForm.value.vendorAddress">
+          <div class="error"
+            *ngIf="vendorForm.get('vendorAddress').hasError('whitespace') && vendorForm.get('vendorAddress').touched">
+            <p class="invalid-input">Blank spaces are not allowed.</p>
+          </div>
+        </div>
+
+        <ion-label>City</ion-label>
+        <ion-input placeholder="Enter City" [(ngModel)]="vendorArry.vendorCity" 
+        formControlName="vendorCity">
+        </ion-input>
+        <div class="error" *ngIf="vendorForm.controls.vendorCity.hasError('required') && vendorForm.controls.vendorCity.touched">
+          <p class="invalid-input">City is required.</p>
+        </div>
+        <div
+        *ngIf="!vendorForm.get('vendorCity').hasError('whitespace') || !vendorForm.get('vendorCity').touched">
+        <div class="error"
+        *ngIf="vendorForm.controls.vendorCity.hasError('pattern') && vendorForm.controls.vendorCity.touched">
+        <p class="invalid-input">Only Character are allowed</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorCity">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorCity').hasError('whitespace') && vendorForm.get('vendorCity').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+
+      <ion-label>Postal Code</ion-label> 
+      <ion-input placeholder="Enter Postal Code" [(ngModel)]="vendorArry.vendorZipcode"
+      formControlName="vendorZipcode">
+      </ion-input>
+      <div class="error"
+      *ngIf="vendorForm.controls.vendorZipcode.hasError('required') && vendorForm.controls.vendorZipcode.touched">
+      <p class="invalid-input">Postal Code is required!</p>
+      </div>
+      <div
+      *ngIf="!vendorForm.get('vendorZipcode').hasError('whitespace') || !vendorForm.get('vendorZipcode').touched">
+      <div class="error"
+        *ngIf="vendorForm.controls.vendorZipcode.hasError('pattern') && vendorForm.controls.vendorZipcode.touched">
+        <p class="invalid-input">Please enter valid Postal Code (ex. 123456)</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorZipcode">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorZipcode').hasError('whitespace') && vendorForm.get('vendorZipcode').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+      <ion-label>State</ion-label>
+      <ion-input placeholder="Enter State" [(ngModel)]="vendorArry.vendorState" 
+      formControlName="vendorState">
+      </ion-input>
+      <div class="error" *ngIf="vendorForm.controls.vendorState.hasError('required') && vendorForm.controls.vendorState.touched">
+        <p class="invalid-input">State is required.</p>
+      </div>
+      <div
+      *ngIf="!vendorForm.get('vendorState').hasError('whitespace') || !vendorForm.get('vendorState').touched">
+      <div class="error"
+      *ngIf="vendorForm.controls.vendorState.hasError('pattern') && vendorForm.controls.vendorState.touched">
+      <p class="invalid-input">Only Character are allowed</p>
+    </div>
+    </div>
+    <div *ngIf="vendorForm.value.vendorState">
+      <div class="error"
+        *ngIf="vendorForm.get('vendorState').hasError('whitespace') && vendorForm.get('vendorState').touched">
+        <p class="invalid-input">Blank spaces are not allowed.</p>
+      </div>
+    </div>
+
+        <ion-label>Country</ion-label>
+        <ion-input placeholder="Enter Country" [(ngModel)]="vendorArry.vendorCountry"
+        formControlName="vendorCountry">
+        </ion-input>
+        <div class="error" *ngIf="vendorForm.controls.vendorCountry.hasError('required') && vendorForm.controls.vendorCountry.touched">
+          <p class="invalid-input">Country is required.</p>
+        </div>
+        <div
+        *ngIf="!vendorForm.get('vendorCountry').hasError('whitespace') || !vendorForm.get('vendorCountry').touched">
+        <div class="error"
+        *ngIf="vendorForm.controls.vendorCountry.hasError('pattern') && vendorForm.controls.vendorCountry.touched">
+        <p class="invalid-input">Only Character are allowed</p>
+      </div>
+      </div>
+      <div *ngIf="vendorForm.value.vendorCountry">
+        <div class="error"
+          *ngIf="vendorForm.get('vendorCountry').hasError('whitespace') && vendorForm.get('vendorCountry').touched">
+          <p class="invalid-input">Blank spaces are not allowed.</p>
+        </div>
+      </div>
+
+      </form>
+    </div>
+  </ion-card>
+
+  <ion-row>
+    <ion-col class="profile-setting center-btn">
+      <button ion-button="" *ngIf="mediaType!='updateVendor'" (click)="addVendorFunctionAPI(vendorArry)"> Add Vendor </button>
+      <button ion-button="" *ngIf="mediaType=='updateVendor'" (click)="updateVendorAPI(vendorArry)"> Update Vendor
+      </button>
+
+    </ion-col>
+  </ion-row>
+</ion-content>

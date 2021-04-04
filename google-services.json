@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1030069665506",
+    "firebase_url": "https://hotel-budget.firebaseio.com",
+    "project_id": "hotel-budget",
+    "storage_bucket": "hotel-budget.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030069665506:android:23298b23bd2b123c",
+        "android_client_info": {
+          "package_name": "com.trs.encore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030069665506-f7k5fvq19b7qe9t43j53b2j1hf1j40ll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuEOOwMXpl6tPfM8SuHgcObqTL2xtIshE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030069665506-f7k5fvq19b7qe9t43j53b2j1hf1j40ll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

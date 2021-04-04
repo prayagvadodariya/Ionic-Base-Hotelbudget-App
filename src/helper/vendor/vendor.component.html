@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button >
+        <img class="menu" src="../../assets/icon/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-button (click)="demo()">
+      <img  src="../../assets/icon/add.svg" />
+    </ion-button> -->
+    <ion-title>Add Vendor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Add Vendor -->
+  <ion-card>
+    <div class="profile-setting">
+      <form [formGroup]="vendorForm">
+
+        <ion-label>Name<i>*</i></ion-label>
+        <ion-input placeholder="Vendor Name" formControlName="vnd_name"></ion-input>
+        <div class="error"
+          *ngIf="vendorForm.controls.vnd_name.hasError('required') && vendorForm.controls.vnd_name.touched">
+          <p class="invalid-input">Vendor Name is required.</p>
+        </div>
+        <div class="error"
+          *ngIf="vendorForm.controls.vnd_name.hasError('pattern') && vendorForm.controls.vnd_name.touched">
+          <p class="invalid-input">Only Character is allowed</p>
+        </div>
+        <ion-label>Vendor No<i>*</i></ion-label>
+        <ion-input placeholder="Vendor Number" formControlName="vnd_no"></ion-input>
+        <div class="error"
+          *ngIf="vendorForm.controls.vnd_no.hasError('required') && vendorForm.controls.vnd_no.touched">
+          <p class="invalid-input">Vendor No. is required.</p>
+        </div>
+
+        <ion-label>Company(DBA)<i>*</i></ion-label>
+        <ion-input placeholder="Company Name" formControlName="vnd_company"></ion-input>
+        <div class="error"
+          *ngIf="vendorForm.controls.vnd_company.hasError('required') && vendorForm.controls.vnd_company.touched">
+          <p class="invalid-input">Vendor Company is required.</p>
+        </div>
+
+        <ion-label>Address</ion-label>
+        <!--formControlName="vnd_address" -->
+        <ion-textarea placeholder="Address">
+        </ion-textarea>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_address.hasError('required') && vendorForm.controls.vnd_address.touched">
+          <p class="invalid-input">Address is required.</p>
+        </div> -->
+
+        <ion-label>Country</ion-label>
+        <!--formControlName="vnd_country" -->
+        <!-- <ion-input placeholder="Enter Country" [(ngModel)]="vendorArry.country" [ngModelOptions]="{standalone: true}"></ion-input> -->
+        <ion-select placeholder="Select Country">
+         
+        </ion-select>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_country.hasError('required') && vendorForm.controls.vnd_country.touched">
+          <p class="invalid-input">Country is required.</p>
+        </div>
+        <div class="error" *ngIf="vendorForm.controls.vnd_country.hasError('pattern') && vendorForm.controls.vnd_country.touched">
+          <p class="invalid-input">Only Character is allowed</p>
+        </div> -->
+
+        <ion-label>State</ion-label><!-- formControlName="vnd_state" -->
+        <!-- <ion-input placeholder="Enter State" [(ngModel)]="vendorArry.state" [ngModelOptions]="{standalone: true}"></ion-input> -->
+        <ion-select placeholder="Select State">
+    
+        </ion-select>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_state.hasError('required') && vendorForm.controls.vnd_state.touched">
+          <p class="invalid-input">State is required.</p>
+        </div> -->
+
+        <ion-label>City</ion-label>
+        <!--formControlName="vnd_city" -->
+        <ion-input placeholder="Enter City">
+        </ion-input>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_city.hasError('required') && vendorForm.controls.vnd_city.touched">
+          <p class="invalid-input">Full Name is required.</p>
+        </div> -->
+
+        <ion-label>Zipcode</ion-label> <!-- formControlName="vnd_zipcode" -->
+        <ion-input placeholder="Enter Zipcode" 
+          maxlength="5"></ion-input>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_zipcode.hasError('required') && vendorForm.controls.vnd_zipcode.touched">
+          <p class="invalid-input">Full Name is required.</p>
+        </div>
+        <div class="error" *ngIf="vendorForm.controls.vnd_zipcode.hasError('minlength') && vendorForm.controls.vnd_zipcode.touched">
+          <p class="invalid-input">Fax Number in valid</p>
+        </div> -->
+
+        <ion-label>Phone No.</ion-label>
+        <!--formControlName="vnd_phone" -->
+        <ion-input placeholder="Enter Phone" >
+        </ion-input>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_phone.hasError('required') && vendorForm.controls.vnd_phone.touched">
+          <p class="invalid-input">Phone is required.</p>
+        </div> -->
+
+         <ion-label>E-mail</ion-label><!--formControlName="vnd_email" -->
+        <ion-input placeholder="Enter Email" ></ion-input>
+        <div class="error">
+          <p class="invalid-input">Enter valid email!</p>
+        </div>
+        
+        <!-- <div class="error"
+          *ngIf="vendorForm.controls.vnd_email.hasError('required') && vendorForm.controls.vnd_email.touched">
+          <p class="invalid-input">Email is required.</p>
+        </div>
+        <div class="error"
+          *ngIf="vendorForm.controls.vnd_email.hasError('pattern') && vendorForm.controls.vnd_email.touched">
+          <p class="invalid-input">Enter valid email!</p>
+        </div> -->
+
+        <ion-label>Fax</ion-label>
+        <!--formControlName="vnd_fax" -->
+        <ion-input placeholder="Enter Fax" >
+        </ion-input>
+        <!-- <div class="error" *ngIf="vendorForm.controls.vnd_fax.hasError('required') && vendorForm.controls.vnd_fax.touched">
+          <p class="invalid-input">Full Name is required.</p>
+        </div>
+        <div class="error" *ngIf="vendorForm.controls.vnd_fax.hasError('pattern') && vendorForm.controls.vnd_fax.touched">
+          <p class="invalid-input">Only Character is allowed</p>
+        </div> -->
+      </form>
+    </div>
+  </ion-card>
+
+  <ion-row>
+    <ion-col class="profile-setting center-btn">
+      <button ion-button="" class="cancel" > Cancel
+      </button>
+      <button ion-button=""> Add Vendor </button> 
+    </ion-col>
+  </ion-row>
+  <!-- Add Vendor End -->
+  <!-- Update Vendor -->
+  <!-- <div class="profile-setting">
+    <ion-searchbar [(ngModel)]="data" (ionInput)="setFilteredItems($event)"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let item of filterData ">
+            {{item.title}}
+        </ion-item>
+    </ion-list>
+</div> -->
+  <!-- Update Vendor -->
+</ion-content>
+<!-- <footer ></footer> -->

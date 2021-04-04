@@ -1,0 +1,13 @@
+ion-content{
+    ion-row{
+        ion-col{
+            ion-input{--padding-start: 0; --padding-bottom: 0;}
+            ion-select{--padding-start: 0;  --padding-bottom: 0;}
+            ion-datetime{--padding-bottom: 2px;}
+        }
+    }
+
+    ion-row.transfer-btn{
+        ion-button{margin: 0 auto; margin-top: 5px; --background: #607e9a; --background-focused: #607e9a; --background-hover: #607e9a; width: 92px; font-size: 0.71rem; border-radius: 18px !important; height: 35px; text-transform: uppercase;}
+    }
+}

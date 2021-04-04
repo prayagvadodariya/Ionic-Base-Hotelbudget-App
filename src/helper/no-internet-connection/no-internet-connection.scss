@@ -1,0 +1,28 @@
+.ios,
+.md {
+    page-no-internet-connection {
+        
+        ion-content {
+            .content-holder {
+                .content-inner {
+                    h4 {
+                        font-size: 1.8rem;
+                        color: #091a34;
+                    }
+                    p {
+                        font-size: 1.4rem;
+                        color: #7b7b7b;
+                    }
+                    button {
+                        height: 5rem;
+                        font-size: 1.4rem;
+                        padding: 0 6em;
+                        margin-top: 2rem;
+                    }
+                }
+            }
+            
+        }
+    }
+
+}

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button>
+            <img class="menu" src="../../assets/icon/menu.svg" />
+          </ion-menu-button>
+        </ion-buttons>
+    <ion-title>Update Forecast</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-item class="all-store date">
+          <!-- <div class="date"> -->
+            <ion-datetime mode="md"   [(ngModel)]="todaydate"  displayFormat="MMM YYYY"  (ionChange)="changeFromDate($event)"></ion-datetime>
+            <!-- <div class="calender"> -->
+              <img slot="end" src="../../assets/icon/calendar.svg" width="20px;"/>
+            <!-- </div> -->
+            <!-- <ion-select-option value="f">1</ion-select-option>
+            <ion-select-option value="m">2</ion-select-option> -->
+          <!-- </div> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <div class="top-head">{{hotelName}}</div> -->
+  <!-- <form [formGroup]="forecastForm" > -->
+      <ion-card  *ngFor="let data of getbudgetforcastdata; let i=index">   
+        <h1>{{data.budgetForcastName}}</h1>
+        <ion-row class="marbudget">
+              <ion-col>
+                    <span>Budgeted</span>
+                    <ion-input  readonly value="{{data.budgetOccupancy}}">            
+                    </ion-input>
+              </ion-col>
+              <ion-col>
+                <span>Forecasted</span>
+                <!-- <ion-input type="number" formControlName="forecasted" ></ion-input> -->
+                <ion-input type="number" value="{{data.forcastedOccupancy}}" [(ngModel)]="data.forcastedOccupancy"></ion-input>
+                <!-- <div class="error" *ngIf="isFieldValid(data.budgetForcastId)">
+                <p  class="invalid-input">Forecast is required.</p>
+                </div> -->
+              </ion-col>
+        </ion-row>
+        <div  class="align-c profile-setting">
+          <button ion-button="" (click)="updateForecast(data, data.budgetForcastId)">Update</button>
+        </div>
+      </ion-card>
+  <!-- </form> -->
+
+
+
+
+  <!-- <div  class="align-c profile-setting">
+    <button ion-button="" > Update </button>
+  </div> -->
+ 
+</ion-content>
+
+<footer></footer>

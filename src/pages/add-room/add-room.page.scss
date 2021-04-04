@@ -1,0 +1,36 @@
+ion-content{
+
+    .category-error{
+
+        p{
+
+            padding:0px!important;
+            margin: 0px!important;
+
+        }
+    }
+
+    .activated{
+
+        background:#fff!important;
+        --background:#fff!important;
+        --background-focused:#fff!important;
+        
+    }
+
+    .categorymargin{background: #fff;
+        padding-bottom: 10px;
+        border-radius: 10px;
+        position: absolute;
+        width: 75%;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: fit-content;
+        .heading{position: relative;
+            ion-button.closebtn{position: absolute; top: -13px; right: -13px;}
+        }
+    }
+}
